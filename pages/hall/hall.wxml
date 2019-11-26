@@ -1,0 +1,35 @@
+<import src="../../template/coachItem"></import>
+
+<view class="hall">
+    <view class="userinfo">
+        <image class="userinfo-avater" src="{{userInfo.avatarUrl}}">
+        </image>
+        <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+        <text class="userinfo-systemMsg" wx:if="{{userInfo.isCoach}}">欢迎来到网球训练预约场！\n您可以通过预约码预约到您教练。\n也可以在此管理您的课程签到</text>
+        <text class="userinfo-systemMsg" wx:elif="!{{userInfo.isCoach}}">欢迎回来！\n您可以通过小程序管理您的课程，并添加预约的新学员</text>
+    </view>
+
+    <view class="coach" wx:if="{{userInfo.isCoach}}">
+      <text class="coach_title" style="margin-left:30rpx;">我的教练</text>
+      <input class="coach-input" type="number" placeholder="输入教练专属码查找教练"> </input>
+      <scroll-view class="scroll" scroll-y="true">
+        <view class="scroll-view" wx:for="{{coachArray}}" wx:key="{{index}}" bindtap="clickCoach" data-item="{{item}}">
+          <template data-id="{{index}}" class="coach_item" is="coach-item" data="{{item}}"></template>
+        </view>
+      </scroll-view>
+    </view>
+
+    <view class="student" wx:elif="!{{userInfo.isCoach}}">
+      <view class="student-myStudent">
+        <image class="student-myStudent-logo" src="../../image/wechatHL.png"></image>
+        <view class="student-myStudent-title">我的学员</view>
+        <view class="student-myStudent-num">共{{studentArray.length}}人</view>
+      </view>
+
+      <view class="student-myReverse">
+        <image class="student-myReverse-logo" src="../../image/icon_component_HL.png"></image>
+        <view class="student-myReverse-title">我的预约</view>
+        <view class="student-myReverse-num">共{{isReverseNum}}人</view>
+      </view>
+    </view>
+</view>

@@ -1,0 +1,22 @@
+<view class="coachInfo">
+  <view class="coachInfo-part1">
+    <image class="coachInfo-avater" src="{{coachInfo.avater}}"></image>
+    <text class="coachInfo-nickname">{{coachInfo.nickname}}</text>
+    <text class="coachInfo-experience">任教经历：{{coachInfo.experience}}</text>
+    <text class="coachInfo-phone">联系电话：{{coachInfo.phone}}</text>
+  </view>
+  <view class="coachInfo-part2">
+    <view class="coachInfo-property">{{coachInfo.property}}</view>
+  </view>
+</view>
+
+<view class="profile">
+  <view class="profile-title">个人简介</view>
+  <view class="profile-info">
+    <view class="profile-info-text">从事网球教练3年，2017年国家网球大会优秀教练员、国家职业资格教练证书、各项专业网球教练员证书、任教3年、拥有6万多的粉丝群体。获得所有培训学员的一致好评。
+    </view>
+  </view>
+</view>
+
+<view class="reserve">课程预约</view>
+<view class="myCourse">我的课程</view>

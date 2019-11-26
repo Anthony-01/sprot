@@ -1,0 +1,8 @@
+<template name="coach-item" bindtap="clickCoach">
+  <view class="coach-item">
+    <image class="coach-avater" src="{{item.avater}}">
+    </image>
+    <text class="coach-nickname"> {{item.nickname}} </text>
+    <text class="coach-experience"> 任教经历：{{item.experience}} </text>
+  </view>
+</template>

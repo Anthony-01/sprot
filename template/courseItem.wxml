@@ -1,0 +1,13 @@
+<template name="courseItem" class="template">
+  <view class="courseItem">
+    <view class="courseItem-title">第{{item.num}}节</view>
+    <view class="courseItem-status">教练确认状况：{{item.status}}</view>
+    <view class="courseItem-time">教练确认时间：{{item.time}}</view>
+    <view class="courseItem-myTime">我的确认时间：{{item.myTime}}</view>
+
+    <view class="courseItem-ui">
+      <view class="courseItem-ui-sign">已签到</view>  
+      <view class="courseItem-ui-giveUp">申请退课</view>
+    </view>
+  </view>
+</template>

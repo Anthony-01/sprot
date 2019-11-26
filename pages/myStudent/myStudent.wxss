@@ -1,0 +1,25 @@
+@import "../../template/studentItem";
+
+Page {
+  height: 100%;
+  width: 100%;
+}
+
+.scroll {
+  height: 80%;
+  border-bottom: 1rpx solid rgba(0, 0, 0, 0.2);
+}
+
+.addStudent {
+  margin-top: 20rpx;
+  width:280rpx;
+  height: 66rpx;
+  background-color: #169bd5;
+  color: #ffffff;
+  line-height: 66rpx;
+  font-size: 24rpx;
+}
+
+.addStudent-hover {
+  background-color: rgba(22, 155 , 213, 0.8);
+}

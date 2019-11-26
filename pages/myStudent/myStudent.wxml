@@ -1,0 +1,9 @@
+<import src="../../template/studentItem"></import>
+
+<scroll-view class="scroll" scroll-y="true">
+  <view wx:for="{{studentArray}}" wx:key="{{index}}" >
+    <template is="student-item" data="{{item}}"></template>
+  </view>
+</scroll-view>
+
+<button class="addStudent" hover-class="addStudent-hover">+ 添加新学员</button>

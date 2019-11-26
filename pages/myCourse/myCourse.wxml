@@ -1,0 +1,13 @@
+<import src="../../template/courseItem"></import>
+<view class="userinfo">
+  <image class="userinfo-avater" src="{{userInfo.avatar}}"></image>
+  <text class="userinfo-nickname">课程教练：{{userInfo.nickName}}</text>
+  <text class="userinfo-type">项目类型：{{userInfo.type}}</text>
+  <text class="userinfo-phone">联系电话：{{userInfo.phone}}</text>
+</view>
+
+<scroll-view class="scroll" scroll-y="true">
+  <view wx:for="{{courseItem}}" wx:key="*this" class="scroll-item">
+    <template is="courseItem" data="{{item}}"></template>
+  </view>
+</scroll-view>

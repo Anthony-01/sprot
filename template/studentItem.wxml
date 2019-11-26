@@ -1,0 +1,9 @@
+<template name="student-item">
+  <view class="student-item">
+    <image class="student-avater" src="{{item.avater}}">
+    </image>
+    <text class="student-nickname"> {{item.nickname}} </text>
+    <view class="student-classNum">报名项目:{{item.classNum}}个 </view>
+    <view class="student-process">课程进度:{{item.curClass}}/{{item.totalClass}}</view>
+  </view>
+</template>

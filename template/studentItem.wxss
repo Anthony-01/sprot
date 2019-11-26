@@ -1,0 +1,42 @@
+.student-item {
+  position: relative;
+  top: 20rpx;
+  margin: 0 auto 20rpx auto;
+  background-color: #ffffff;
+  width: 698rpx;
+  height:228rpx;
+  border-radius: 15rpx;
+  box-shadow: 0px 0px 10rpx 1rpx rgba(0,0,0,0.1); 
+}
+
+.student-avater {
+  position: relative;
+  height: 140rpx;
+  width: 140rpx;
+  top: 44rpx;
+  left: 52rpx;
+  border-radius: 50%;
+}
+
+.student-nickname {
+  position: relative;
+  top: -55rpx;
+  left: 90rpx;
+  font-weight:900; 
+}
+
+.student-classNum {
+  position: relative;
+  top: -48rpx;
+  left: 239rpx;
+  color:#7d7d7d;
+  font-size: 26rpx;
+}
+
+.student-process {
+  position: relative;
+  left: 239rpx;
+  top: -41rpx;
+  color:#7d7d7d;
+  font-size: 26rpx;
+}

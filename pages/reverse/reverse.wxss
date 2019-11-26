@@ -1,0 +1,61 @@
+Page {
+  width: 100%;
+  height: 100%;
+}
+
+.form-view {
+  position: relative;
+  width:704rpx;
+  height: 514rpx;
+  margin: 20rpx auto;
+  box-shadow: 0 0 10rpx 1rpx rgba(0, 0, 0, 0.1);
+  border-radius: 15rpx;
+}
+
+.form-name {
+  position: relative;
+  height: 88rpx;
+  width:650rpx;
+  border-bottom: 1rpx solid #e4e4e4;
+  margin: 0 auto;
+  padding-top: 10rpx;
+  line-height:  88rpx;
+  padding-left: 10rpx;
+}
+
+.form-input {
+  position: absolute;
+  top: 50%;
+  transform: translate(0,-50%);
+  padding-top: 10rpx;
+  left: 164rpx;
+}
+
+.upload {
+  width: 706rpx;
+  height: 86rpx;
+  background-color: #169bd5;
+  color: white;
+  text-align: center;
+  line-height: 86rpx;
+  margin-left:auto;
+  margin-right: auto; 
+  border-radius: 15rpx;
+}
+
+.getNum {
+  width: 706rpx;
+  height: 86rpx;
+  background-color: #169bd5;
+  color: white;
+  text-align: center;
+  line-height: 86rpx;
+  margin-left:auto;
+  margin-right: auto; 
+  border-radius: 15rpx;
+  margin-top: 20rpx;
+}
+
+.t {
+  width:500rpx;
+}

@@ -1,0 +1,31 @@
+<form class="form" bindsubmit="formSubmit">
+  <view class="form-view">
+    <view class="form-name">
+      姓名
+      <input class="form-input" bindinput='bindinput' bindblur="bindblur" id="form-name" placeholder="联系人姓名" type="text"></input>
+    </view>
+
+    <view class="form-name">
+      电话
+      <input class="form-input" bindinput='bindinput' bindblur="bindblur" id="form-phone" placeholder="联系人电话" type="number"></input>
+    </view>
+
+    <view class="form-name" type="number">
+      专属码
+      <input class="form-input" bindinput='bindinput' bindblur="bindblur" id="form-num" placeholder="填写个人专属码"></input>
+    </view>
+
+    <view class="form-name" type="string">
+      课程
+      <input class="form-input" bindinput='bindinput' bindblur="bindblur" id="form-course" placeholder="请选择课程"></input>
+    </view>
+
+    <view class="form-name" style="border:none" type="string">
+      备注
+      <input class="form-input" bindinput='bindinput' bindblur="bindblur" id="form-tip" placeholder="预约备注" ></input>
+    </view>
+  </view>
+</form>
+
+<view class="upload" bindtap="clickUpload">提交预约</view>
+<view class="getNum">查看专属码</view>
