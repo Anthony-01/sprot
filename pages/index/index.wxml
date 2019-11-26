@@ -23,3 +23,11 @@
   <text class='option' style='{{index==selectData.length-1&&"border:0;"}}' wx:for='{{selectData}}' wx:key='this' data-index='{{index}}' catchtap='optionTap'>{{item}}</text>
  </view>
 </view>
+<i-button bind:click="handleClick">默认按钮</i-button>
+<i-button bind:click="handleClick" type="error" long="true">联通两边按钮</i-button>
+<i-button bind:click="handleClick" type="primary">Primary</i-button>
+<i-button bind:click="handleClick" type="ghost">Ghost</i-button>
+<i-button bind:click="handleClick" type="info" id="add-course">+添加课程</i-button>
+<i-button bind:click="handleClick" type="success">Success</i-button>
+<i-button bind:click="handleClick" type="warning">Warning</i-button>
+<i-button bind:click="handleClick" type="error">Error</i-button>

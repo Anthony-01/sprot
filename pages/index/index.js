@@ -12,6 +12,9 @@ Page({
     selectData: ['1', '2', '3', '4', '5', '6'],//下拉列表的数据
     index: 0//选择的下拉列表下标
   },
+  handleClick(event) {
+    console.log("点击按钮:", event);
+  },
   selectTap() {
     this.setData({
       show: !this.data.show
