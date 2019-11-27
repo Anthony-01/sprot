@@ -1,13 +1,15 @@
 {
   "pages": [
+    "pages/studentIndex/studentIndex",
+    "pages/hall/hall",
     "pages/index/index",
+    "pages/myStudent/myStudent",
     "pages/logs/logs",
     "pages/coachInfo/coachInfo",
     "pages/reverse/reverse",
     "pages/personalInfo/personalInfo",
-    "pages/hall/hall",
-    "pages/myStudent/myStudent",
-    "pages/myCourse/myCourse"
+    "pages/myCourse/myCourse",
+    "pages/coachIndex/coachIndex"
   ],
   "window": {
     "backgroundTextStyle": "light",

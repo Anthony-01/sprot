@@ -2,6 +2,12 @@
 //获取应用实例
 const app = getApp()
 
+const cStudentRoute = 1;
+const cCoachRoute = 2;
+
+const studentRouteSrc = "/pages/studentIndex/studentIndex";
+const coachRouteSrc = "/pages/coachIndex/coachIndex";
+
 Page({
   data: {
     motto: 'Hello World',
@@ -10,10 +16,34 @@ Page({
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     show: false,//控制下拉列表的显示隐藏，false隐藏、true显示
     selectData: ['1', '2', '3', '4', '5', '6'],//下拉列表的数据
-    index: 0//选择的下拉列表下标
+    index: 0, //选择的下拉列表下标,
+
+    //路由
+    studentIndex: 1,
+    coachIndex: 2
   },
   handleClick(event) {
-    console.log("点击按钮:", event);
+    let route;
+    switch(event.currentTarget.dataset.index) {
+      case cStudentRoute: {
+        route = studentRouteSrc;
+        break;
+      }
+      case cCoachRoute: {
+        route = coachRouteSrc;
+        break
+      }
+    }
+
+    wx.navigateTo({
+      url: route,
+      success() {
+
+      },
+      fail(err) {
+        console.log(err);
+      }
+    })
   },
   selectTap() {
     this.setData({

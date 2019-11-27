@@ -2,7 +2,9 @@ const app = getApp()
 
 Page({
   data: {
-    userInfo: {},
+    userInfo: {
+      isCoach: false
+    },
     systemInfo: {},
     canIUse: wx.canIUse('button.open-type.getUserInfo'),
     coachArray: 

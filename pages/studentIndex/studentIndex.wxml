@@ -1,0 +1,47 @@
+<!--pages/studentIndex/studentIndex.wxml-->
+<!-- <text>pages/studentIndex/studentIndex.wxml</text> -->
+<view class="main-wrapper">
+  <view class="body-wrapper">
+    <view class="header">
+      <view class="left">
+        <image src="{{imageSrc}}"></image>
+      </view>
+      
+      <view class="right">
+        <view class="name">潘跃冲</view>
+        <view class="txt">
+          <!-- <p>欢迎来到网球预约训练场！</p><br>
+          <p>您可以通过预约码预约到您的教练。</p><br>
+          <p>也可以在此管理您的课程签到。</p> -->
+          <text>{{headerTxt}}</text>
+        </view>
+      </view>
+    </view>
+    <view class="my-coach">我的教练</view>
+    <view class="search-wrapper">
+      <i-input  type="text"  i-class="search-input" mode="wrapped" placeholder="输入教练专属码查找教练" />
+      <i-icon type="search" class="search-icon" size="28" color="#b4b4b4"/>
+    </view>
+    <view class="coach-wrapper">
+      <view class="coach-item">
+        <view class="avator">
+          <image src="{{imageSrc}}"></image>
+        </view>
+        <view class="info">
+          <view class="name">蒙娜丽莎(Lily)<span class="my-icon-male my-icon"></span></view>
+          <view class="exprience">任教经历：3年</view>
+        </view>
+      </view>
+    </view>
+    
+  </view>
+  <view class="tab-bar-wrapper">
+    <i-tab-bar current="{{ current }}" color="#f759ab" bindchange="handleChange">
+      <i-tab-bar-item key="homepage" icon="homepage" current-icon="homepage_fill" title="首页"></i-tab-bar-item>
+      <i-tab-bar-item key="group" icon="group" current-icon="group_fill" title="朋友"></i-tab-bar-item>
+      <i-tab-bar-item key="remind" icon="remind" current-icon="remind_fill" title="通知"></i-tab-bar-item>
+      <i-tab-bar-item key="mine" icon="mine" current-icon="mine_fill" title="我的"></i-tab-bar-item>
+    </i-tab-bar>
+  </view>
+
+</view>

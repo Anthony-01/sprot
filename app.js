@@ -8,6 +8,9 @@ App({
     var logs = wx.getStorageSync('logs') || []
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
+    console.log(logs);
+
+    
 
     //分析如何进行路由界面
 
