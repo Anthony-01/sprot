@@ -10,6 +10,20 @@ Page({
     current: "homepage"
   },
   handleChange({ detail }) {
+    //设置页面的教练数据
+    //每个组件内部请求用户个人的数据，个人数据可以保存在app中间；
+    //通过网络请求后者其他方式进行
+    //如何改变来使componet组件展现不同
+    let title;
+    if (detail.key == "mine") {
+      title = "我的信息"
+    } else {
+      title = "首页"
+    }
+    wx.setNavigationBarTitle({
+      title: title
+    })
+
     this.setData({
       current: detail.key
     });
@@ -19,7 +33,16 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    let title;
+    if (this.data.current == "mine") {
+      title = "我的信息"
+    } else {
+      title = "首页"
+    }
+    console.log(title);
+    wx.setNavigationBarTitle({
+      title: title
+    })
   },
 
   /**

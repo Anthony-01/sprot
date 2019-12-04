@@ -138,3 +138,16 @@ Page {
 .test {
   width: 800rpx;
 }
+
+.reverse-button {
+  margin-top: 20rpx;
+  position:relative;
+   
+  background-color: #199ed8;
+  width: 702rpx;
+  color: #ffffff;
+}
+
+.reverse-button-hover {
+  background-color: rgba(25, 158, 216, 0.8);
+}

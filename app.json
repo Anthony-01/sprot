@@ -1,14 +1,14 @@
 {
   "pages": [
-    "pages/studentIndex/studentIndex",
-    "pages/hall/hall",
-    "pages/index/index",
-    "pages/myStudent/myStudent",
-    "pages/logs/logs",
-    "pages/coachInfo/coachInfo",
-    "pages/reverse/reverse",
-    "pages/personalInfo/personalInfo",
     "pages/myCourse/myCourse",
+    "pages/studentIndex/studentIndex",
+    "pages/coachInfo/coachInfo",
+    "pages/myStudent/myStudent",
+    "pages/reverse/reverse", 
+    "pages/personalInfo/personalInfo", 
+    "pages/index/index",
+    "pages/hall/hall",
+    "pages/logs/logs",
     "pages/coachIndex/coachIndex"
   ],
   "window": {

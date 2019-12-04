@@ -3,11 +3,14 @@
     "i-icon": "../../dist/icon/index",
     "i-input": "../../dist/input/index",
     "i-tab-bar": "../../dist/tab-bar/index",
-    "i-tab-bar-item": "../../dist/tab-bar-item/index"
+    "i-tab-bar-item": "../../dist/tab-bar-item/index",
+    "student-index-component": "../../components/studentIndex/studentIndex",
+    "student-info-component": "../../components/studentInfo/studentInfo"
   },
   "navigationBarBackgroundColor": "#ffffff",
   "navigationBarTextStyle": "black",
-  "navigationBarTitleText": "",
+  "navigationBarTitleText": "首页",
   "backgroundColor": "#eeeeee",
-  "backgroundTextStyle": "light"
+  "backgroundTextStyle": "light",
+  "navigationStyle": "default"
 }

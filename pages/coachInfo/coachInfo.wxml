@@ -17,6 +17,7 @@
     </view>
   </view>
 </view>
-
-<view class="reserve">课程预约</view>
-<view class="myCourse">我的课程</view>
+<button class="reverse-button" hover-class="reverse-button-hover" bindtap="negativeTap" data-index="{{1}}">课程预约</button>
+<button class="reverse-button" hover-class="reverse-button-hover" bindtap="negativeTap" data-index="{{2}}">我的课程</button>
+<!-- <view class="reserve">课程预约</view>
+<view class="myCourse">我的课程</view> -->

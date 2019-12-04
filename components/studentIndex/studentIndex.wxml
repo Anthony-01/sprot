@@ -1,0 +1,32 @@
+<!--components/studentIndex/studentIndex.wxml-->
+<view class="body-wrapper">
+    <view class="header">
+      <view class="left">
+        <image src="{{imageSrc}}"></image>
+      </view>
+      
+      <view class="right">
+        <view class="name">潘跃冲</view>
+        <view class="txt">
+          <text>{{headerTxt}}</text>
+        </view>
+      </view>
+    </view>
+    <view class="my-coach">我的教练</view>
+    <view class="search-wrapper">
+      <i-input  type="text"  i-class="search-input" mode="wrapped" placeholder="输入教练专属码查找教练" />
+      <i-icon type="search" class="search-icon" size="28" color="#b4b4b4"/>
+    </view>
+    <view class="coach-wrapper">
+      <view class="coach-item" bindtap="coachDetail" data-index="{{1}}">
+        <view class="avator">
+          <image src="{{imageSrc}}"></image>
+        </view>
+        <view class="info">
+          <view class="name">蒙娜丽莎(Lily)<span class="my-icon-male my-icon"></span></view>
+          <view class="exprience">任教经历：3年</view>
+        </view>
+      </view>
+    </view>
+    
+  </view>

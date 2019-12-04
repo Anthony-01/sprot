@@ -13,8 +13,8 @@ Page({
     userInfo:{
       avater: "../../image/wechat.png",
       nickname:"蒙娜丽莎(Lily)",
-      identity:"教练",
-      isCoach:false,
+      identity:"学员",
+      isCoach:true,
       code:"58DF359S"
     }
   },

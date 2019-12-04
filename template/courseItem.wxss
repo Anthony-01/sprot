@@ -54,6 +54,7 @@
   text-align: center;
   height: 90rpx;
   line-height: 90rpx;
+  color: #52c41a;
   border-right: 1rpx solid #d7d7d7;
 }
 

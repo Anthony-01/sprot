@@ -1,2 +1,75 @@
 <!--components/studentInfo.wxml-->
-<text>components/studentInfo.wxml</text>
+<view class="userInfo">
+  <image src="{{userInfo.avater}}" class="userInfo-avater"></image>
+  <view class="userInfo-nickname">{{userInfo.nickname}}</view>
+  <view class="userInfo-identity">身份：{{userInfo.identity}}</view>
+</view>
+
+<!-- <view class="baseMsg-coach" wx:if="{{userInfo.isCoach}}">
+  <view class="baseMsg-title">基本信息</view>
+  <view class="baseMsg-table">
+    <view class="baseMsg-table-sex">性别
+      <i-radio-group current="{{current}}" bindchange="handleFruitChange">
+        <i-radio wx:for="{{fruit}}" position="{{position}}" wx:key="{{item.id}}" value="{{item.name}}">
+        </i-radio>
+      </i-radio-group>
+    </view>
+
+    <view class="baseMsg-table-phone">联系电话
+      <input class="baseMsg-table-phone-input" placeholder="输入联系电话" type="number"></input>
+    </view>
+
+    <view class="baseMsg-table-experience">从业经历
+      <input class="baseMsg-table-experience-input" type="number" placeholder="选择从业年限"></input>
+    </view>
+
+    <view class="baseMsg-table-style">教学风格
+      <view class="baseMsg-table-style-tip">(限20字)</view>
+      <input class="baseMsg-table-style-input" type="text" placeholder="简短接受您的教学风格。"></input>
+    </view>
+  </view>
+
+  <view class="myCode">
+      <view class="myCode-title">我的专属码</view>
+      <view class="myCode-view">
+        <view class="myCode-view-num">58DF359S</view>
+        <view class="myCode-view-ui-change" bindtap="change">换一组</view>
+        <view class="myCode-view-ui-copy" bindtap="copy">复制</view>
+      </view>
+  </view>
+
+</view> -->
+
+<view class="baseMsg-student" >
+  <view class="baseMsg-title">基本信息</view>
+  <view class="baseMsg-table" style="height:200rpx">
+    <view class="baseMsg-table-sex">
+      <view class="baseMsg-sex-txt">性别</view>
+      <view class="baseMsg-sex-radio " data-index="{{1}}" bindtap="sexTab">
+        <view class="baseMsg-sex-radio-button {{gender==1 ? 'selected-button':''}}"><view class="button-in"></view></view>
+        <span class="my-icon-male my-icon"></span>
+      </view>
+      <view class="baseMsg-sex-radio " data-index="{{2}}" bindtap="sexTab">
+        <view class="baseMsg-sex-radio-button {{gender==2 ? 'selected-button':''}}"><view class="button-in"></view></view>
+        <span class="my-icon-female my-icon"></span>
+      </view>
+    </view>
+    <view class="baseMsg-table-phone" style="border:none">联系电话
+      <input class="baseMsg-table-phone-input" type="number" placeholder="输入联系电话"></input>
+    </view>
+  </view>
+
+  <view class="myCode">
+      <view class="myCode-title">我的专属码</view>
+      <view class="myCode-view">
+        <view class="myCode-view-num">{{userInfo.code}}</view>
+        <view class="myCode-view-ui-change" bindtap="change">换一组</view>
+        <view class="myCode-view-ui-copy" bindtap="copy">复制</view>
+      </view>
+  </view>
+
+  <view class="text-reverse-title">申请任职教练</view>
+  <view class="reverse-status">可申请</view>
+
+<button class="reverse-button" hover-class="reverse-button-hover">点击申请</button>
+</view>
