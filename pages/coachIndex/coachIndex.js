@@ -5,14 +5,58 @@ Page({
    * 页面的初始数据
    */
   data: {
+    headerTxt: `欢迎回来！\n您可以在此管理您的课程，并添加预约的新学员，也可添加您的教练`,
+    imageSrc: "../../image/gao.png",
+    current: "homepage"
+  },
+  handleChange({ detail }) {
+    //设置页面的教练数据
+    //每个组件内部请求用户个人的数据，个人数据可以保存在app中间；
+    //通过网络请求后者其他方式进行
+    //如何改变来使componet组件展现不同
+    let title;
+    switch (detail.key) {
+      case "homepage": {
+        title = "首页";
+        break;
+      }
+      case "studentpage": {
+        title = "我的学员";
+        break;
+      }
+      case "orderpage": {
+        title = "课程预约";
+        break;
+      }
+      case "mine": {
+        title = "我的信息";
+        break;
+      }
+    }
+    
+    wx.setNavigationBarTitle({
+      title: title
+    })
 
+    this.setData({
+      current: detail.key
+    });
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    let title;
+    if (this.data.current == "mine") {
+      title = "我的信息"
+    } else {
+      title = "首页"
+    }
+    console.log(title);
+    wx.setNavigationBarTitle({
+      title: title
+    })
   },
 
   /**

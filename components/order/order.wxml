@@ -1,0 +1,12 @@
+<!--components/order/order.wxml-->
+<view class="order-wrapper">
+  <view class="order-item" wx:for="{{orderAry}}" >
+    <view class="order-user order-info">预约人: <text>{{item.username}}</text></view>
+    <view class="order-phone order-info">电话: <text class="detail">{{item.phone}}</text></view>
+    <view class="order-id order-info">预约码: <text class="detail">{{item.id}}</text></view>
+    <view class="order-course order-info">预约课程: <text class="detail">{{item.course}}</text></view>
+    <view class="order-time order-info">预约时间: <text class="detail">{{item.time}}</text></view>
+    <view class="order-remarks order-info">备注: <text >{{item.remarks}}</text></view>
+    <button bindtap="onAdd" hover-class="button-down" class="add-button" data-order-index="{{index}}">添加为我的学员</button>
+  </view>
+</view>

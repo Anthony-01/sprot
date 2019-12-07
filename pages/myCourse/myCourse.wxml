@@ -1,10 +1,12 @@
 <import src="../../template/courseItem"></import>
 <view class="userinfo">
-  <image class="userinfo-avater" src="{{userInfo.avatar}}"></image>
-  <text class="userinfo-nickname">课程教练：{{userInfo.nickName}}</text>
+  <image class="userinfo-avater" src="{{userInfo.avator}}"></image>
+  <text class="userinfo-nickname">课程教练：{{userInfo.nickname}}</text>
   <text class="userinfo-type">项目类型：{{userInfo.type}}</text>
   <text class="userinfo-phone">联系电话：{{userInfo.phone}}</text>
 </view>
+
+<select prop-array="{{selectArray}}" bindselectevent="selectHandle"></select>
 
 <scroll-view class="scroll" scroll-y="true">
   <view wx:for="{{courseItem}}" wx:key="*this" class="scroll-item">

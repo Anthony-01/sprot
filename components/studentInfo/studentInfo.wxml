@@ -68,8 +68,10 @@
       </view>
   </view>
 
-  <view class="text-reverse-title">申请任职教练</view>
-  <view class="reverse-status">可申请</view>
+  <view class="info">
+    <view class="text-reverse-title">申请任职教练</view>
+    <view class="reverse-status">可申请</view>
+  </view>
 
 <button class="reverse-button" hover-class="reverse-button-hover">点击申请</button>
 </view>

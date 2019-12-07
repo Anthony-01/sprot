@@ -10,10 +10,7 @@
       <input class="form-input" bindinput='bindinput' bindblur="bindblur" id="form-phone" placeholder="联系人电话" type="number"></input>
     </view>
 
-    <view class="form-name" type="number">
-      专属码
-      <input class="form-input" bindinput='bindinput' bindblur="bindblur" id="form-num" placeholder="填写个人专属码"></input>
-    </view>
+    
 
     <view class="form-name" type="string">
       课程
@@ -28,4 +25,4 @@
 </form>
 
 <view class="upload" bindtap="clickUpload">提交预约</view>
-<view class="getNum">查看专属码</view>
+<!-- <view class="getNum">查看专属码</view> -->

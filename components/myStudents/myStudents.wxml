@@ -1,0 +1,14 @@
+<!--components/myStudents/myStudents.wxml-->
+<view class="my-students-wrapper">
+  <view class="student-item" wx:for="{{studentsAry}}" wx:key="index" bindtap="onItemHandle" data-student-index="{{index}}">
+    <view class="left">
+      <image class="avator" src="{{item.avator}}"></image>
+    </view>
+    <view class="right">
+      <view class="nickname">{{item.nickname}}</view> 
+      <view class="info-item" wx:for="{{item.infoes}}" wx:for-index="idx" wx:for-item="infoItem">{{infoItem.name}} : {{infoItem.value}}</view>
+    </view>
+  </view>
+  <i-button type="primary" size="large" i-class="i-button" bindtap="onAddHandle">+添加新学员</i-button>  
+
+</view>

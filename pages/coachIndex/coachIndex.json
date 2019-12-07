@@ -1,3 +1,20 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "i-icon": "../../dist/icon/index",
+    "i-input": "../../dist/input/index",
+    "i-tab-bar": "../../dist/tab-bar/index",
+    "i-tab-bar-item": "../../dist/tab-bar-item/index",
+    "student-index-component": "../../components/studentIndex/studentIndex",
+    "coach-index-component": "../../components/coachIndex/coachIndex",
+    "student-info-component": "../../components/studentInfo/studentInfo",
+    "my-students": "../../components/myStudents/myStudents",
+    "order": "../../components/order/order",
+    "coach-info-component": "../../components/coachInfo/coachInfo"
+  },
+  "navigationBarBackgroundColor": "#ffffff",
+  "navigationBarTextStyle": "black",
+  "navigationBarTitleText": "首页",
+  "backgroundColor": "#eeeeee",
+  "backgroundTextStyle": "light",
+  "navigationStyle": "default"
 }

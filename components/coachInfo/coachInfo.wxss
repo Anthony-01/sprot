@@ -1,4 +1,4 @@
-/* components/studentInfo.wxss */
+/* components/coachInfo/coachInfo.wxss */
 Page {
   width:100%;
   height: 100%;
@@ -50,10 +50,21 @@ Page {
 .baseMsg-table {
   position: relative;
   width: 704rpx;
-  height: 440rpx;
-  margin: 24rpx auto;
+  /* height: 200rpx; */
+  /* margin: 24rpx auto; */
   border-radius: 12rpx;
-  box-shadow: 0 0 10rpx 1rpx  rgba(0.49, 0.49, 0.49, 0.2)
+  box-shadow: 0 0 10rpx 1rpx  rgba(0.49, 0.49, 0.49, 0.2);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 24rpx auto;
+}
+.baseMsg-table .table-item {
+  width: 654rpx;
+  font-size: 34rpx;
+  line-height: 96rpx;
+  border-bottom: 1rpx solid rgba(0.49, 0.49, 0.49, 0.2);
 }
 
 .baseMsg-table-sex {
@@ -68,6 +79,58 @@ Page {
   align-items: center;
 
 }
+
+.baseMsg-table-exprience{
+  display: flex;
+
+}
+.baseMsg-table-exprience .section {
+  margin-left: 68rpx;
+  flex-grow: 1;
+}
+.baseMsg-table-exprience .placeholder {
+  color: #949494;
+}
+
+.baseMsg-table-teach{
+  display: flex;
+  justify-content: flex-start;
+}
+.baseMsg-table-teach .left {
+  /* width: 30%; */
+  /* display: flex;
+  flex-direction: column;
+  align-items: center; */
+  
+}
+.baseMsg-table-teach .left .remarks {
+  line-height: 48rpx;
+  font-size: 28rpx;
+  color: #999999;
+  text-align: center;
+  margin-top: -15rpx;
+}
+.baseMsg-table-teach .right {
+  margin-left: 68rpx;
+  flex-grow: 1;
+}
+.place-show {
+  /* font-size: 34rpx;
+  /* //line-height: 96rpx; */
+  /* padding-top: 24rpx; */ 
+  /* margin-top: 24rpx; */
+}
+.baseMsg-table-teach .right textarea {
+  width: 100%;
+  height: 120rpx;
+  /* font-size: 34rpx; */
+  /* line-height: 96rpx; */
+  /* padding-top: 24rpx; */
+  font-size: 34rpx;
+  line-height: 34rpx;
+  padding-top: 28rpx;
+}
+
 .baseMsg-sex-radio-button {
   width: 13px;
   height: 13px;

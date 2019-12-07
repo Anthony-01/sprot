@@ -1,4 +1,4 @@
-// components/studentInfo.js
+// components/coachInfo/coachInfo.js
 Component({
   /**
    * 组件的属性列表
@@ -14,11 +14,12 @@ Component({
     userInfo: {
       avater: "../../image/lily.png",
       nickname: "蒙娜丽莎(Lily)",
-      identity: "学员",
+      identity: "教练",
       isCoach: false,
       code: "58DF359S"
     },
-    gender: 1
+    gender: 1,
+    array: ['1年', '2年', '3年', '3年以上'],
   },
 
   /**
@@ -40,8 +41,8 @@ Component({
       newCode = newCode.join("");
       let ccode = "userInfo.code";
       this.setData({
-        [ccode] :newCode
-        
+        [ccode]: newCode
+
       })
     },
     //选择性别
@@ -56,6 +57,12 @@ Component({
       this.setData({
         gender: gender
       })
+    },
+    bindPickerChange: function (e) {
+      console.log('picker发送选择改变，携带值为', e.detail.value)
+      this.setData({
+        index: e.detail.value
+      })
     }
   },
 
@@ -63,3 +70,4 @@ Component({
     addGlobalClass: true
   }
 })
+

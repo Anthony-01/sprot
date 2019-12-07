@@ -3,7 +3,7 @@ const myCoursePath = "/pages/myCourse/myCourse";
 Page ({
   data:{
     coachInfo:{
-      avater:"../../image/wechat.png",
+      avater:"../../image/lily.png",
       nickname:"蒙娜丽莎（Lily）",
       experience:"3年",
       phone:"15986878985",

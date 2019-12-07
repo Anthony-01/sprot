@@ -1,2 +1,19 @@
 <!--pages/coachIndex/coachIndex.wxml-->
-<text>pages/coachIndex/coachIndex.wxml</text>
+<view class="main-wrapper">
+
+  
+  <coach-index-component wx:if="{{current == 'homepage'}}"></coach-index-component> 
+  <my-students wx:elif="{{current == 'studentpage'}}"></my-students>
+  <order wx:elif="{{current == 'orderpage'}}"></order>
+  <coach-info-component wx:else class="show-page"></coach-info-component>
+
+  <view class="tab-bar-wrapper">
+    <i-tab-bar current="{{ current }}" color="#29a1f7" bindchange="handleChange">
+      <i-tab-bar-item key="homepage" icon="homepage" current-icon="homepage_fill" title="首页"></i-tab-bar-item>
+      <i-tab-bar-item key="studentpage" icon="addressbook" current-icon="addressbook_fill" title="学员"></i-tab-bar-item>
+      <i-tab-bar-item key="orderpage" icon="collection" current-icon="collection_fill" title="预约"></i-tab-bar-item>
+      <i-tab-bar-item key="mine" icon="mine" current-icon="mine_fill" title="我的"></i-tab-bar-item>
+    </i-tab-bar>
+  </view>
+
+</view>

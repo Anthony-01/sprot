@@ -1,0 +1,67 @@
+<!--components/coachInfo/coachInfo.wxml-->
+<view class="userInfo">
+  <image src="{{userInfo.avater}}" class="userInfo-avater"></image>
+  <view class="userInfo-nickname">{{userInfo.nickname}}</view>
+  <view class="userInfo-identity">身份：{{userInfo.identity}}</view>
+</view>
+
+<view class="baseMsg-student" >
+  <view class="baseMsg-title">基本信息</view>
+
+  <view class="baseMsg-table" >
+    <view class="baseMsg-table-sex table-item">
+      <view class="baseMsg-sex-txt">性别</view>
+      <view class="baseMsg-sex-radio " data-index="{{1}}" bindtap="sexTab">
+        <view class="baseMsg-sex-radio-button {{gender==1 ? 'selected-button':''}}"><view class="button-in"></view></view>
+        <span class="my-icon-male my-icon"></span>
+      </view>
+      <view class="baseMsg-sex-radio " data-index="{{2}}" bindtap="sexTab">
+        <view class="baseMsg-sex-radio-button {{gender==2 ? 'selected-button':''}}"><view class="button-in"></view></view>
+        <span class="my-icon-female my-icon"></span>
+      </view>
+    </view>
+    <view class="baseMsg-table-phone table-item">联系电话
+      <input class="baseMsg-table-phone-input" type="number" placeholder="输入联系电话"></input>
+    </view>
+    <view class="baseMsg-table-exprience  table-item">从业经历
+      <view class="section">
+        <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+          <view class="picker">
+            <view class="placeholder" wx:if="{{index == undefined}}">请选择从业年限</view>
+            <view wx:else>{{array[index]}}</view>
+          </view>
+        </picker>
+      </view>
+    </view>
+    <view class="baseMsg-table-teach  table-item">
+      <view class="left">
+        <view class="teach-title">教学风格</view>
+        <view class="remarks">(限20字)</view>
+      </view>
+      <view class="right">
+        <textarea placeholder="简短介绍您的教学风格" maxlength="20" adjust-position="{{true}}"></textarea>
+      </view>
+    </view>
+    <view class="baseMsg-table-teach  table-item" style="border: none;">
+      <view class="left">
+        <view class="teach-title">个人简介</view>
+        <view class="remarks">(限100字)</view>
+      </view>
+      <view class="right">
+        <textarea placeholder="请填写您的个人简历" maxlength="100" auto-height="{{true}}" adjust-position="{{true}}"></textarea>
+      </view>
+    </view>
+  </view>
+
+  <view class="myCode">
+      <view class="myCode-title">我的专属码</view>
+      <view class="myCode-view">
+        <view class="myCode-view-num">{{userInfo.code}}</view>
+        <view class="myCode-view-ui-change" bindtap="change">换一组</view>
+        <view class="myCode-view-ui-copy" bindtap="copy">复制</view>
+      </view>
+  </view>
+
+  
+</view>
+

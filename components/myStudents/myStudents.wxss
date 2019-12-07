@@ -1,0 +1,50 @@
+/* components/myStudents/myStudents.wxss */
+.my-students-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow:auto;
+}
+.student-item {
+  display: flex;
+
+  width: 704rpx;
+  margin-top: 20rpx;
+  padding: 52rpx 0  44rpx 0;
+  box-sizing: border-box;
+  border-radius: 12rpx;
+  box-shadow: 0 0 10rpx 1rpx rgba(0.49, 0.49, 0.49, 0.2);
+}
+.student-item .left {
+  width: 40%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.avator {
+  width: 140rpx;
+  height: 140rpx;
+  border-radius: 50%;
+}
+.student-item .right {
+  flex-grow: 1;
+}
+.student-item .right .nickname {
+  font-weight: 700;
+  font-size: 32rpx;
+  margin-bottom: 12rpx;
+}
+.student-item .right .info-item {
+  font-size: 28rpx;
+  color: #666666;
+}
+.i-button {
+  width: 704rpx;
+  border-radius: 12rpx;
+  background: #169bd5;
+}
