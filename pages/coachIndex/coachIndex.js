@@ -1,4 +1,5 @@
 // pages/coachIndex/coachIndex.js
+const app = getApp()
 Page({
 
   /**
@@ -7,7 +8,8 @@ Page({
   data: {
     headerTxt: `欢迎回来！\n您可以在此管理您的课程，并添加预约的新学员，也可添加您的教练`,
     imageSrc: "../../image/gao.png",
-    current: "homepage"
+    current: "homepage",
+    isIphoneX: false
   },
   handleChange({ detail }) {
     //设置页面的教练数据
@@ -56,6 +58,14 @@ Page({
     console.log(title);
     wx.setNavigationBarTitle({
       title: title
+    })
+
+    let isIphoneX = app.globalData.isIphoneX;
+
+    this.setData({
+
+      isIphoneX: isIphoneX
+
     })
   },
 

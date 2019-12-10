@@ -3,7 +3,7 @@
 .courseItem {
   width: 708rpx;
   height: 360rpx;
-  box-shadow: 0 0 10rpx 1rpx rgba(0, 0, 0, 0.1);
+  /* box-shadow: 0 0 10rpx 1rpx rgba(0, 0, 0, 0.1); */
   border-radius: 15rpx;
   margin: 0 auto;
   position: relative;

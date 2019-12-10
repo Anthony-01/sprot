@@ -15,7 +15,7 @@
     height: 72rpx;
     line-height: 72rpx;
     border-radius: 12rpx;
-    box-shadow: 0 0 10rpx 1rpx rgba(0, 0, 0, 0.1);
+    /* box-shadow: 0 0 10rpx 1rpx rgba(0, 0, 0, 0.1); */
 }
 .com-sImg{
     /* position: absolute;
@@ -24,6 +24,7 @@
     width: 26px;
     height: 26px;
     transition: all .3s ease;
+    margin-right: 20rpx;
 }
 .com-sTxt{
     overflow: hidden;
@@ -43,6 +44,7 @@
     z-index: 3;
     max-height: 120px;
     overflow: auto;
+    margin-top: 2rpx;
 }
 .com-sItem{
     height: 72rpx;

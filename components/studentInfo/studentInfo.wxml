@@ -42,7 +42,7 @@
 
 <view class="baseMsg-student" >
   <view class="baseMsg-title">基本信息</view>
-  <view class="baseMsg-table" style="height:200rpx">
+  <view class="baseMsg-table my-border-shadow" style="height:200rpx">
     <view class="baseMsg-table-sex">
       <view class="baseMsg-sex-txt">性别</view>
       <view class="baseMsg-sex-radio " data-index="{{1}}" bindtap="sexTab">
@@ -61,7 +61,7 @@
 
   <view class="myCode">
       <view class="myCode-title">我的专属码</view>
-      <view class="myCode-view">
+      <view class="myCode-view my-border-shadow">
         <view class="myCode-view-num">{{userInfo.code}}</view>
         <view class="myCode-view-ui-change" bindtap="change">换一组</view>
         <view class="myCode-view-ui-copy" bindtap="copy">复制</view>
@@ -69,7 +69,7 @@
   </view>
 
   <view class="info">
-    <view class="text-reverse-title">申请任职教练</view>
+    <view class="text-reverse-title">申请成为教练</view>
     <view class="reverse-status">可申请</view>
   </view>
 

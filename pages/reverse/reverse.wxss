@@ -4,18 +4,22 @@ Page {
 }
 
 .form-view {
-  position: relative;
+  display: flex;
+  flex-direction: column;
+  /* position: relative; */
   width:704rpx;
-  height: 426rpx;
+  /* height: 426rpx; */
   margin: 20rpx auto;
-  box-shadow: 0 0 10rpx 1rpx rgba(0, 0, 0, 0.1);
+  /* box-shadow: 0 0 10rpx 1rpx rgba(0, 0, 0, 0.1); */
   border-radius: 15rpx;
 }
 
 .form-name {
-  position: relative;
-  height: 88rpx;
-  width:650rpx;
+  /* position: relative;
+  height: 88rpx; */
+  display: flex;
+  align-items: center;
+  width: 650rpx;
   border-bottom: 1rpx solid #e4e4e4;
   margin: 0 auto;
   padding-top: 10rpx;
@@ -23,12 +27,47 @@ Page {
   padding-left: 10rpx;
 }
 
+.remarks-item {
+  align-items: flex-start;
+}
+
+.form-name .left .title{
+  
+}
+.form-name .left .remarks{
+  line-height: 48rpx;
+  font-size: 24rpx;
+  color: #999999;
+  text-align: center;
+  margin-top: -15rpx;
+}
+.form-name .right {
+  margin-left: 68rpx;
+  flex-grow: 1;
+}
+.form-name .right .placeholder {
+  color: #808080;
+}
+.form-name .right textarea {
+  width: 100%;
+  height: 120rpx;
+  /* font-size: 34rpx; */
+  /* line-height: 96rpx; */
+  /* padding-top: 24rpx; */
+  /* font-size: 34rpx; */
+  line-height: 34rpx;
+  padding-top: 26rpx;
+  
+}
+
+
 .form-input {
-  position: absolute;
+  /* position: absolute;
   top: 50%;
-  transform: translate(0,-50%);
-  padding-top: 10rpx;
-  left: 164rpx;
+  transform: translate(0,-50%); */
+  /* padding-top: 10rpx; */
+  /* flex-grow: 1;
+  margin-left: 68rpx; */
 }
 
 .upload {

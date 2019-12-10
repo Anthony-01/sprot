@@ -42,15 +42,42 @@ App({
       }
     })
 
+    let _self = this;
+
+    // wx.getSystemInfo({
+
+    //   success: res => {
+
+    //     let modelmes = res.model;
+
+    //     if (modelmes.search('iPhone X') != -1) {
+
+    //       _self.globalData.isIphoneX = true
+
+    //     }
+
+    //   }
+
+    // })
+
     wx.getSystemInfo({
       success: (res)=> {
         this.globalData.systemInfo = res;
+        let modelmes = res.model;
+
+        if (modelmes.search('iPhone X') != -1) {
+
+          _self.globalData.isIphoneX = true
+
+        }
         console.log(res);
+        console.log("is IphoneX:", _self.globalData.isIphoneX)
       }
     })
   },
   globalData: {
     userInfo: null,
-    systemInfo:null
+    systemInfo:null,
+    isIphoneX: false
   }
 })

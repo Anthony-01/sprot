@@ -1,5 +1,5 @@
 <template name="courseItem" class="template">
-  <view class="courseItem">
+  <view class="courseItem my-border-shadow">
     <view class="courseItem-title">第{{item.num}}节</view>
     <view class="courseItem-status">教练确认状况：{{item.status}}</view>
     <view class="courseItem-time">教练确认时间：{{item.time}}</view>

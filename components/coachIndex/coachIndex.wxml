@@ -13,13 +13,14 @@
         </view>
       </view>
     </view>
-    <view class="my-coach">我的教练</view>
+    <view class="coach-pp">我的教练</view>
+    <!-- <view class="my-coach">我的教练</view> -->
     <view class="search-wrapper">
-      <i-input  type="text"  i-class="search-input" mode="wrapped" placeholder="输入教练专属码查找教练" />
+      <i-input  type="text"  i-class="search-input"  mode="wrapped" placeholder="输入教练专属码查找教练" />
       <i-icon type="search" class="search-icon" size="28" color="#b4b4b4"/>
     </view>
     <view class="coach-wrapper">
-      <view class="coach-item" bindtap="coachDetail" data-index="{{1}}">
+      <view class="coach-item my-border-shadow" bindtap="coachDetail" data-index="{{1}}">
         <view class="avator">
           <image src="{{imageSrc}}"></image>
         </view>

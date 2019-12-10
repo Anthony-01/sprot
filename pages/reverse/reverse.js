@@ -5,6 +5,9 @@ var course;
 var tip;
 
 Page ({
+  data: {
+    array: ['网球一对一项目（10节）', '篮球20人大班（15节）'] 
+  },
   
 
   clickUpload:(e)=>{
@@ -27,5 +30,11 @@ Page ({
   },
   bindinput(e) {
     console.log(e)
+  },
+  bindPickerChange: function (e) {
+    console.log('picker发送选择改变，携带值为', e.detail.value)
+    this.setData({
+      index: e.detail.value
+    })
   }
 })

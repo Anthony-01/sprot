@@ -1,22 +1,24 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/myCourse/myCourse",
     "pages/coachIndex/coachIndex",
+    "pages/studentIndex/studentIndex",
     "pages/addStudent/addStudent",
+    "pages/reverse/reverse",
+    "pages/coachInfo/coachInfo",
     "pages/hall/hall",
     "pages/logs/logs",
-    "pages/myCourse/myCourse",
-    "pages/studentIndex/studentIndex",
-    "pages/coachInfo/coachInfo",
     "pages/myStudent/myStudent",
-    "pages/reverse/reverse",
     "pages/personalInfo/personalInfo"
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle": "black"
+    "navigationBarTextStyle": "black",
+    "enablePullDownRefresh": false
   },
   "sitemapLocation": "sitemap.json"
+  
 }

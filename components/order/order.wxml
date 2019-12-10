@@ -1,6 +1,6 @@
 <!--components/order/order.wxml-->
 <view class="order-wrapper">
-  <view class="order-item" wx:for="{{orderAry}}" >
+  <view class="order-item my-border-shadow" wx:for="{{orderAry}}" >
     <view class="order-user order-info">预约人: <text>{{item.username}}</text></view>
     <view class="order-phone order-info">电话: <text class="detail">{{item.phone}}</text></view>
     <view class="order-id order-info">预约码: <text class="detail">{{item.id}}</text></view>

@@ -1,14 +1,14 @@
 /* pages/coachIndex/coachIndex.wxss */
 .body-wrapper {
-  position: fixed;
+  /* position: fixed;
   top: 0;
   width: 100%;
   bottom: 50px;
-  overflow: hidden;
+  overflow: hidden; */
 }
  .header{
   display: flex;
-  height: 120px;
+  /* height: 120px; */
   background: #f5f6f7
 }
  .header .left {
@@ -114,4 +114,11 @@
   align-items: center;
   overflow-y: auto;
   overflow-x: hidden;
+}
+.iphonex_bottom_page {
+  bottom: 60px;
+}
+
+.iphonex_bottom {
+  bottom: 10px !important;
 }

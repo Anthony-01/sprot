@@ -71,5 +71,8 @@ Component({
         animationData: this.animation.export()
       })
     }
+  },
+  options: {
+    addGlobalClass: true
   }
 })

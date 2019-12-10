@@ -1,4 +1,5 @@
 // pages/studentIndex/studentIndex.js
+const app = getApp();
 Page({
 
   /**
@@ -7,7 +8,8 @@ Page({
   data: {
     headerTxt: `欢迎来到网球预约训练场！\n您可以通过预约码预约到您的教练。\n也可以在此管理您的课程签到。`,
     imageSrc: "../../image/gao.png",
-    current: "homepage"
+    current: "homepage",
+    isIphoneX: false
   },
   handleChange({ detail }) {
     //设置页面的教练数据
@@ -43,6 +45,16 @@ Page({
     wx.setNavigationBarTitle({
       title: title
     })
+
+    let isIphoneX = app.globalData.isIphoneX;
+
+    this.setData({
+
+      isIphoneX: isIphoneX
+
+    })
+
+    console.log("student", this.data.isIphoneX);
   },
 
   /**

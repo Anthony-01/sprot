@@ -43,8 +43,11 @@ Page {
 }
 
 .baseMsg-title {
-  position: relative;
-  left: 60rpx;
+  /* position: relative;
+  left: 60rpx; */
+  width: 704rpx;
+  margin: 0 auto;
+  padding-left: 50rpx;
 }
 
 .baseMsg-table {
@@ -53,7 +56,7 @@ Page {
   /* height: 200rpx; */
   /* margin: 24rpx auto; */
   border-radius: 12rpx;
-  box-shadow: 0 0 10rpx 1rpx  rgba(0.49, 0.49, 0.49, 0.2);
+  /* box-shadow: 0 0 10rpx 1rpx  rgba(0.49, 0.49, 0.49, 0.2); */
 
   display: flex;
   flex-direction: column;
@@ -64,7 +67,7 @@ Page {
   width: 654rpx;
   font-size: 34rpx;
   line-height: 96rpx;
-  border-bottom: 1rpx solid rgba(0.49, 0.49, 0.49, 0.2);
+  border-bottom: 1rpx solid rgba(0.49, 0.49, 0.49, 0.1);
 }
 
 .baseMsg-table-sex {
@@ -74,7 +77,7 @@ Page {
   width: 654rpx;
   margin: 0 auto;
   line-height: 96rpx;
-  border-bottom: 1rpx solid rgba(0.49, 0.49, 0.49, 0.2);
+  border-bottom: 1rpx solid rgba(0.49, 0.49, 0.49, 0.1);
   font-size: 34rpx;
   align-items: center;
 
@@ -89,26 +92,33 @@ Page {
   flex-grow: 1;
 }
 .baseMsg-table-exprience .placeholder {
-  color: #949494;
+  color: #808080;
 }
 
 .baseMsg-table-teach{
   display: flex;
   justify-content: flex-start;
 }
+.baseMsg-table-teach .left .teach-title {
+  line-height: 42rpx;
+  margin-top: 28rpx;
+}
 .baseMsg-table-teach .left {
   /* width: 30%; */
   /* display: flex;
   flex-direction: column;
   align-items: center; */
-  
 }
 .baseMsg-table-teach .left .remarks {
-  line-height: 48rpx;
+  line-height: 42rpx;
   font-size: 28rpx;
-  color: #999999;
+  color: #808080;
   text-align: center;
-  margin-top: -15rpx;
+  margin-top: -10rpx;
+  /* margin-bottom: 20rpx; */
+}
+.remarks:last-child {
+  margin-bottom: 30rpx;
 }
 .baseMsg-table-teach .right {
   margin-left: 68rpx;
@@ -120,15 +130,33 @@ Page {
   /* padding-top: 24rpx; */ 
   /* margin-top: 24rpx; */
 }
+.iostextarea {
+
+}
+.iostextarea textarea {
+  padding: 16rpx 0 0 0;
+}
+.androidtextarea {
+
+}
+.androidtextarea textarea {
+  padding: 31rpx 0 0 0;
+  /* padding: 0; */
+}
+
 .baseMsg-table-teach .right textarea {
   width: 100%;
   height: 120rpx;
   /* font-size: 34rpx; */
   /* line-height: 96rpx; */
   /* padding-top: 24rpx; */
-  font-size: 34rpx;
-  line-height: 34rpx;
-  padding-top: 28rpx;
+  /* font-size: 34rpx; */
+  line-height: 42rpx;
+  /* margin-top: 28rpx;
+  padding: 0; */
+}
+.placeholder-style {
+  font-size: 40rpx;
 }
 
 .baseMsg-sex-radio-button {
@@ -179,7 +207,7 @@ Page {
   width: 654rpx;
   margin: 0 auto;
   line-height: 96rpx;
-  border-bottom: 1rpx solid rgba(0.49, 0.49, 0.49, 0.2);
+  border-bottom: 1rpx solid rgba(0.49, 0.49, 0.49, 0.1);
 }
 
 .baseMsg-table-phone-input {
@@ -194,7 +222,7 @@ Page {
   width: 654rpx;
   margin: 0 auto;
   line-height: 96rpx;
-  border-bottom: 1rpx solid rgba(0.49, 0.49, 0.49, 0.2);
+  border-bottom: 1rpx solid rgba(0.49, 0.49, 0.49, 0.1);
 }
 
 .baseMsg-table-experience-input {
@@ -226,8 +254,11 @@ Page {
 }
 
 .myCode-title {
-  position: relative;
-  left: 60rpx;
+  /* position: relative;
+  left: 60rpx; */
+  width: 704rpx;
+  margin: 0 auto;
+  padding-left: 50rpx;
 }
 
 .myCode-view {
@@ -235,7 +266,7 @@ Page {
   width: 704rpx;
   height: 200rpx;
   border-radius: 12rpx;
-  box-shadow: 0 0 10rpx 1rpx  rgba(0.49, 0.49, 0.49, 0.2);
+  /* box-shadow: 0 0 10rpx 1rpx  rgba(0.49, 0.49, 0.49, 0.2); */
   margin: 20rpx auto;
 }
 
@@ -244,31 +275,32 @@ Page {
   height:120rpx;
   line-height: 120rpx;
   margin: 0 auto;
+  font-size: 36rpx;
   text-align: center;
 }
 
 .myCode-view-ui-change {
   position: absolute;
   width: 352rpx;
-  height: 78rpx;
+  height: 90rpx;
   left: 0rpx;
   bottom: 0rpx;
   text-align: center;
-  line-height: 78rpx;
-  border-top: 1rpx solid rgba(0.49, 0.49, 0.49, 0.2);
-  border-right: 1rpx solid rgba(0.49, 0.49, 0.49, 0.2);
+  line-height: 90rpx;
+  border-top: 1rpx solid rgba(0.49, 0.49, 0.49, 0.1);
+  border-right: 1rpx solid rgba(0.49, 0.49, 0.49, 0.1);
   color: #0099ff;
 }
 
 .myCode-view-ui-copy {
   position: absolute;
   width: 352rpx;
-  height: 78rpx;
+  height: 90rpx;
   right: 0;
   bottom: 0;
   text-align: center;
-  line-height: 78rpx;
-  border-top: 1rpx solid rgba(0.49, 0.49, 0.49, 0.2);
+  line-height: 90rpx;
+  border-top: 1rpx solid rgba(0.49, 0.49, 0.49, 0.1);
   color: #0099ff;
 }
 
@@ -291,6 +323,7 @@ Page {
   text-align: right;
   top: -40rpx; */
   color: #0099ff;
+  
 }
 
 .reverse-button {

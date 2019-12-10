@@ -39,7 +39,7 @@ Page({
   },
   onLoad(option) {
     let self = this;
-    const eventChannel = this.getOpenerEventChannel()
+    const eventChannel = this.getOpenerEventChannel();
     eventChannel.on('studentInfo', function (data) {
       self.setUserInfo(data);
     })

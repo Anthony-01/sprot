@@ -1,6 +1,6 @@
 <!--components/select/select.wxml-->
 <view class='com-selectBox'>
-    <view class='com-sContent' bindtap='selectToggle'>
+    <view class='com-sContent my-border-shadow' bindtap='selectToggle'>
         <view class='com-sTxt'>{{nowText}}</view>
         <image src='../../image/down.png'  class='com-sImg'  animation="{{animationData}}"></image>
     </view>

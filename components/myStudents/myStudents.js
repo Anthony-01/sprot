@@ -71,5 +71,8 @@ Component({
     attached() {
       console.log(this.data.studentsAry.length)
     }
+  },
+  options: {
+    addGlobalClass: true
   }
 })

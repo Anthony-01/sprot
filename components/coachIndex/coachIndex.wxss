@@ -2,15 +2,15 @@
 /* components/studentIndex/studentIndex.wxss */
 /* @import "../../app.wxss"; */
 .body-wrapper {
-  position: fixed;
+  /* position: fixed;
   top: 0;
   width: 100%;
   bottom: 50px;
-  overflow: hidden;
+  overflow: hidden; */
 }
  .header{
   display: flex;
-  height: 120px;
+  /* height: 120px; */
   background: #f5f6f7
 }
  .header .left {
@@ -27,7 +27,7 @@
 }
  .header .right {
   width: 60%;
-  padding: 20px 0 0 0px;
+  padding: 20px 0 20px 0px;
 }
  .header .right .name {
   font-weight: 700;
@@ -38,11 +38,17 @@
   white-space: "pre";
   color: #666666;
 }
+.coach-pp {
+  width: 704rpx;
+  margin: 0 auto;
+  padding: 10px 0 0 30rpx; 
+}
 .my-coach {
-  padding: 20px 0 10px 30rpx; 
-  font-weight: 700;
+  /* padding: 10px 0 0 60rpx; 
+  font-size: 30rpx; */
+  /* font-weight: 700;
   font-size: 14px;
-  color: #333333;
+  color: #333333; */
 }
 .search-wrapper {
   position: relative;
@@ -53,7 +59,7 @@
   border-radius: 12rpx;
   border: 1px solid #e4e4e4;
   /* box-shadow: 0 0 4rpx 1rpx rgba(0.49, 0.49, 0.49, 0.2); */
-  box-shadow: 0 0 10rpx 1rpx  rgba(0.49, 0.49, 0.49, 0.2)
+  /* box-shadow: 0 0 10rpx 1rpx  rgba(0.49, 0.49, 0.49, 0.2) */
 }
 .search-wrapper .search-icon {
   position: absolute;
@@ -75,7 +81,7 @@
   /* border-radius: 4px; */
   border-radius: 12rpx;
   /* //border: 1px solid #e4e4e4; */
-  box-shadow: 0 0 10rpx 1rpx  rgba(0.49, 0.49, 0.49, 0.2)
+  /* box-shadow: 0 0 10rpx 1rpx  rgba(0.49, 0.49, 0.49, 0.2) */
 }
 .coach-wrapper .coach-item .avator{
   display: flex;

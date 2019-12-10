@@ -82,5 +82,8 @@ Component({
     onAdd(e) {
       console.log(e.currentTarget.dataset);
     }
+  },
+  options: {
+    addGlobalClass: true
   }
 })

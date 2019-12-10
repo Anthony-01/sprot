@@ -16,10 +16,38 @@ Component({
       nickname: "蒙娜丽莎(Lily)",
       identity: "教练",
       isCoach: false,
-      code: "58DF359S"
+      code: "58DF359S",
     },
     gender: 1,
     array: ['1年', '2年', '3年', '3年以上'],
+    detail: false
+  },
+  lifetimes: {
+    attached() {
+      var phone = wx.getSystemInfoSync();  //调用方法获取机型
+
+      var that = this;
+
+      if (phone.platform == 'ios') {
+
+        that.setData({
+
+          detail: true
+
+        });
+
+      } else if (phone.platform == 'android') {
+
+        that.setData({
+
+          detail: false
+
+        });
+
+      }
+      console.log(phone);
+      console.log("check:", this.data.detail)
+    }
   },
 
   /**

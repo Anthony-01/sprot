@@ -1,14 +1,14 @@
 /* pages/studentIndex/studentIndex.wxss */
 .body-wrapper {
-  position: fixed;
+  /* position: fixed;
   top: 0;
   width: 100%;
-  bottom: 50px;
-  overflow: hidden;
+  bottom: 70px;
+  overflow: hidden; */
 }
  .header{
   display: flex;
-  height: 120px;
+  /* height: 120px; */
   background: #f5f6f7
 }
  .header .left {
@@ -100,5 +100,27 @@
   bottom: 0;
   left: 0;
   right: 0;
-  z-index: 10
+  z-index: 10;
+  font-size: 24rpx;
+}
+.bar-item {
+  font-size: 30rpx;
+}
+.show-page {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+.iphonex_bottom_page {
+  bottom: 60px;
+}
+.iphonex_bottom {
+  bottom: 10px !important;
 }

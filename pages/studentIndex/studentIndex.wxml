@@ -3,13 +3,13 @@
 <view class="main-wrapper">
 
   
-  <student-index-component wx:if="{{current == 'homepage'}}"></student-index-component> 
-  <student-info-component wx:else></student-info-component>
+  <student-index-component wx:if="{{current == 'homepage'}}" class="show-page {{isIphoneX ? 'iphonex_bottom_page':''}}"></student-index-component> 
+  <student-info-component wx:else class="show-page {{isIphoneX ? 'iphonex_bottom_page':''}}"></student-info-component>
 
-  <view class="tab-bar-wrapper">
+  <view class="tab-bar-wrapper {{isIphoneX ? 'iphonex_bottom':''}}">
     <i-tab-bar current="{{ current }}" color="#29a1f7" bindchange="handleChange">
-      <i-tab-bar-item key="homepage" icon="homepage" current-icon="homepage_fill" title="首页"></i-tab-bar-item>
-      <i-tab-bar-item key="mine" icon="mine" current-icon="mine_fill" title="我的"></i-tab-bar-item>
+      <i-tab-bar-item key="homepage" icon="homepage" current-icon="homepage_fill" title="首页" class="bar-item"></i-tab-bar-item>
+      <i-tab-bar-item key="mine" icon="mine" current-icon="mine_fill" title="我的" class="bar-item"></i-tab-bar-item>
     </i-tab-bar>
   </view>
 
