@@ -1,0 +1,4 @@
+<!--pages/_store/_store.wxml-->
+<text>{{message}}</text>
+<button bindtap="onClick">clickTest</button>
+<button bindtap="onTab">toStore2</button>

@@ -1,6 +1,6 @@
 <form class="form" bindsubmit="formSubmit">
   <view class="form-view my-border-shadow">
-    <view class="form-name">
+    <!-- <view class="form-name">
       <view class="left">
         <view class="title">姓名</view>
       </view>
@@ -9,14 +9,15 @@
       </view>
       
       
-    </view>
+    </view> -->
 
     <view class="form-name">
       <view class="left">
         <view class="title">电话</view>
       </view>
-      <view class="right">
-        <input class="form-input" bindinput='bindinput' bindblur="bindblur" id="form-phone" placeholder="联系人电话" type="number"></input>
+      <view class="right tel-right">
+        <input   bindinput='bindinput' bindblur="bindblur" id="form-phone" placeholder="联系人电话" type="number"></input>
+        <image src="../../image/icon_edit.png" style="width: 50rpx;height:50rpx" class="icon" catchtap="editTel"></image>
       </view>
       
       
@@ -28,14 +29,15 @@
       <view class="left">
         <view class="title">课程</view>
       </view>
-      <view class="right">
+      <view class="right course-right">
         <!-- <input class="form-input" bindinput='bindinput' bindblur="bindblur" id="form-course" placeholder="请选择课程"></input> -->
-        <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+        <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}" style="width: 100px;">
           <view class="picker">
             <view class="placeholder" wx:if="{{index == undefined}}">请选择课程</view>
             <view wx:else>{{array[index]}}</view>
           </view>
         </picker>
+        <image src="../../image/icon_right.png" style="width: 50rpx;height:50rpx" class="icon"></image>
       </view>
       
       

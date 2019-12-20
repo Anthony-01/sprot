@@ -44,6 +44,9 @@ Page {
 .form-name .right {
   margin-left: 68rpx;
   flex-grow: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 .form-name .right .placeholder {
   color: #808080;
@@ -59,7 +62,18 @@ Page {
   padding-top: 26rpx;
   
 }
+/* .form-name .right .icon {
+  position: absolute;
+  right: 60rpx;
+}
+.form-name .tel-right .icon
+{
+  top: 50rpx;
+}
 
+.form-name .course-right .icon:nth-child(2){
+  top: 146rpx;
+} */
 
 .form-input {
   /* position: absolute;

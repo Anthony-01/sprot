@@ -1,53 +1,4 @@
-/* components/studentIndex/studentIndex.wxss */
-/* @import "../../app.wxss"; */
-.body-wrapper {
-  /* position: fixed;
-  top: 0;
-  width: 100%;
-  bottom: 70px;
-  overflow: hidden; */
-}
- .header{
-  display: flex;
-  /* height: 120px; */
-  background: #f5f6f7
-}
- .header .left {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 30%;
-}
-.header .left image {
-  display: inline-block;
-  width: 70px;
-  height: 70px;
-  border-radius: 50%;
-}
- .header .right {
-  width: 60%;
-  padding: 20px 0 20px 0;
-}
- .header .right .name {
-  font-weight: 700;
-
-}
-.header .right .txt {
-  font-size: 14px;
-  white-space: "pre";
-  color: #666666;
-}
-.coach-pp {
-  width: 704rpx;
-  margin: 0 auto;
-  padding: 10px 0 0 30rpx; 
-}
-.my-coach {
-  /* padding: 20px 0 10px 60rpx;  */
-  /* font-weight: 500; */
-  /* font-size: 14px; */
-  /* color: #333333; */
-}
+/* pages/search/search.wxss */
 .search-wrapper {
   position: relative;
   padding: 0 24rpx;
@@ -68,6 +19,7 @@
   right: 50rpx;
   top: 12rpx;
 }
+
 .coach-wrapper {
   /* margin-top: 10px; */
   padding: 0 24rpx;
@@ -115,6 +67,3 @@
   font-size: 14px;
   color: #666666;
 }
-
-
-

@@ -8,23 +8,43 @@ const cCoachRoute = 2;
 const studentRouteSrc = "/pages/studentIndex/studentIndex";
 const coachRouteSrc = "/pages/coachIndex/coachIndex";
 
+//用户类型
+const commonType = 0;
+const coachType = 1;
+
+import customEvent from '../../configs/customEvent.js';
+
+import myHttp from '../../utils/http.js';
+
+
+
 Page({
   data: {
-    motto: 'Hello World',
-    userInfo: {},
-    hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo'),
-    show: false,//控制下拉列表的显示隐藏，false隐藏、true显示
-    selectData: ['1', '2', '3', '4', '5', '6'],//下拉列表的数据
-    index: 0, //选择的下拉列表下标,
-
     //路由
     studentIndex: 1,
-    coachIndex: 2
+    coachIndex: 2,
+    notAuthorize: false,
+    userCode: ""
   },
+  /**
+   * 页面初始化函数
+  */
+  onLoad: function (option) {
+    this.login().then(data => {
+      // console.log("返回信息:", data);
+      this.enterIndex(data);
+    }).catch(() => {
+      console.log("用户未授权")
+    })
+  },
+  
+
+  /*******************************/ 
+  /**********自定义方法************/ 
+  /*******************************/ 
   handleClick(event) {
     let route;
-    switch(event.currentTarget.dataset.index) {
+    switch (event.currentTarget.dataset.index) {
       case cStudentRoute: {
         route = studentRouteSrc;
         break;
@@ -45,68 +65,186 @@ Page({
       }
     })
   },
-  selectTap() {
-    this.setData({
-      show: !this.data.show
-    });
-  },
-  // 点击下拉列表
-  optionTap(e) {
-    let Index = e.currentTarget.dataset.index;//获取点击的下拉列表的下标
-    this.setData({
-      index: Index,
-      show: !this.data.show
-    });
-  },
   //事件处理函数
-  bindViewTap: function() {
+  bindViewTap: function () {
     wx.navigateTo({
       url: '../logs/logs'
     })
   },
-  onLoad: function (option) {
-    if (app.globalData.userInfo) {
-      
-      this.setData({
-        userInfo: app.globalData.userInfo,
-        hasUserInfo: true
-      })
-    } else if (this.data.canIUse){
-      // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-      // 所以此处加入 callback 以防止这种情况
-      app.userInfoReadyCallback = res => {
-        this.setData({
-          userInfo: res.userInfo,
-          hasUserInfo: true
-        })
+  getUserInfo(res) {
+    console.error("获得用户信息:", res);
+    if (res.detail.rawData) {
+      // let info = {}
+      // var userInfo = res.userInfo
+      let data = {};
+      for (let name in res.detail) {
+        data[name] = res[name];
       }
+      data.code = this.data.userCode;
+      this.enterIndex(data);
     } else {
-      // 在没有 open-type=getUserInfo 版本的兼容处理
-      wx.getUserInfo({
-        success: res => {
-          app.globalData.userInfo = res.userInfo
-          this.setData({
-            userInfo: res.userInfo,
-            hasUserInfo: true
+
+    }
+  },
+  
+
+  /**
+   * 用户登录
+  */
+  login() {
+    let self = this;
+    return new Promise((resolve, reject) => {
+      wx.login({
+        success(loginRes) {
+          // console.log("登陆成功:", loginRes);
+          self.setData({
+            userCode: loginRes.code
           })
+          //获取用户设置
+          wx.getSetting({
+            success(res) {
+              // console.log(res);
+              //消除loading
+              if (res.authSetting['scope.userInfo'] === true) { //已经授权并且返回个人信息
+                self.getWXUserInfo(loginRes.code, resolve, reject);
+              } else {
+                reject(null);
+                self.setData({
+                  notAuthorize: true
+                })
+              }
+            }
+          })
+
+        },
+        //登录失败
+        fail(err) {
+          console.error("登录失败!", err);
         }
       })
-    }
-    // console.log(option.query)
-    // const eventChannel = this.getOpenerEventChannel()
-    // eventChannel.emit('acceptDataFromOpenedPage', { data: 'test' });
-    // eventChannel.emit('someEvent', { data: 'test' });
-    // // 监听acceptDataFromOpenerPage事件，获取上一页面通过eventChannel传送到当前页面的数据
-    // eventChannel.on('acceptDataFromOpenerPage', function (data) {
-    //   console.log(data)
-    // })
+    })
   },
-  getUserInfo: function(e) {
-    console.log(e)
-    app.globalData.userInfo = e.detail.userInfo
-    this.setData({
-      userInfo: e.detail.userInfo,
-      hasUserInfo: true
+
+  /**
+   * 获取用户微信信息
+  */
+  getWXUserInfo(code, resolve, reject) {
+    wx.getUserInfo({
+      withCredentials: true,
+      success: function (res) {
+        // console.log("getUserInfo接口返回:", res);
+        let data = {};
+        for (let name in res) {
+          data[name] = res[name];
+        }
+        data.code = code;
+        // console.log("已授权用户：", data);
+        resolve(data);
+      }
+    })
+  },
+
+  //获取服务器数据并进入相应界面
+  enterIndex(data) {
+    // console.error("进入页面所需要的信息", data);
+    // this.getSportUserInfo(data);
+    this.getSportUserInfoByMyHttp(data);
+    
+  },
+  /**
+   * 第三方服务器获取消息
+   * @return 第三方服务器保存的用户信息
+  */
+  getSportUserInfo(info) {
+    let self = this;
+    let httpConfig = app.globalData.http;
+    let data = {
+      code: info.code,
+      rawData: info.rawData,
+      encryptedData: info.encryptedData,
+      iv: info.iv,
+      signature: info.signature
+    };
+    // console.error("发送数据", data)
+    return new Promise((resolve, reject) => {
+      wx.request({
+        url: httpConfig.host + httpConfig.loginApi.url,
+        data: data,
+        responseType: "text",
+        dataType: 'json',
+        method: httpConfig.loginApi.method,
+        success(res) {
+          if (res.data.code ==1) {
+            console.error("responseData:",res);
+            app.globalData.Token = res.data.payload.Token;
+            // let coaches = 
+            let url;
+            switch (res.data.payload.UserType) {
+              case commonType: {
+                url = studentRouteSrc;
+                break;
+              }
+              case coachType: {
+                url = coachRouteSrc;
+                break;
+              }
+            }
+            wx.navigateTo({
+              url: studentRouteSrc,
+              success(navigateRes) {
+                navigateRes.eventChannel.emit(customEvent.SET_COACH, {data: res.data.payload.MyCoaches})
+              }
+            })
+          } else {
+            console.error("登录失败:", res);
+          }
+          
+
+        },
+        fail(err) {
+          console.err(err);
+        },
+        complete() {
+          console.log("完成请求")
+        }
+      })
+    }) 
+  },
+  getSportUserInfoByMyHttp(info) {
+    let self = this;
+    let httpConfig = app.globalData.http;
+    let data = {
+      code: info.code,
+      rawData: info.rawData,
+      encryptedData: info.encryptedData,
+      iv: info.iv,
+      signature: info.signature
+    };
+    myHttp.request(httpConfig.loginApi.url, httpConfig.loginApi.method, data).then(data => {
+      if (data.code == 1) {
+        console.error("responseData:", data);
+        // app.globalData.Token = res.data.payload.Token;
+        // let coaches = 
+        let url;
+        switch (data.payload.UserType) {
+          case commonType: {
+            url = studentRouteSrc;
+            break;
+          }
+          case coachType: {
+            url = coachRouteSrc;
+            break;
+          }
+        }
+        wx.navigateTo({
+          url: studentRouteSrc,
+          success(navigateRes) {
+            navigateRes.eventChannel.emit(customEvent.SET_COACH, { data: data.payload.MyCoaches })
+          }
+        })
+      } else {
+        console.error("登录失败:", res);
+      }
     })
   }
 })

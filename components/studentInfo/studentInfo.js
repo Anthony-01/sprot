@@ -1,10 +1,22 @@
 // components/studentInfo.js
+const app = getApp();
+
+import myHttp from '../../utils/http.js';
 Component({
   /**
    * 组件的属性列表
    */
   properties: {
+    hidden: {
+      type: Boolean,
+      value: true
+    }
+  },
 
+  observers: {
+    'hidden': function (value) {
+      console.log("info hidden", value)
+    }
   },
 
   /**
@@ -19,6 +31,21 @@ Component({
       code: "58DF359S"
     },
     gender: 1
+  },
+
+  //初始化
+  attached() {
+    // app.globalData.userInfo = data.payload;
+    // wx.request({
+    //   url: httpConfig.host + httpConfig.infoApi.url,
+    //   method: httpConfig.infoApi.method,
+    //   success(res) {
+    //     console.error("请求信息成功:", res);
+    //   },
+    //   fail(err) {
+    //     console.log(err);
+    //   }
+    // })
   },
 
   /**
@@ -56,9 +83,30 @@ Component({
       this.setData({
         gender: gender
       })
+    },
+    setInfo() {
+      let user = app.globalData.userInfo;
+      this.setData({
+        ["userInfo.nickname"]: user.nickname,
+        gender: user.gender,
+        ["userInfo.avater"]: user.avatarUrl,
+        ["userInfo.code"]: user.uniqueCode,
+        ["userInfo.identity"]: user.userType == 1 ? "教练" : "学员",
+      })
+    },
+    show() {
+      this.setData({
+        hidden: false
+      })
+    },
+    hidden() {
+      this.setData({
+        hidden: true
+      })
     }
   },
 
+  
   options: {
     addGlobalClass: true
   }

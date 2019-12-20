@@ -1,13 +1,28 @@
 // components/studentIndex/studentIndex.js
 
-const coachDetalPath = "/pages/coachInfo/coachInfo"
+const coachDetalPath = "/pages/coachInfo/coachInfo";
+const searchPath = "/pages/search/search";
+import myHttp from '../../utils/http.js';
+const app = getApp();
 
 Component({
   /**
    * 组件的属性列表
    */
   properties: {
-    
+    coachList: {
+      type: Array,
+      value: []
+    },
+    hidden: {
+      type: Boolean,
+      value: false
+    }
+  },
+  observers: {
+    'hidden': function (value) {
+      console.log("index hidden", value)
+    }
   },
 
   /**
@@ -17,6 +32,12 @@ Component({
   data: {
     headerTxt: `欢迎来到网球预约训练场！\n您可以通过预约码预约到您的教练。\n也可以在此管理您的课程签到。`,
     imageSrc: "../../image/gao.png",
+    nickName: ""
+  },
+
+  lifetimes: {
+    attached() {
+    }
   },
 
   /**
@@ -25,7 +46,6 @@ Component({
   methods: {
     coachDetail(e) {
       //进入教练详情页并且导入信息
-      console.log()
       wx.navigateTo({
         url: coachDetalPath,
         success() {
@@ -34,6 +54,39 @@ Component({
         fail(err) {
           console.log("进入页面失败:", err);
         }
+      })
+    },
+    onConfig(e) {
+      console.error("完成搜索");
+      console.log(e);
+    },
+    onAddCoach() {
+      wx.navigateTo({
+        url: searchPath
+      })
+    },
+    setCoachList(data) {
+      console.log("component设置我的教练:", data);
+      this.setData({
+        coachList: data
+      })
+    },
+    setInfo() {
+      let user = app.globalData.userInfo;
+      
+      this.setData({
+        nickName: user.nickname,
+        imageSrc: user.avatarUrl
+      })
+    },
+    show() {
+      this.setData({
+        hidden: false
+      })
+    },
+    hidden() {
+      this.setData({
+        hidden: true
       })
     }
   },

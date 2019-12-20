@@ -111,6 +111,7 @@
   top: 0;
   right: 0;
   left: 0;
+  padding-bottom: 20rpx;
   bottom: 50px;
   display: flex;
   flex-direction: column;
@@ -123,4 +124,8 @@
 }
 .iphonex_bottom {
   bottom: 10px !important;
+}
+
+.none-Tips {
+  text-align: center
 }

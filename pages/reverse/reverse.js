@@ -4,6 +4,14 @@ var num;
 var course;
 var tip;
 
+const app = getApp();
+var editPath;
+if (app.globalData.isCoach == false) {
+  editPath = '/pages/studentIndex/studentIndex';
+} else {
+  editPath = '/pages/coachIndex/coachIndex';
+}
+
 Page ({
   data: {
     array: ['网球一对一项目（10节）', '篮球20人大班（15节）'] 
@@ -35,6 +43,12 @@ Page ({
     console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({
       index: e.detail.value
+    })
+  },
+  editTel(e) {
+    console.log("click");
+    wx.navigateTo({
+      url: editPath
     })
   }
 })

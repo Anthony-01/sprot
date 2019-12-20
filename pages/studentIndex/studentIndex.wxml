@@ -2,9 +2,20 @@
 <!-- <text>pages/studentIndex/studentIndex.wxml</text> -->
 <view class="main-wrapper">
 
+  <!-- <i-spin custom style="z-index:1000">
+    <i-icon type="refresh" size="20" i-class="icon-load"></i-icon>
+    <view>Loading</view>
+  </i-spin> -->
+
+  <!-- <i-spin size="large"></i-spin>
+  <i-spin custom>
+      <view class="loading"></view>
+  </i-spin>
+  <i-spin custom>加载中...</i-spin> -->
+
   
-  <student-index-component wx:if="{{current == 'homepage'}}" class="show-page {{isIphoneX ? 'iphonex_bottom_page':''}}"></student-index-component> 
-  <student-info-component wx:else class="show-page {{isIphoneX ? 'iphonex_bottom_page':''}}"></student-info-component>
+  <student-index-component hidden="{{current != 'homepage'}}" class="show-page {{isIphoneX ? 'iphonex_bottom_page':''}}" coatchList="{{coachList}}" id="studentIndex"></student-index-component> 
+  <student-info-component hidden="{{current != 'mine'}}" class="show-page {{isIphoneX ? 'iphonex_bottom_page':''}}" id="studentInfo"></student-info-component>
 
   <view class="tab-bar-wrapper {{isIphoneX ? 'iphonex_bottom':''}}">
     <i-tab-bar current="{{ current }}" color="#29a1f7" bindchange="handleChange">
@@ -12,5 +23,8 @@
       <i-tab-bar-item key="mine" icon="mine" current-icon="mine_fill" title="我的" class="bar-item"></i-tab-bar-item>
     </i-tab-bar>
   </view>
+
+  
+
 
 </view>

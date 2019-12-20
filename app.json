@@ -1,16 +1,20 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/reverse/reverse",
+    "pages/studentIndex/studentIndex",
+    "pages/search/search",
+    "pages/_store/_store",
     "pages/myCourse/myCourse",
     "pages/coachIndex/coachIndex",
-    "pages/studentIndex/studentIndex",
     "pages/addStudent/addStudent",
-    "pages/reverse/reverse",
     "pages/coachInfo/coachInfo",
     "pages/hall/hall",
     "pages/logs/logs",
     "pages/myStudent/myStudent",
-    "pages/personalInfo/personalInfo"
+    "pages/personalInfo/personalInfo",
+    "pages/authorize/authorize",
+    "pages/_store2/_store2"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -19,6 +23,6 @@
     "navigationBarTextStyle": "black",
     "enablePullDownRefresh": false
   },
+  "debug": false,
   "sitemapLocation": "sitemap.json"
-  
 }

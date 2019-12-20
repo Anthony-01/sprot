@@ -1,5 +1,10 @@
 // pages/studentIndex/studentIndex.js
 const app = getApp();
+
+import customEvent from '../../configs/customEvent.js'
+
+import myHttp from '../../utils/http.js';
+
 Page({
 
   /**
@@ -9,8 +14,13 @@ Page({
     headerTxt: `欢迎来到网球预约训练场！\n您可以通过预约码预约到您的教练。\n也可以在此管理您的课程签到。`,
     imageSrc: "../../image/gao.png",
     current: "homepage",
-    isIphoneX: false
+    isIphoneX: false,
+
+    coachList: [],
+    pages: []
+
   },
+  
   handleChange({ detail }) {
     //设置页面的教练数据
     //每个组件内部请求用户个人的数据，个人数据可以保存在app中间；
@@ -25,7 +35,7 @@ Page({
     wx.setNavigationBarTitle({
       title: title
     })
-
+    let self = this;
     this.setData({
       current: detail.key
     });
@@ -41,7 +51,6 @@ Page({
     } else {
       title = "首页"
     }
-    console.log(title);
     wx.setNavigationBarTitle({
       title: title
     })
@@ -55,6 +64,59 @@ Page({
     })
 
     console.log("student", this.data.isIphoneX);
+
+    const eventChannel = this.getOpenerEventChannel();
+    eventChannel.on(customEvent.SET_COACH, this.setCoach);
+
+    this.requestUserInfo();
+
+  },
+
+
+
+  requestUserInfo() {
+
+    if (app.globalData.userInfo != null) return;
+    let httpConfig = app.globalData.http;
+    let self = this;
+    myHttp.request(httpConfig.infoApi.url, httpConfig.infoApi.method).then(data => {
+      if (data.code == 1) {
+        app.globalData.userInfo = data.payload;
+        let indexPage = self.selectComponent('#studentIndex');
+        indexPage.setInfo();
+        let infoPage = self.selectComponent('#studentInfo');
+        infoPage.setInfo();
+      }
+    }).catch(err => {
+      console.error(err);
+      wx.showToast({
+        title: '获取个人信息失败:',
+      })
+    })
+  },
+
+  setCoach(data) {
+    console.log("设置我的教练", data);
+    let slef = this;
+
+    this.setData({
+      coachList: [{ 
+        nickName: "莎士比亚(Lucy)",
+        avator: "../../image/lucy.png",
+        experience: "2年",
+        gender: 1
+      }]
+    }, () => {
+      console.log(slef.data.coachList);
+    })
+    this.selectComponent('#studentIndex').setCoachList([
+      {
+        nickName: "莎士比亚(Lucy)",
+        avator: "../../image/lucy.png",
+        experience: "2年",
+        gender: 1
+      }
+    ])
   },
 
   /**
@@ -68,7 +130,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    wx.hideHomeButton();
   },
 
   /**
@@ -104,5 +166,14 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  
+  onSwitchChange({ detail }) {
+    const value = detail.value;
+    this.setData({
+      switch: value,
+      spinShow: !value
+    });
   }
+
 })

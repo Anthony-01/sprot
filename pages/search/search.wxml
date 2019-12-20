@@ -1,0 +1,18 @@
+<!--pages/search/search.wxml-->
+<view class="search-wrapper ">
+      <input type="text" class="search-input my-border-shadow" placeholder="输入教练专属码查找教练" confirm-type="search" bindconfirm="onConfig"></input>
+      <i-icon type="search" class="search-icon" size="28" color="#b4b4b4"/>
+    </view>
+
+<view class="coach-wrapper">
+      <!-- bindtap="coachDetail" data-index="{{index}}" -->
+      <view class="coach-item my-border-shadow"  wx:for="{{coatchList}}">
+        <view class="avator">
+          <image src="{{item.avator}}"></image>
+        </view>
+        <view class="info">
+          <view class="name">{{item.nickName}}<span class=" my-icon {{item.gender == 0 ? 'my-icon-male' : 'my-icon-female'}}" ></span></view>
+          <view class="exprience">任教经历:{{item.experience}}</view>
+        </view>
+      </view>
+    </view>

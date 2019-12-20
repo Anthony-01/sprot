@@ -1,29 +1,6 @@
 <!--index.wxml-->
-<!-- <view class="container">
-  <view class="userinfo">
-    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-    <block wx:else>
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-    </block>
-  </view>
-  <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
-  </view>
+<!-- 授权页 -->
 
-  <icon type="success" color="#ff0000"></icon>
-</view> -->
-
-<!-- 自定义选择框 -->
-<!-- <view class='select_box'>
- <view class='select' catchtap='selectTap'>
-  <text class='select_text'>{{selectData[index]}}</text>
-  <image class='select_img {{show&&"select_img_rotate"}}' src='../../image/green_tri.png'></image>   
- </view>
- <view class='option_box' style='height:{{show?(selectData.length>5?300:selectData.length*60):0}}rpx;'>
-  <text class='option' style='{{index==selectData.length-1&&"border:0;"}}' wx:for='{{selectData}}' wx:key='this' data-index='{{index}}' catchtap='optionTap'>{{item}}</text>
- </view> -->
-<!-- </view> -->
-
-<i-button bind:click="handleClick" type="info" id="add-course" data-index="{{1}}">学生首页</i-button>
-<i-button bind:click="handleClick" type="info" id="add-course" data-index="{{2}}">教练首页</i-button>
+<!-- <i-button bind:click="handleClick" type="info" id="add-course" data-index="{{1}}">学生首页</i-button> -->
+<!-- <i-button bind:click="handleClick" type="info" id="add-course" data-index="{{2}}">教练首页</i-button> -->
+<button open-type='getUserInfo' bindgetuserinfo='getUserInfo' wx:if="{{notAuthorize}}">获取授权</button>
