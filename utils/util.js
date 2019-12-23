@@ -14,6 +14,18 @@ const formatNumber = n => {
   return n[1] ? n : '0' + n
 }
 
+const showToast = (data) => {
+  let icon = 'success';
+  if (data.code != 1) {
+    icon = 'none'
+  }
+  wx.showToast({
+    title: data.msg,
+    icon: icon
+  })
+}
+
 module.exports = {
-  formatTime: formatTime
+  formatTime: formatTime,
+  showToast: showToast
 }

@@ -1,4 +1,4 @@
-<!--components/order/order.wxml-->
+<!--components/studentOrder/studentOrder.wxml-->
 <view class="order-wrapper" hidden="{{hidden}}">
   <view class="order-item my-border-shadow" wx:for="{{orderAry}}" >
     <view class="order-user order-info">预约人: <text>{{item.username}}</text></view>
@@ -10,3 +10,4 @@
     <button bindtap="onAdd" hover-class="button-down" class="add-button" data-order-index="{{index}}">添加为我的学员</button>
   </view>
 </view>
+

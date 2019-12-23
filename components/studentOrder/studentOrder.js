@@ -1,10 +1,4 @@
-// components/order/order.js
-var name;
-var phone;
-var num;
-var course;
-var tip;
-
+// components/studentOrder/studentOrder.js
 Component({
   /**
    * 组件的属性列表
@@ -12,7 +6,7 @@ Component({
   properties: {
     hidden: {
       type: Boolean,
-      value: false
+      value: true
     }
   },
 
@@ -60,31 +54,7 @@ Component({
    * 组件的方法列表
    */
   methods: {
-    clickUpload: (e) => {
-      console.log({ name: name, phone: phone, num: num, course: course, tip: tip });
-      // const query = wx.createSelectorQuery();
-      // query.select('#form-name').boundingClientRect();
-      // query.exec((res) => {
-      //   console.log(res[0])                                       
-      // })
-    },
-    bindblur(e) {
-      console.log(e)// {value: "ff", cursor: 2} 
-      switch (e.target.id) {
-        case "form-name": name = e.detail.value; break;
-        case "form-phone": phone = e.detail.value; break;
-        case "form-num": num = e.detail.value; break;
-        case "form-course": course = e.detail.value; break;
-        case "form-tip": tip = e.detail.value; break;
-      }
-    },
-    bindinput(e) {
-      console.log(e)
-    },
-    //添加为我的学员
-    onAdd(e) {
-      console.log(e.currentTarget.dataset);
-    }
+
   },
   options: {
     addGlobalClass: true

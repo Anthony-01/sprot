@@ -1,14 +1,21 @@
 // components/coachIndex/coachIndex.js
 // components/studentIndex/studentIndex.js
 
+const app = getApp();
 const coachDetalPath = "/pages/coachInfo/coachInfo"
+
+import myHttp from '../../utils/http.js';
+import util from '../../utils/util.js';
 
 Component({
   /**
    * 组件的属性列表
    */
   properties: {
-
+    hidden: {
+      type: Boolean,
+      value: false
+    }
   },
 
   /**
@@ -18,6 +25,15 @@ Component({
   data: {
     headerTxt: `欢迎回来！\n您可以在此管理您的课程，并添加预约的新学员，也可添加您的教练。`,
     imageSrc: "../../image/gao.png",
+    userInfo: {
+      avatar: "",
+      nickname: ""
+    },
+    coachList: []
+  },
+
+  attached() {
+    console.log("设置教练:", app.globalData.myCoaches);
   },
 
   /**
@@ -26,7 +42,6 @@ Component({
   methods: {
     coachDetail(e) {
       //进入教练详情页并且导入信息
-      console.log()
       wx.navigateTo({
         url: coachDetalPath,
         success() {
@@ -35,6 +50,14 @@ Component({
         fail(err) {
           console.log("进入页面失败:", err);
         }
+      })
+    },
+    setInfo() {
+      let user = app.globalData.userInfo;
+      console.log("设置用户信息:", user);
+      this.setData({
+        ["userInfo.avatar"]: user.avatarUrl,
+        ["userInfo.nickname"]: user.nickname
       })
     }
   },

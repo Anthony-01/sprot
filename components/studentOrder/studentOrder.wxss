@@ -1,0 +1,110 @@
+/* components/studentOrder/studentOrder.wxss */
+/* components/order/order.wxss */
+.form-view {
+  position: relative;
+  width:704rpx;
+  height: 426rpx;
+  margin: 20rpx auto;
+  box-shadow: 0 0 10rpx 1rpx rgba(0, 0, 0, 0.1);
+  border-radius: 15rpx;
+}
+
+.form-name {
+  position: relative;
+  height: 88rpx;
+  width:650rpx;
+  border-bottom: 1rpx solid #e4e4e4;
+  margin: 0 auto;
+  padding-top: 10rpx;
+  line-height:  88rpx;
+  padding-left: 10rpx;
+}
+
+.form-input {
+  position: absolute;
+  top: 50%;
+  transform: translate(0,-50%);
+  padding-top: 10rpx;
+  left: 164rpx;
+}
+
+.upload {
+  width: 706rpx;
+  height: 86rpx;
+  background-color: #169bd5;
+  color: white;
+  text-align: center;
+  line-height: 86rpx;
+  margin-left:auto;
+  margin-right: auto; 
+  border-radius: 15rpx;
+}
+
+.getNum {
+  width: 706rpx;
+  height: 86rpx;
+  background-color: #169bd5;
+  color: white;
+  text-align: center;
+  line-height: 86rpx;
+  margin-left:auto;
+  margin-right: auto; 
+  border-radius: 15rpx;
+  margin-top: 20rpx;
+}
+
+.t {
+  width:500rpx;
+}
+.order-wrapper {
+  /* position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow:auto; */
+}
+.order-item {
+  width: 704rpx;
+  
+  margin-top: 20rpx;
+  /* border: solid 1rpx #e4e4e4; */
+  border-radius: 12rpx;
+  box-sizing: border-box;
+  /* box-shadow: 0 0 10rpx 1rpx rgba(0.49, 0.49, 0.49, 0.2); */
+}
+.order-item .order-info {
+  padding: 0 50rpx;
+  color: #333333;
+  font-size: 28rpx;
+  margin-top: 16rpx;
+}
+.order-item .order-info .detail {
+  color: #666666
+}
+.order-item .order-user {
+  padding-top: 40rpx;
+  font-weight: 700;
+  font-size: 32rpx;
+  margin-top: 0;
+}
+.order-item .order-remarks {
+  padding-bottom: 58rpx;
+}
+.order-item:last-child {
+  margin-bottom: 20rpx;
+}
+.add-button {
+  color: #199eda;
+  background: #ffffff;
+  font-size: 28rpx;
+  border-top: solid 1rpx #e4e4e4;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+.button-down {
+  color: blue;
+}

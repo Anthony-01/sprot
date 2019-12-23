@@ -13,7 +13,7 @@ Page({
   data: {
     headerTxt: `欢迎来到网球预约训练场！\n您可以通过预约码预约到您的教练。\n也可以在此管理您的课程签到。`,
     imageSrc: "../../image/gao.png",
-    current: "homepage",
+    current: "mine",
     isIphoneX: false,
 
     coachList: [],
@@ -22,16 +22,22 @@ Page({
   },
   
   handleChange({ detail }) {
-    //设置页面的教练数据
-    //每个组件内部请求用户个人的数据，个人数据可以保存在app中间；
-    //通过网络请求后者其他方式进行
-    //如何改变来使componet组件展现不同
     let title;
-    if (detail.key == "mine") {
-      title = "我的信息"
-    } else {
-      title = "首页"
+    switch (detail.key) {
+      case "homepage": {
+        title = "首页";
+        break;
+      }
+      case "order": {
+        title = "我的预约";
+        break;
+      }
+      case "mine": {
+        title = "我的信息"
+        break;
+      }
     }
+    
     wx.setNavigationBarTitle({
       title: title
     })
@@ -46,10 +52,19 @@ Page({
    */
   onLoad: function (options) {
     let title;
-    if (this.data.current == "mine") {
-      title = "我的信息"
-    } else {
-      title = "首页"
+    switch (this.data.current) {
+      case "homepage": {
+        title = "首页";
+        break;
+      }
+      case "order": {
+        title = "我的预约";
+        break;
+      }
+      case "mine": {
+        title = "我的信息"
+        break;
+      }
     }
     wx.setNavigationBarTitle({
       title: title
@@ -65,21 +80,25 @@ Page({
 
     console.log("student", this.data.isIphoneX);
 
-    const eventChannel = this.getOpenerEventChannel();
-    eventChannel.on(customEvent.SET_COACH, this.setCoach);
-
+    // const eventChannel = this.getOpenerEventChannel();
+    // eventChannel.on(customEvent.SET_COACH, this.setCoach);
+    this.setCoach()
     this.requestUserInfo();
 
   },
 
 
 
+  /**
+   * 请求用户个人信息
+   * */ 
   requestUserInfo() {
 
     if (app.globalData.userInfo != null) return;
     let httpConfig = app.globalData.http;
     let self = this;
     myHttp.request(httpConfig.infoApi.url, httpConfig.infoApi.method).then(data => {
+      console.error("个人信息:", data);
       if (data.code == 1) {
         app.globalData.userInfo = data.payload;
         let indexPage = self.selectComponent('#studentIndex');
@@ -95,7 +114,8 @@ Page({
     })
   },
 
-  setCoach(data) {
+  setCoach() {
+    let data = app.globalData.myCoaches;
     console.log("设置我的教练", data);
     let slef = this;
 
@@ -105,11 +125,78 @@ Page({
         avator: "../../image/lucy.png",
         experience: "2年",
         gender: 1
-      }]
+      }
+      ]
     }, () => {
       console.log(slef.data.coachList);
     })
     this.selectComponent('#studentIndex').setCoachList([
+      {
+        nickName: "莎士比亚(Lucy)",
+        avator: "../../image/lucy.png",
+        experience: "2年",
+        gender: 1
+      },
+      {
+        nickName: "莎士比亚(Lucy)",
+        avator: "../../image/lucy.png",
+        experience: "2年",
+        gender: 1
+      },
+      {
+        nickName: "莎士比亚(Lucy)",
+        avator: "../../image/lucy.png",
+        experience: "2年",
+        gender: 1
+      },
+      {
+        nickName: "莎士比亚(Lucy)",
+        avator: "../../image/lucy.png",
+        experience: "2年",
+        gender: 1
+      },
+      {
+        nickName: "莎士比亚(Lucy)",
+        avator: "../../image/lucy.png",
+        experience: "2年",
+        gender: 1
+      },
+      {
+        nickName: "莎士比亚(Lucy)",
+        avator: "../../image/lucy.png",
+        experience: "2年",
+        gender: 1
+      },
+      {
+        nickName: "莎士比亚(Lucy)",
+        avator: "../../image/lucy.png",
+        experience: "2年",
+        gender: 1
+      },
+      {
+        nickName: "莎士比亚(Lucy)",
+        avator: "../../image/lucy.png",
+        experience: "2年",
+        gender: 1
+      },
+      {
+        nickName: "莎士比亚(Lucy)",
+        avator: "../../image/lucy.png",
+        experience: "2年",
+        gender: 1
+      },
+      {
+        nickName: "莎士比亚(Lucy)",
+        avator: "../../image/lucy.png",
+        experience: "2年",
+        gender: 1
+      },
+      {
+        nickName: "莎士比亚(Lucy)",
+        avator: "../../image/lucy.png",
+        experience: "2年",
+        gender: 1
+      },
       {
         nickName: "莎士比亚(Lucy)",
         avator: "../../image/lucy.png",

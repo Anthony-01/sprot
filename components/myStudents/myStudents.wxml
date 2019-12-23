@@ -1,5 +1,5 @@
 <!--components/myStudents/myStudents.wxml-->
-<view class="my-students-wrapper">
+<view class="my-students-wrapper" hidden="{{hidden}}">
   <view class="student-item my-border-shadow" wx:for="{{studentsAry}}" wx:key="index" bindtap="onItemHandle" data-student-index="{{index}}">
     <view class="left">
       <image class="avator" src="{{item.avator}}"></image>

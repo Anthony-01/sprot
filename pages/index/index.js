@@ -175,11 +175,11 @@ Page({
         method: httpConfig.loginApi.method,
         success(res) {
           if (res.data.code ==1) {
-            console.error("responseData:",res);
-            app.globalData.Token = res.data.payload.Token;
+            // console.error("responseData:",res);
+            app.globalData.token = res.data.payload.token;
             // let coaches = 
             let url;
-            switch (res.data.payload.UserType) {
+            switch (res.data.payload.userType) {
               case commonType: {
                 url = studentRouteSrc;
                 break;
@@ -190,7 +190,7 @@ Page({
               }
             }
             wx.navigateTo({
-              url: studentRouteSrc,
+              url: coachRouteSrc,
               success(navigateRes) {
                 navigateRes.eventChannel.emit(customEvent.SET_COACH, {data: res.data.payload.MyCoaches})
               }
@@ -223,10 +223,8 @@ Page({
     myHttp.request(httpConfig.loginApi.url, httpConfig.loginApi.method, data).then(data => {
       if (data.code == 1) {
         console.error("responseData:", data);
-        // app.globalData.Token = res.data.payload.Token;
-        // let coaches = 
         let url;
-        switch (data.payload.UserType) {
+        switch (data.payload.userType) {
           case commonType: {
             url = studentRouteSrc;
             break;
@@ -236,10 +234,12 @@ Page({
             break;
           }
         }
-        wx.navigateTo({
-          url: studentRouteSrc,
+        app.globalData.myCoaches = data.payload.MyCoaches
+        wx.reLaunch({
+          url: url,
           success(navigateRes) {
-            navigateRes.eventChannel.emit(customEvent.SET_COACH, { data: data.payload.MyCoaches })
+            // console.log(navigateRes)
+            // navigateRes.eventChannel.emit(customEvent.SET_COACH, { data: data.payload.MyCoaches })
           }
         })
       } else {

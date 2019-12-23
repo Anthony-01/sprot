@@ -1,13 +1,13 @@
 <!--components/coachIndex/coachIndex.wxml-->
 <!--components/studentIndex/studentIndex.wxml-->
-<view class="body-wrapper">
+<view class="body-wrapper" hidden="{{hidden}}">
     <view class="header">
       <view class="left">
-        <image src="{{imageSrc}}"></image>
+        <image src="{{userInfo.avatar}}"></image>
       </view>
       
       <view class="right">
-        <view class="name">高圆圆</view>
+        <view class="name">{{userInfo.nickname}}</view>
         <view class="txt">
           <text>{{headerTxt}}</text>
         </view>

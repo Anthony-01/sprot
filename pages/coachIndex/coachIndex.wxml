@@ -2,10 +2,10 @@
 <view class="main-wrapper ">
 
   
-  <coach-index-component wx:if="{{current == 'homepage'}}" class="show-page {{isIphoneX ? 'iphonex_bottom_page':''}}"></coach-index-component> 
-  <my-students wx:elif="{{current == 'studentpage'}}" class="show-page {{isIphoneX ? 'iphonex_bottom_page':''}}"></my-students>
-  <order wx:elif="{{current == 'orderpage'}}" class="show-page {{isIphoneX ? 'iphonex_bottom_page':''}}"></order>
-  <coach-info-component wx:else class="show-page {{isIphoneX ? 'iphonex_bottom_page':''}}"></coach-info-component>
+  <coach-index-component hidden="{{current != 'homepage'}}" class="{{current == 'homepage'?'show-page': ''}} {{isIphoneX ? 'iphonex_bottom_page':''}}" id="coach-index"></coach-index-component> 
+  <my-students hidden="{{current != 'studentpage'}}" class="{{current == 'studentpage'?'show-page': ''}} {{isIphoneX ? 'iphonex_bottom_page':''}}" id="coach-students"></my-students>
+  <order hidden="{{current != 'orderpage'}}" class="{{current == 'orderpage'?'show-page': ''}} {{isIphoneX ? 'iphonex_bottom_page':''}}" id="coach-order"></order>
+  <coach-info-component hidden="{{current != 'mine'}}" class="{{current == 'mine'?'show-page': ''}} {{isIphoneX ? 'iphonex_bottom_page':''}}" id="coach-info"></coach-info-component>
 
   <view class="tab-bar-wrapper {{isIphoneX ? 'iphonex_bottom':''}}">
     <i-tab-bar current="{{ current }}" color="#29a1f7" bindchange="handleChange">

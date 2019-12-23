@@ -3,6 +3,8 @@
 //mock
 const API = require('./utils/api.js');
 const cHost = 'http://sport.webfox.com/';
+
+//User
 const loginUrl = 'api/Login/MinProgram';
 const infoUrl = 'api/User/Info';
 const searchCoachesUrl = 'api/User/SeachCoaches';
@@ -13,6 +15,17 @@ const applyBecomeCoachUrl = 'api/User/ApplyBecomeCoach';
 const subscribeCourseUrl = 'api/User/SubscribeCourse';
 const subscribeRecordUrl = 'api/User/SubscribeRecord';
 const myCourseUrl = 'api/User/MyCourse';
+
+//Coach
+const addStudentUrl = 'api/Coach/AddStudent';
+const studentCourseUrl = 'api/Coach/StudentCourse';
+const myStudentUrl = 'api/Coach/MyStudent';
+const subscribeRecordCUrl = 'api/Coach/SubscribeRecord';
+const subscribePassUrl = 'api/Coach/SubscribePass';
+const subscribeRejectUrl = 'api/Coach/SubscribeReject';
+const modifyWorkingYearsUrl = 'api/Coach/ModifyWorkingYears';
+const modifyTeachingStyleUrl = 'api/Coach/ModifyTeachingStyle';
+const modifyIntroUrl = 'api/Coach/ModifyIntro';
 
 
 const studentRouteSrc = "/pages/studentIndex/studentIndex";
@@ -74,6 +87,7 @@ App({
     isIphoneX: false,
     isCoach: false,
     token: null,
+    myCoaches: [],
     loginErrorChance: 3,
     http: {
       host: cHost,
@@ -116,7 +130,45 @@ App({
       myCourseApi: {
         url: myCourseUrl,
         method: 'GET'
+      },
+      //coach
+      addStudentApi: {
+        url: addStudentUrl,
+        method: 'POST'
+      },
+      studentCourseApi: {
+        url: studentCourseUrl,
+        method: 'POST'
+      },
+      myStudentApi: {
+        url: myStudentUrl,
+        method: 'GET'
+      },
+      subscribeRecord: {
+        url: subscribeRecordCUrl,
+        method: 'GET'
+      },
+      subscribePassApi: {
+        url: subscribePassUrl,
+        method: 'POST'
+      },
+      subscribeRejectApi: {
+        url: subscribeRejectUrl,
+        method: 'POST'
+      },
+      modifyWorkApi: {
+        url: modifyWorkingYearsUrl,
+        method: 'POST'
+      },
+      modifyTeachApi: {
+        url: modifyTeachingStyleUrl,
+        method: 'POST'
+      },
+      modifyIntroApi: {
+        url: modifyIntroUrl,
+        method: 'POST'
       }
+
     }
   },
 

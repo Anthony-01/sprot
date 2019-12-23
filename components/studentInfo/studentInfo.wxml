@@ -10,17 +10,17 @@
   <view class="baseMsg-table my-border-shadow" style="height:200rpx">
     <view class="baseMsg-table-sex">
       <view class="baseMsg-sex-txt">性别</view>
-      <view class="baseMsg-sex-radio " data-index="{{1}}" bindtap="sexTab">
+      <view class="baseMsg-sex-radio " data-index="{{1}}" bindtap="_sexTab">
         <view class="baseMsg-sex-radio-button {{gender==1 ? 'selected-button':''}}"><view class="button-in"></view></view>
         <span class="my-icon-male my-icon"></span>
       </view>
-      <view class="baseMsg-sex-radio " data-index="{{2}}" bindtap="sexTab">
+      <view class="baseMsg-sex-radio " data-index="{{2}}" bindtap="_sexTab">
         <view class="baseMsg-sex-radio-button {{gender==2 ? 'selected-button':''}}"><view class="button-in"></view></view>
         <span class="my-icon-female my-icon"></span>
       </view>
     </view>
     <view class="baseMsg-table-phone" style="border:none">联系电话
-      <input class="baseMsg-table-phone-input" type="number" placeholder="输入联系电话"></input>
+      <input class="baseMsg-table-phone-input" type="number" placeholder="输入联系电话" bind:blur="_telSubmit" value="{{userInfo.tel}}"></input>
     </view>
   </view>
 
@@ -28,7 +28,7 @@
       <view class="myCode-title">我的专属码</view>
       <view class="myCode-view my-border-shadow">
         <view class="myCode-view-num">{{userInfo.code}}</view>
-        <view class="myCode-view-ui-change" bindtap="change">换一组</view>
+        <view class="myCode-view-ui-change" bindtap="_change">换一组</view>
         <view class="myCode-view-ui-copy" bindtap="copy">复制</view>
       </view>
   </view>
@@ -38,5 +38,5 @@
     <view class="reverse-status">可申请</view>
   </view>
 
-<button class="reverse-button" hover-class="reverse-button-hover">点击申请</button>
+<button class="reverse-button" hover-class="reverse-button-hover" bind:tap="_applyBecomeCoach">点击申请</button>
 </view>
