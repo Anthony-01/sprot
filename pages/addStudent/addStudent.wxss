@@ -25,6 +25,7 @@
 
 .remarks-item {
   align-items: flex-start;
+  margin-bottom: 40rpx;
 }
 
 .form-name .left .title{

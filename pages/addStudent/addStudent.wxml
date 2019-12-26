@@ -1,9 +1,7 @@
 <!--pages/addStudent/addStudent.wxml-->
 <form class="form" bindsubmit="formSubmit">
   <view class="form-view my-border-shadow">
-    <view class="form-name">
-      <!-- 姓名 -->
-      <!-- <input class="form-input" bindinput='bindinput' bindblur="bindblur" id="form-name" placeholder="联系人姓名" type="text"></input> -->
+    <!-- <view class="form-name">
 
       <view class="left">
         <view class="title">姓名</view>
@@ -14,8 +12,6 @@
     </view>
 
     <view class="form-name">
-      <!-- 电话
-      <input class="form-input" bindinput='bindinput' bindblur="bindblur" id="form-phone" placeholder="联系人电话" type="number"></input> -->
 
       <view class="left">
         <view class="title">电话</view>
@@ -23,7 +19,7 @@
       <view class="right">
         <input class="form-input" bindinput='bindinput' bindblur="bindblur" id="form-phone" placeholder="联系人电话" type="number"></input>
       </view>
-    </view>
+    </view> -->
 
     
 
@@ -53,7 +49,7 @@
         <view class="title">专属码</view>
       </view>
       <view class="right">
-        <input class="form-input" bindinput='bindinput' bindblur="bindblur" id="form-course" placeholder="填写学员专属码"></input>
+        <input class="form-input" bindblur='_uniqueCodeInput'  id="form-course" placeholder="填写学员专属码"></input>
       </view>
     </view>
 
@@ -65,7 +61,7 @@
         <view class="title">备注</view>
       </view>
       <view class="right">
-        <textarea placeholder="填写备注内容(限30字)" maxlength="30"   adjust-position="{{true}}"></textarea>
+        <textarea placeholder="填写备注内容(限30字)" maxlength="30"   adjust-position="{{true}}" bind:blur="_onSubmitRemarks"></textarea>
       </view>
 
       <!-- <view class="left">
@@ -79,4 +75,4 @@
   </view>
 </form>
 
-<view class="upload" bindtap="clickUpload">提交预约</view>
+<view class="upload" bindtap="_submitOrder">提交预约</view>

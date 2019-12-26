@@ -78,10 +78,12 @@ Page {
   margin: 20rpx auto;
   /* box-shadow: 0px 0px 10rpx 1rpx rgba(0,0,0,0.1);  */
   border-radius: 15rpx;
+  display: flex;
+  flex-direction: column;
 }
 
 .profile-title {
-  position: relative;
+  /* position: relative; */
   height: 88rpx;
   line-height: 88rpx;
   border-bottom: 1px solid #e4e4e4;
@@ -91,17 +93,17 @@ Page {
 }
 
 .profile-info {
-  position: relative;
+  /* position: relative; */
   width: 100%;
-  height: 262rpx;
+  /* height: 262rpx; */
 }
 
 .profile-info-text {
-  position: relative;
+  /* position: relative; */
   width: 85%;
-  margin: 0 auto;
-  top: 50%;
-  transform: translate(0,-50%);
+  margin: 30rpx auto;
+  /* top: 50%; */
+  /* transform: translate(0,-50%); */
   color: #7d7d7d;
   font-size: 32rpx;
 }

@@ -78,12 +78,17 @@
 }
 .order-item .order-info {
   padding: 0 50rpx;
-  color: #333333;
+  /* color: #333333; */
   font-size: 28rpx;
   margin-top: 16rpx;
+  margin-right: 10rpx;
+}
+.order-item .order-info text {
+  display: inline-block;
+  margin-left: 10rpx;
 }
 .order-item .order-info .detail {
-  color: #666666
+  /* color: #666666 */
 }
 .order-item .order-user {
   padding-top: 40rpx;
@@ -91,7 +96,7 @@
   font-size: 32rpx;
   margin-top: 0;
 }
-.order-item .order-remarks {
+.order-item .order-course {
   padding-bottom: 58rpx;
 }
 .order-item:last-child {
@@ -108,3 +113,14 @@
 .button-down {
   color: blue;
 }
+.reviewing {
+  color: #ff9900
+}
+
+.passed {
+  color: #00cc33;
+}
+.rejected {
+  color: #999999;
+}
+

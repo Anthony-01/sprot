@@ -16,7 +16,7 @@
         <view class="title">电话</view>
       </view>
       <view class="right tel-right">
-        <input   bindinput='bindinput' bindblur="bindblur" id="form-phone" placeholder="联系人电话" type="number"></input>
+        <input   bindinput='bindinput' bind:blur="_onSubmitTel" id="form-phone" placeholder="联系人电话" type="number" value="{{tel}}" class="input"></input>
         <image src="../../image/icon_edit.png" style="width: 50rpx;height:50rpx" class="icon" catchtap="editTel"></image>
       </view>
       
@@ -31,7 +31,7 @@
       </view>
       <view class="right course-right">
         <!-- <input class="form-input" bindinput='bindinput' bindblur="bindblur" id="form-course" placeholder="请选择课程"></input> -->
-        <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}" style="width: 100px;">
+        <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}" style="width: 100px;" class="input">
           <view class="picker">
             <view class="placeholder" wx:if="{{index == undefined}}">请选择课程</view>
             <view wx:else>{{array[index]}}</view>
@@ -53,11 +53,11 @@
         <!-- <view class="remarks">(限30字)</view> -->
       </view>
       <view class="right">
-        <textarea placeholder="预约备注(限30字)" maxlength="30"  adjust-position="{{true}}"></textarea>
+        <textarea placeholder="预约备注(限30字)" maxlength="30"  adjust-position="{{true}}" bind:blur="_onSubmitRemarks"></textarea>
       </view>
     </view>
   </view>
 </form>
 
-<view class="upload" bindtap="clickUpload">提交预约</view>
+<view class="upload" bindtap="onUpload">提交预约</view>
 <!-- <view class="getNum">查看专属码</view> -->

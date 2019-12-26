@@ -35,7 +35,7 @@
 
   <view class="info">
     <view class="text-reverse-title">申请成为教练</view>
-    <view class="reverse-status">可申请</view>
+    <view class="reverse-status {{statusClass}}">{{stateTxt}}</view>
   </view>
 
 <button class="reverse-button" hover-class="reverse-button-hover" bind:tap="_applyBecomeCoach">点击申请</button>

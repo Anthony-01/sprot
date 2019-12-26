@@ -8,6 +8,7 @@ const cHost = 'http://sport.webfox.com/';
 const loginUrl = 'api/Login/MinProgram';
 const infoUrl = 'api/User/Info';
 const searchCoachesUrl = 'api/User/SeachCoaches';
+const myCoachesUrl = 'api/User/MyCoaches';
 const modifyGenderUrl = 'api/User/ModifyGender';
 const modifyMobileUrl = 'api/User/ModifyMobile';
 const modifyUniqueCodeUrl = 'api/User/ModifyUniqueCode';
@@ -26,6 +27,9 @@ const subscribeRejectUrl = 'api/Coach/SubscribeReject';
 const modifyWorkingYearsUrl = 'api/Coach/ModifyWorkingYears';
 const modifyTeachingStyleUrl = 'api/Coach/ModifyTeachingStyle';
 const modifyIntroUrl = 'api/Coach/ModifyIntro';
+
+//Project
+const allProjectUrl = 'api/Project/GetAll'
 
 
 const studentRouteSrc = "/pages/studentIndex/studentIndex";
@@ -89,6 +93,7 @@ App({
     token: null,
     myCoaches: [],
     loginErrorChance: 3,
+    myOrderes: [],
     http: {
       host: cHost,
       loginApi: {
@@ -101,6 +106,10 @@ App({
       },
       searchApi: {
         url: searchCoachesUrl,
+        method: 'GET'
+      },
+      myCoachesApi: {
+        url: myCoachesUrl,
         method: 'GET'
       },
       genderApi: {
@@ -167,6 +176,12 @@ App({
       modifyIntroApi: {
         url: modifyIntroUrl,
         method: 'POST'
+      },
+
+      //
+      allProjectApi: {
+        url: allProjectUrl,
+        method: 'GET'
       }
 
     }

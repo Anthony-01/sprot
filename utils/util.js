@@ -25,7 +25,32 @@ const showToast = (data) => {
   })
 }
 
+const showTip = (str) => {
+  wx.showToast({
+    title: str,
+    icon: 'none'
+  })
+} 
+
+const transfromTime = (time) => {
+  let back;
+  let data = new Date(time);
+  back = data.toLocaleString('zh-CN');
+  let txt;
+  if (/上午/.test(back)) {
+    txt = 'AM'
+  } else {
+    txt = 'PM';
+  }
+  back = back.replace(/\//g, "-");
+  back = back.replace(/上午/, "");
+  back = back.replace(/下午/, "");
+  return back + " " + txt;
+}
+
 module.exports = {
   formatTime: formatTime,
-  showToast: showToast
+  showToast: showToast,
+  showTip: showTip,
+  transfromTime: transfromTime
 }

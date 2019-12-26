@@ -1,6 +1,11 @@
 // components/myStudents/myStudents.js
-const courseRouteSrc = "/pages/myCourse/myCourse";
+const courseDetailSrc = "/pages/courseDetail/courseDetail";
 const addRouteSrc = "/pages/addStudent/addStudent";
+
+const app = getApp();
+import myHttp from '../../utils/http.js';
+import util from '../../utils/util.js';
+
 Component({
   /**
    * 组件的属性列表
@@ -17,34 +22,14 @@ Component({
    */
   data: {
     studentsAry: [
-      {
-        nickname: "高圆圆(yuan.gao)",
-        avator: '../../image/gao.png',
-        infoes: [
-          {
-            name: "报名课程",
-            value: "2个"
-          },
-          {
-            name: "课程进度",
-            value: "2 / 10"
-          }
-        ]
-      },
-      {
-        nickname: "迪丽热巴(Lucy)",
-        avator: '../../image/dili.png',
-        infoes: [
-          {
-            name: "课程类型",
-            value: "标准私教课"
-          },
-          {
-            name: "课程进度",
-            value: "2 / 10"
-          }
-        ]
-      }
+      // {
+      // avatarUrl: "https://wx.qlogo.cn/mmopen/vi_32/R25pPknP6LlakrND3oJ78zfYrhlnqMkZy3icJHM4dDaredwjelfQu6vQOgjg3cib3buib6atWaZOQgHrWbXVNgKyg/132"
+      // completeHours: 0
+      // courseCount: 1
+      // nickname: "眼高手低"
+      // sumHours: 10
+      // userID: 10005
+      // }
     ]
   },
 
@@ -52,13 +37,23 @@ Component({
    * 组件的方法列表
    */
   methods: {
-    onItemHandle(e) {
+    _onItemHandle(e) {
+
+      
       let index = e.currentTarget.dataset.studentIndex;
-      let data = this.data.studentsAry[index];
+      let user = this.data.studentsAry[index];
+
+      if (user == null || user.userID == undefined) {
+        util.showTip("玩家出错:", user.userID);
+        return;
+      }
+
+      
+
       wx.navigateTo({
-        url: courseRouteSrc,
+        url: courseDetailSrc,
         success(res) {
-          res.eventChannel.emit("studentInfo", data)
+          res.eventChannel.emit("studentInfo", user)
         }
       })
     },
@@ -66,6 +61,22 @@ Component({
     onAddHandle(e) {
       wx.navigateTo({
         url: addRouteSrc
+      })
+    },
+
+    requestMyStudents() {
+      let self = this;
+      let myStudent = app.globalData.http.myStudentApi;
+      myHttp.request(myStudent.url, myStudent.method, null).then(data => {
+        console.error("我的学员:");
+        console.log(data);
+        if (data.code == 1) {
+          self.setData({
+            studentsAry: data.payload
+          })
+        }
+      }).catch(err => {
+        console.error("我的学员获取失败", err);
       })
     }
     

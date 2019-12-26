@@ -48,6 +48,9 @@ Page {
   justify-content: space-between;
   align-items: center;
 }
+.form-name .right .input {
+  flex-grow: 1;
+}
 .form-name .right .placeholder {
   color: #808080;
 }

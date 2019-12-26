@@ -1,18 +1,18 @@
 <!--pages/search/search.wxml-->
 <view class="search-wrapper ">
-      <input type="text" class="search-input my-border-shadow" placeholder="输入教练专属码查找教练" confirm-type="search" bindconfirm="onConfig"></input>
+      <input type="text" class="search-input my-border-shadow" placeholder="输入教练专属码查找教练" confirm-type="search" bindconfirm="onConfig" bind:blur="_onSearchCoach"></input>
       <i-icon type="search" class="search-icon" size="28" color="#b4b4b4"/>
     </view>
 
 <view class="coach-wrapper">
       <!-- bindtap="coachDetail" data-index="{{index}}" -->
-      <view class="coach-item my-border-shadow"  wx:for="{{coatchList}}">
+      <view class="coach-item my-border-shadow"  wx:for="{{coachList}}" bind:tap="_onCoachPage" data-index="{{index}}">
         <view class="avator">
-          <image src="{{item.avator}}"></image>
+          <image src="{{item.avatarUrl}}"></image>
         </view>
         <view class="info">
-          <view class="name">{{item.nickName}}<span class=" my-icon {{item.gender == 0 ? 'my-icon-male' : 'my-icon-female'}}" ></span></view>
-          <view class="exprience">任教经历:{{item.experience}}</view>
+          <view class="name">{{item.nickname}}<span class=" my-icon {{item.gender == 2 ? 'my-icon-female' : 'my-icon-male'}}" ></span></view>
+          <view class="exprience">任教经历:{{workingYearArray[item.workingYears]}}</view>
         </view>
       </view>
     </view>

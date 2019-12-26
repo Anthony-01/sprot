@@ -35,6 +35,7 @@ const apiRequest = (url, method, data, title) => {     //接收所需要的参�
             duration: 2000
           });
           reject();
+          return;
         }
         if (res.data.code && res.data.code == 302) {
           if (app.globalData.loginErrorChance-- < 0) {
@@ -63,7 +64,7 @@ const apiRequest = (url, method, data, title) => {     //接收所需要的参�
           }
         }  else {
           //接口调用成功
-          console.log("调用http接口成功:", res);
+          // console.log("调用http接口成功:", res);
           resolve(res.data);    //根据业务需要resolve接口返回的json的数据
           wx.hideLoading();
         }

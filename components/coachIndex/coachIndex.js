@@ -2,7 +2,8 @@
 // components/studentIndex/studentIndex.js
 
 const app = getApp();
-const coachDetalPath = "/pages/coachInfo/coachInfo"
+const coachDetalPath = "/pages/coachInfo/coachInfo";
+const searchPath = "/pages/search/search";
 
 import myHttp from '../../utils/http.js';
 import util from '../../utils/util.js';
@@ -58,6 +59,17 @@ Component({
       this.setData({
         ["userInfo.avatar"]: user.avatarUrl,
         ["userInfo.nickname"]: user.nickname
+      })
+    },
+    setCoachList(data) {
+      console.log("component设置我的教练:", data);
+      this.setData({
+        coachList: data
+      })
+    },
+    onAddCoach() {
+      wx.navigateTo({
+        url: searchPath
       })
     }
   },

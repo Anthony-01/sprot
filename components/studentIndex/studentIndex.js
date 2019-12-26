@@ -5,6 +5,8 @@ const searchPath = "/pages/search/search";
 import myHttp from '../../utils/http.js';
 const app = getApp();
 
+import customEvent from '../../utils/customEvent.js';
+
 Component({
   /**
    * 组件的属性列表
@@ -17,11 +19,6 @@ Component({
     hidden: {
       type: Boolean,
       value: false
-    }
-  },
-  observers: {
-    'hidden': function (value) {
-      console.log("index hidden", value)
     }
   },
 
@@ -46,15 +43,22 @@ Component({
   methods: {
     coachDetail(e) {
       //进入教练详情页并且导入信息
-      wx.navigateTo({
-        url: coachDetalPath,
-        success() {
-          console.log("路由导航成功");
-        },
-        fail(err) {
-          console.log("进入页面失败:", err);
-        }
-      })
+      let index = e.target.dataset.index;
+      let user = this.data.coachList[index];
+
+      if (user) {
+        wx.navigateTo({
+          url: coachDetalPath,
+          success(res) {
+            console.log("路由导航成功");
+            res.eventChannel.emit(customEvent.SET_COACH, user);
+          },
+          fail(err) {
+            console.log("进入页面失败:", err);
+          }
+        })
+      }
+      
     },
     onConfig(e) {
       console.error("完成搜索");

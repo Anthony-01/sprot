@@ -78,7 +78,7 @@ Page({
       // var userInfo = res.userInfo
       let data = {};
       for (let name in res.detail) {
-        data[name] = res[name];
+        data[name] = res.detail[name];
       }
       data.code = this.data.userCode;
       this.enterIndex(data);
@@ -222,7 +222,7 @@ Page({
     };
     myHttp.request(httpConfig.loginApi.url, httpConfig.loginApi.method, data).then(data => {
       if (data.code == 1) {
-        console.error("responseData:", data);
+        // console.error("responseData:", data);
         let url;
         switch (data.payload.userType) {
           case commonType: {
@@ -243,8 +243,11 @@ Page({
           }
         })
       } else {
-        console.error("登录失败:", res);
+        
+        console.error("登录失败:", data);
       }
+    }).catch(err => {
+      console.error("登录失败:", res);
     })
   }
 })

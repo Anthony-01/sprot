@@ -12,7 +12,7 @@ Page({
   data: {
     headerTxt: `欢迎回来！\n您可以在此管理您的课程，并添加预约的新学员，也可添加您的教练`,
     imageSrc: "../../image/gao.png",
-    current: "mine",
+    current: "studentpage",
     isIphoneX: false
   },
   handleChange({ detail }) {
@@ -77,6 +77,10 @@ Page({
         indexPage.setInfo();
         let infoPage = self.selectComponent("#coach-info");
         infoPage.setInfo();
+        let myStudentPage = self.selectComponent("#coach-students");
+        myStudentPage.requestMyStudents();
+        let orderPage = self.selectComponent("#coach-order");
+        orderPage.requestMyOrderes();
       } else {
         util.showToast(data);
       }
@@ -94,7 +98,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    wx.hideHomeButton();
   },
 
   /**

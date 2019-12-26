@@ -1,12 +1,40 @@
 <!--components/order/order.wxml-->
 <view class="order-wrapper" hidden="{{hidden}}">
-  <view class="order-item my-border-shadow" wx:for="{{orderAry}}" >
-    <view class="order-user order-info">预约人: <text>{{item.username}}</text></view>
-    <view class="order-phone order-info">电话: <text class="detail">{{item.phone}}</text></view>
-    <view class="order-id order-info">预约码: <text class="detail">{{item.id}}</text></view>
-    <view class="order-course order-info">预约课程: <text class="detail">{{item.course}}</text></view>
-    <view class="order-time order-info">预约时间: <text class="detail">{{item.time}}</text></view>
-    <view class="order-remarks order-info">备注: <text >{{item.remarks}}</text></view>
-    <button bindtap="onAdd" hover-class="button-down" class="add-button" data-order-index="{{index}}">添加为我的学员</button>
+  <i-tabs current="{{ current }}" bindchange="_onChangeTab" i-class="tab" fixed="{{true}}">
+    <i-tab key="student-tab" title="学员预约" class="tab-item"></i-tab>
+    <i-tab key="my-tab" title="我的预约" class="tab-item"></i-tab>
+  </i-tabs>
+
+  <view class="student-order order-type" hidden="{{current != 'student-tab'}}">
+    <view class="order-item my-border-shadow" wx:for="{{studentOrderAry}}" >
+      <view class="order-user order-info">预约人: <text>{{item.studentNickname}}</text></view>
+      <view class="order-phone order-info">电话: <text class="detail">{{item.mobile}}</text></view>
+      <view class="order-id order-info">预约码: <text class="detail">{{item.uniqueCode}}</text></view>
+      <view class="order-course order-info">预约课程: <text class="detail">{{item.projectName + '(' + item.hours + '节)'}}</text></view>
+      <view class="order-time order-info">预约时间: <text class="detail">{{item.showTime}}</text></view>
+      <view class="order-remarks order-info">备注: <text >{{item.remark}}</text></view>
+      <!-- <button bindtap="onAdd" hover-class="button-down" class="add-button" data-order-index="{{index}}">添加为我的学员</button> -->
+      <view class="btn-wrapper">
+        <view class="pass {{item.subscribeState == 1 ? 'green-color' : ''}} {{item.subscribeState == 2 ? 'green-color' : ''}}" bind:tap="_onPassOrder" data-order-index="{{index}}">{{item.subscribeState == 0 ? '通过' : item.subscribeState == 1 ? '已通过': '已拒绝'}}</view>
+        <view class="reject" bind:tap="_onRejectOrder" data-order-index="{{index}}">拒绝</view>
+      </view>
+    </view>
+
+    <view class="no-tip" hidden="{{studentOrderAry.length != 0}}">
+      当前无预约
+    </view>
+  </view>
+
+  <view class="my-order order-type" hidden="{{current != 'my-tab'}}">
+    <view class="order-item my-border-shadow" wx:for="{{myOrderAry}}" >
+      <view class="order-user order-info">预约项目: <text>{{item.projectName}}</text></view>
+      <view class="order-phone order-info">预约教练: <text class="detail">{{item.coachNickname}}</text></view>
+      <view class="order-id order-info">预约时间: <text class="detail">{{item.showTime}}</text></view>
+      <view class="order-course order-info">预约状态: <text class="detail {{item.subscribeStateCH=='审核中'? 'reviewing' : ''}} {{item.subscribeStateCH=='已通过'? 'passed' : ''}} {{item.subscribeStateCH=='已拒绝'? 'rejected' : ''}}">{{item.subscribeStateCH}}</text></view>
+    </view>
+
+    <view class="no-tip" hidden="{{myOrderAry.length != 0}}">
+      当前无预约
+    </view>
   </view>
 </view>

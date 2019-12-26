@@ -48,3 +48,9 @@
   border-radius: 12rpx;
   background: #169bd5;
 }
+
+.no-tip {
+  color: #999999;
+  text-align: center;
+  padding : 200rpx 0;
+}

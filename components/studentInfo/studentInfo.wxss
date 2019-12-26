@@ -239,6 +239,22 @@ Page {
   color: #0099ff;
 }
 
+.applying{
+  color: #0099ff;
+}
+.passed{
+  color: #00cc33;
+}
+
+.waiting{
+  color: #ff9900;
+}
+.rejected{
+  color: #999999;
+}
+
+
+
 .reverse-button {
   position:relative;
   

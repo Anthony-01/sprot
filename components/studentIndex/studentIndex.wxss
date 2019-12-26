@@ -115,6 +115,9 @@
   font-size: 14px;
   color: #666666;
 }
-
+.none-Tips {
+  padding: 72rpx 0;
+  color: #808080;
+}
 
 

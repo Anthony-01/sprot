@@ -25,10 +25,10 @@
     </view>
     <view class="baseMsg-table-exprience  table-item">从业经历
       <view class="section">
-        <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+        <picker bindchange="bindPickerChange" value="{{userInfo.workingYear}}" range="{{array}}">
           <view class="picker">
-            <view class="placeholder" wx:if="{{index == undefined}}">请选择从业年限</view>
-            <view wx:else>{{array[index]}}</view>
+            <view class="placeholder" wx:if="{{userInfo.workingYear == undefined}}">请选择从业年限</view>
+            <view wx:else>{{array[userInfo.workingYear]}}</view>
           </view>
         </picker>
       </view>
@@ -39,7 +39,7 @@
         <view class="remarks">(限20字)</view>
       </view>
       <view class="right {{detail ? 'iostextarea'  : 'androidtextarea'}}" >
-        <textarea placeholder="简短介绍您的教学风格" maxlength="20" adjust-position="{{true}}" adjust-position="{{true}}" placeholder-style="placeholder-style"></textarea>
+        <textarea placeholder="简短介绍您的教学风格" maxlength="20" adjust-position="{{true}}" adjust-position="{{true}}" placeholder-style="placeholder-style" bind:blur="_teachStyleSubmit" value="{{userInfo.teachingStyle}}"></textarea>
       </view>
     </view>
     <view class="baseMsg-table-teach  table-item" style="border: none;">
@@ -48,7 +48,7 @@
         <view class="remarks">(限100字)</view>
       </view>
       <view class="right {{detail ? 'iostextarea'  : 'androidtextarea'}}">
-        <textarea placeholder="请填写您的个人简历" maxlength="100" auto-height="{{true}}" adjust-position="{{true}}" placeholder-style="placeholder-style"></textarea>
+        <textarea placeholder="请填写您的个人简历" maxlength="100" auto-height="{{true}}" adjust-position="{{true}}" placeholder-style="placeholder-style" bind:blur="_introSubmit" value="{{userInfo.intro}}"></textarea>
       </view>
     </view>
   </view>

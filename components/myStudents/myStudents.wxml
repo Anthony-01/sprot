@@ -1,13 +1,18 @@
 <!--components/myStudents/myStudents.wxml-->
 <view class="my-students-wrapper" hidden="{{hidden}}">
-  <view class="student-item my-border-shadow" wx:for="{{studentsAry}}" wx:key="index" bindtap="onItemHandle" data-student-index="{{index}}">
+  <view class="student-item my-border-shadow" wx:for="{{studentsAry}}" wx:key="index" bindtap="_onItemHandle" data-student-index="{{index}}">
     <view class="left">
-      <image class="avator" src="{{item.avator}}"></image>
+      <image class="avator" src="{{item.avatarUrl}}"></image>
     </view>
     <view class="right">
       <view class="nickname">{{item.nickname}}</view> 
-      <view class="info-item" wx:for="{{item.infoes}}" wx:for-index="idx" wx:for-item="infoItem">{{infoItem.name}} : {{infoItem.value}}</view>
+      <view class="info-item" >报名项目 : {{item.courseCount}}个</view>
+      <view class="info-item" >课程进度 : {{item.completeHours}} / {{item.sumHours}}</view>
     </view>
+  </view>
+
+  <view class="no-tip" hidden="{{studentsAry.length != 0}}">
+    当前无学员
   </view>
   <i-button type="primary" size="large" i-class="i-button" bindtap="onAddHandle">+添加新学员</i-button>  
 

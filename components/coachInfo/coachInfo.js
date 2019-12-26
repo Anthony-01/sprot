@@ -24,8 +24,12 @@ Component({
       identity: "教练",
       isCoach: false,
       code: "58DF359S",
-      tel: ""
+      tel: "",
+      workingYear: null,
+      teachingStyle: "",
+      intro: ""
     },
+    
     gender: 1,
     array: ['1年', '2年', '3年', '3年以上'],
     detail: false
@@ -81,6 +85,7 @@ Component({
           self.setData({
             [ccode]: data.payload.newUniqueCode
           })
+          app.globalData.userInfo.uniqueCode = data.payload.newUniqueCode;
         }
       })
     },
@@ -102,16 +107,33 @@ Component({
           that.setData({
             gender: gender
           })
+          app.globalData.userInfo.gender = gender;
         }
       }).catch(err => {
 
       })
     },
     bindPickerChange: function (e) {
-      console.log('picker发送选择改变，携带值为', e.detail.value)
+      console.log('picker发送选择改变，携带值为', e.detail.value);
+      let self = this;
       this.setData({
-        index: e.detail.value
+        ["userInfo.workingYear"]: e.detail.value
       })
+      let modifyWork = app.globalData.http.modifyWorkApi
+      myHttp.request(modifyWork.url + "?workingYears=" + e.detail.value, modifyWork.method, null).then(data => {
+        util.showToast(data);
+        console.log(data);
+        if (data.code != 1) {
+          self.setData({
+            ["userInfo.workingYear"]: undefined
+          })
+        } else {
+          app.globalData.userInfo.workingYears = e.detail.value;
+        }
+      }).catch(err => {
+        console.error(err);
+      })
+      
     },
     setInfo() {
       let user = app.globalData.userInfo;
@@ -122,8 +144,10 @@ Component({
         ["userInfo.identity"]: user.userType == 1 ? "教练" : "学员",
         ["userInfo.code"]: user.uniqueCode,
         ["userInfo.tel"]: user.mobile,
-        gender: user.gender
-
+        gender: user.gender,
+        ["userInfo.workingYear"]: user.workingYears,
+        ["userInfo.teachingStyle"]: user.teachingStyle,
+        ["userInfo.intro"]: user.intro
       })
     },
 
@@ -140,9 +164,45 @@ Component({
           self.setData({
             ['userInfo.tel']: ""
           })
+        } else {
+          app.globalData.userInfo.mobile = tel;
         }
       }).catch(err => {
 
+      })
+    },
+    _introSubmit(e) {
+      let self = this;
+      let intro = e.detail.value.length ? e.detail.value : null;
+
+      let modifyIntro = app.globalData.http.modifyIntroApi;
+      myHttp.request(modifyIntro.url + "?intro=" + intro, modifyIntro.method, null).then(data => {
+        util.showToast(data);
+        console.error(data);
+        if (data.code != 1) {
+          self.setData({
+            ["userInfo.intro"]: null
+          })
+        } else {
+          app.globalData.userInfo.intro = intro;
+        }
+      })
+    },
+    _teachStyleSubmit(e) {
+      let self = this;
+      let teachingStyle = e.detail.value.length ? e.detail.value : '\s';
+
+      let modifyTeachingStyle = app.globalData.http.modifyTeachApi;
+      myHttp.request(modifyTeachingStyle.url + "?teachingStyle=" + teachingStyle, modifyTeachingStyle.method, null).then(data => {
+        util.showToast(data);
+        console.error(data);
+        if (data.code != 1) {
+          self.setData({
+            ["userInfo.teachingStyle"]: null
+          })
+        } else {
+          app.globalData.userInfo.teachingStyle = teachingStyle
+        }
       })
     }
   },

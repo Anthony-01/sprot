@@ -1,4 +1,10 @@
 // components/studentOrder/studentOrder.js
+const app = getApp();
+
+import myHttp from '../../utils/http.js';
+import util from '../../utils/util.js';
+
+
 Component({
   /**
    * 组件的属性列表
@@ -16,36 +22,11 @@ Component({
   data: {
     orderAry: [
       {
-        username: "刘德华",
-        phone: 18813294788,
-        id: "HG657672",
-        course: "网球一对一私教课(12节)",
-        time: "2019/09/20 12:00:00",
-        remarks: "深圳市南山区桃园路102号"
-      },
-      {
-        username: "张学友",
-        phone: 18813294788,
-        id: "HG657672",
-        course: "网球一对一私教课(12节)",
-        time: "2019/09/20 12:00:00",
-        remarks: "深圳市南山区桃园路102号"
-      },
-      {
-        username: "张学友",
-        phone: 18813294788,
-        id: "HG657672",
-        course: "网球一对一私教课(12节)",
-        time: "2019/09/20 12:00:00",
-        remarks: "深圳市南山区桃园路102号"
-      },
-      {
-        username: "张学友",
-        phone: 18813294788,
-        id: "HG657672",
-        course: "网球一对一私教课(12节)",
-        time: "2019/09/20 12:00:00",
-        remarks: "深圳市南山区桃园路102号"
+        coachNickname: "",
+        projectName: "",
+        subscribeStateCH: "",
+        collectTime: "",
+        showTime: ""
       }
     ]
   },
@@ -54,7 +35,21 @@ Component({
    * 组件的方法列表
    */
   methods: {
-
+    setOrderes() {
+      // return
+      let self = this;
+      let orders = app.globalData.myOrderes;
+      console.log(orders);
+      orders.forEach(item => {
+        item.showTime = util.transfromTime(item.collectTime)
+      });
+      this.setData({
+        orderAry: orders
+      })
+    },
+    transfromTime(time) {
+      return util.transfromTime(time);
+    }
   },
   options: {
     addGlobalClass: true

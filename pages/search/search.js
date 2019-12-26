@@ -1,31 +1,66 @@
 // pages/search/search.js
+const app = getApp();
+import myHttp from '../../utils/http.js';
+import util from '../../utils/util.js';
+import customEvent from '../../utils/customEvent.js';
+
+const coachDetailPage = '/pages/coachInfo/coachInfo';
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    coatchList: [
-      {
-        nickName: "蒙娜丽莎(Lily)",
-        avator: "../../image/gao.png",
-        experience: "3年",
-        gender: 0
-      },
-      {
-        nickName: "莎士比亚(Lucy)",
-        avator: "../../image/lucy.png",
-        experience: "2年",
-        gender: 1
-      }
-    ]
+    coachList: [
+      
+    ],
+    workingYearArray: ['1年', '2年', '3年', '3年以上']
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    //let 
+  },
 
+  _onSearchCoach(e) {
+    let self = this;
+    let uniqueCode = e.detail.value.length ? e.detail.value : null;
+    let search = app.globalData.http.searchApi;
+
+    myHttp.request(search.url + "?UniqueCode=" + uniqueCode, search.method, null).then(data => {
+      
+      console.log(data);
+      if (data.payload && data.payload.length == 0) {
+        util.showTip("未搜索到相应教练，请检查专属码后重新搜索!");
+      } else {
+        util.showToast(data);
+        self.setData({
+          coachList: data.payload
+        })
+      }
+    }).catch(err => {
+      console.error(err);
+    })
+  },
+
+  _onCoachPage(e) {
+    //教练页面
+    console.log(e.target.dataset.index);
+    let index = e.target.dataset.index;
+    let user = this.data.coachList[index];
+    
+
+    if (user) {
+      wx.navigateTo({
+        url: coachDetailPage,
+        success(res) {
+          res.eventChannel.emit(customEvent.SET_COACH, { user: user});
+        }
+      })
+    }
   },
 
   /**
