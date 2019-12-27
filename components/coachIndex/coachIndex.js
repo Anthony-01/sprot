@@ -7,6 +7,7 @@ const searchPath = "/pages/search/search";
 
 import myHttp from '../../utils/http.js';
 import util from '../../utils/util.js';
+import customEvent from '../../utils/customEvent.js';
 
 Component({
   /**
@@ -25,12 +26,13 @@ Component({
   //https://gss3.bdstatic.com/7Po3dSag_xI4khGkpoWK1HF6hhy/baike/c0%3Dbaike116%2C5%2C5%2C116%2C38/sign=2dea904982d4b31ce4319ce9e6bf4c1a/622762d0f703918fc7ebb6c0583d269759eec486.jpg
   data: {
     headerTxt: `欢迎回来！\n您可以在此管理您的课程，并添加预约的新学员，也可添加您的教练。`,
-    imageSrc: "../../image/gao.png",
+    imageSrc: "",
     userInfo: {
       avatar: "",
       nickname: ""
     },
-    coachList: []
+    coachList: [],
+    workingYears: ['一年', '两年', '三年', '三年以上']
   },
 
   attached() {
@@ -43,10 +45,13 @@ Component({
   methods: {
     coachDetail(e) {
       //进入教练详情页并且导入信息
+      let index = e.target.dataset.index;
+      let user = this.data.coachList[index];
       wx.navigateTo({
         url: coachDetalPath,
         success() {
           console.log("路由导航成功");
+          res.eventChannel.emit(customEvent.SET_COACH, { user: user });
         },
         fail(err) {
           console.log("进入页面失败:", err);

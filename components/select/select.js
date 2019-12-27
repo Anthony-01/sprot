@@ -21,12 +21,15 @@ Component({
     attached: function () {
       // 在组件实例进入页面节点树时执行
       console.log('select组件初始化');
-      this.triggerEvent('selectevent', this.data.currentIndex);
+      this.triggerEvent('selectevent', {
+        courseID: -1,
+        projectID: -1
+      });
     },
     detached: function () {
       // 在组件实例被从页面节点树移除时执行
       console.log('select组件初始化');
-      this.triggerEvent('selectevent', 0);
+      // this.triggerEvent('selectevent', 0);
     },
   },
   /**
@@ -63,15 +66,25 @@ Component({
       var nowText = nowData[nowIdx].text;//当前点击的内容
       //再次执行动画，注意这里一定，一定，一定是this.animation来使用动画
       this.data.currentIndex = nowData[nowIdx].id;
-      this.triggerEvent('selectevent', nowData[nowIdx].id);
+      this.triggerEvent('selectevent', nowData[nowIdx]);
       this.animation.rotate(0).step();
       this.setData({
         selectShow: false,
         nowText: nowText,
         animationData: this.animation.export()
       })
+    },
+    setOrigin(index) {
+      var nowData = this.properties.propArray;//当前option的数据是引入组件的页面传过来的，所以这里获取数据只有通过this.properties
+      var nowText = nowData[index].text;//当前点击的内容
+      this.triggerEvent('selectevent', nowData[index]);
+      this.setData({
+        selectShow: false,
+        nowText: nowText
+      })
     }
   },
+  
   options: {
     addGlobalClass: true
   }

@@ -12,7 +12,7 @@ Page({
   data: {
     headerTxt: `欢迎回来！\n您可以在此管理您的课程，并添加预约的新学员，也可添加您的教练`,
     imageSrc: "../../image/gao.png",
-    current: "studentpage",
+    current: "homepage",
     isIphoneX: false
   },
   handleChange({ detail }) {

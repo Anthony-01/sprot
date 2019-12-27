@@ -41,7 +41,7 @@ Component({
       let orders = app.globalData.myOrderes;
       console.log(orders);
       orders.forEach(item => {
-        item.showTime = util.transfromTime(item.collectTime)
+        item.showTime = util.transfromOrderTime(item.collectTime)
       });
       this.setData({
         orderAry: orders

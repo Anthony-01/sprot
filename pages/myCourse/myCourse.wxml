@@ -1,4 +1,52 @@
 <import src="../../template/courseItem"></import>
+<wxs module="m2">
+function getBtnConfirmText(item) {
+  if (item.confirmState == 1 || item.confirmState == 3) {
+    return "已签到";
+  };
+  return "确认签到";
+}
+
+function getBtnConfirmColor(item) {
+  if (item.confirmState == 1 || item.confirmState == 3) {
+    return 'green-color';
+  }
+  if (item.cancelState == 1 || item.cancelState == 2) {
+    return 'gray-color';
+  }
+}
+
+function getBtnGiveUpText(item) {
+  if (item.cancelState == 1 || item.cancelState == 2) {
+    return "已申请退课";
+  }
+  return "申请退课";
+}
+
+function getBtnGiveUpColor(item) {
+  if (item.confirmState == 1 || item.confirmState == 3) {
+    return 'gray-color';
+  }
+  if (item.cancelState == 1 || item.cancelState == 2) {
+    return 'red-color';
+  }
+}
+
+function getCoachStateColor(item) {
+  if (item.confirmState == 2 || item.confirmState == 3) {
+    return 'green-color';
+  }
+  if (item.cancelState == 2) {
+    return 'red-color';
+  }
+}
+
+module.exports.getBtnConfirmText = getBtnConfirmText;
+module.exports.getBtnConfirmColor = getBtnConfirmColor;
+module.exports.getBtnGiveUpText = getBtnGiveUpText;
+module.exports.getBtnGiveUpColor = getBtnGiveUpColor;
+module.exports.getCoachStateColor = getCoachStateColor;
+</wxs>
 <view class="my-course-wrapper">
   <view class="userinfo">
     <view class="left">
@@ -11,11 +59,26 @@
     </view>
   </view>
 
-  <select prop-array="{{selectArray}}" bindselectevent="selectHandle"></select>
+  <select prop-array="{{selectArray}}" bindselectevent="_selectHandle" id="select-component"></select>
 
   <scroll-view class="scroll" scroll-y="true">
     <view wx:for="{{courseItem}}" wx:key="*this" class="scroll-item">
-      <template is="courseItem" data="{{item}}"></template>
+      <view class="courseItem my-border-shadow">
+        <view class="courseItem-title">第{{item.num}}节</view>
+        <view class="courseItem-status ">教练确认状态：<text class="{{m2.getCoachStateColor(item)}}">{{item.status}}</text></view>
+        <view class="courseItem-time">教练确认时间：{{item.time}}</view>
+        <view class="courseItem-myTime">我的确认时间：{{item.myTime}}</view>
+
+        <view class="courseItem-ui">
+          <view class="courseItem-ui-sign {{m2.getBtnConfirmColor(item)}}" bind:tap="_onConfirm" data-index="{{index}}">{{m2.getBtnConfirmText(item)}}</view>  
+          <view class="courseItem-ui-giveUp {{m2.getBtnGiveUpColor(item)}}" bind:tap="onGiveUp" data-index="{{index}}">{{m2.getBtnGiveUpText(item)}}</view>
+        </view>
+      </view>
     </view>
   </scroll-view>
+
+  <view class="no-tip" hidden="{{course.length != 0}}">
+    <view>当前无课程</view>
+    <view class="link" bind:tap="_onLink">点击开始预约</view>
+  </view>
 </view>

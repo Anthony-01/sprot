@@ -30,6 +30,15 @@ Page({
    * 页面初始化函数
   */
   onLoad: function (option) {
+    // this.login().then(data => {
+    //   // console.log("返回信息:", data);
+    //   this.enterIndex(data);
+    // }).catch(() => {
+    //   console.log("用户未授权")
+    // })
+  },
+
+  onShow() {
     this.login().then(data => {
       // console.log("返回信息:", data);
       this.enterIndex(data);

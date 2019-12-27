@@ -52,10 +52,11 @@ Page ({
     
   },
   _onMyCourse(e) {
+    let self = this;
     wx.navigateTo({
       url: myCoursePath,
       success(res) {
-
+        res.eventChannel.emit("coachInfo", { user: self.data.coachInfo})
       },
       fail(err) {
 

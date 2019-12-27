@@ -20,11 +20,11 @@
     <view class="coach-wrapper">
       <view class="coach-item my-border-shadow" bindtap="coachDetail" data-index="{{index}}" wx:for="{{coachList}}">
         <view class="avator">
-          <image src="{{item.avator}}"></image>
+          <image src="{{item.avatarUrl}}"></image>
         </view>
         <view class="info">
-          <view class="name">{{item.nickName}}<span class=" my-icon {{item.gender == 0 ? 'my-icon-male' : 'my-icon-female'}}" ></span></view>
-          <view class="exprience">任教经历:{{item.experience}}</view>
+          <view class="name">{{item.nickname}}<span class=" my-icon {{item.gender == 0 ? 'my-icon-male' : 'my-icon-female'}}" ></span></view>
+          <view class="exprience">任教经历:{{workingYears[item.workingYears]}}</view>
         </view>
       </view>
     </view>

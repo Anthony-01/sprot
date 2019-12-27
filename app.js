@@ -16,6 +16,8 @@ const applyBecomeCoachUrl = 'api/User/ApplyBecomeCoach';
 const subscribeCourseUrl = 'api/User/SubscribeCourse';
 const subscribeRecordUrl = 'api/User/SubscribeRecord';
 const myCourseUrl = 'api/User/MyCourse';
+const hoursCancelUrl = 'api/User/HoursCancel';
+const hoursConfirmUrl = 'api/User/HoursComfirm';
 
 //Coach
 const addStudentUrl = 'api/Coach/AddStudent';
@@ -27,6 +29,9 @@ const subscribeRejectUrl = 'api/Coach/SubscribeReject';
 const modifyWorkingYearsUrl = 'api/Coach/ModifyWorkingYears';
 const modifyTeachingStyleUrl = 'api/Coach/ModifyTeachingStyle';
 const modifyIntroUrl = 'api/Coach/ModifyIntro';
+const hoursComfirmUrl = 'api/Coach/HoursComfirm';
+const hoursCancelPassUrl = 'api/Coach/HoursCancelPass';
+const hoursCancelRejectUrl = 'api/Coach/HoursCancelReject';
 
 //Project
 const allProjectUrl = 'api/Project/GetAll'
@@ -140,6 +145,15 @@ App({
         url: myCourseUrl,
         method: 'GET'
       },
+
+      hoursCancelApi: {
+        url: hoursCancelUrl,
+        method: 'POST'
+      },
+      hoursConfirmApi: {
+        url: hoursConfirmUrl,
+        method: 'POST'
+      },
       //coach
       addStudentApi: {
         url: addStudentUrl,
@@ -177,6 +191,20 @@ App({
         url: modifyIntroUrl,
         method: 'POST'
       },
+      coachComfirmApi: {
+        url: hoursComfirmUrl,
+        method: 'POST'
+      },
+      hoursCancelPassApi: {
+        url: hoursCancelPassUrl,
+        method: 'POST'
+      },
+      hoursCancelRejectApi: {
+        url: hoursCancelRejectUrl,
+        method: 'POST'
+      },
+
+
 
       //
       allProjectApi: {
