@@ -27,6 +27,7 @@ Page({
 
   _onSearchCoach(e) {
     let self = this;
+    if (e.detail.value.length == 0) return;
     let uniqueCode = e.detail.value.length ? e.detail.value : null;
     let search = app.globalData.http.searchApi;
 
@@ -44,6 +45,10 @@ Page({
     }).catch(err => {
       console.error(err);
     })
+  },
+
+  _onIconSearch(e) {
+    console.log("iconSearch");
   },
 
   _onCoachPage(e) {

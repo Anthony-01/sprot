@@ -174,7 +174,7 @@ Page({
     })
   },
 
-  onGiveUp(e) {
+  _onGiveUp(e) {
     console.log(e.detail)
     let self = this;
     let index = e.currentTarget.dataset.index;
@@ -197,7 +197,7 @@ Page({
       if (data.code == 1) {
         self.setData({
           ['courseItem[' + index + '].cancelState']: 1,
-          // ['courseItem[' + index + '].myTime']: util.transfromTime(new Date().getTime()),
+          ['courseItem[' + index + '].myTime']: util.transfromTime(new Date().getTime()),
           // ['courseItem[' + index + '].studentConfirmTime']: new Date().getTime(),
         })
       }

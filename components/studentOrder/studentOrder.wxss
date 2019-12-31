@@ -124,3 +124,9 @@
   color: #999999;
 }
 
+.no-tip {
+  color: #999999;
+  text-align: center;
+  margin-top : 200rpx;
+}
+

@@ -2,6 +2,7 @@
 <view class="search-wrapper ">
       <input type="text" class="search-input my-border-shadow" placeholder="输入教练专属码查找教练" confirm-type="search" bindconfirm="onConfig" bind:blur="_onSearchCoach"></input>
       <i-icon type="search" class="search-icon" size="28" color="#b4b4b4"/>
+      <view class="search-btn" style="width: 106rpx;height: 80rpx" catch:tap="_onIconSearch"></view>
     </view>
 
 <view class="coach-wrapper">

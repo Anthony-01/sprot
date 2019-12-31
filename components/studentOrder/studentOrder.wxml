@@ -9,5 +9,9 @@
     <!-- <view class="order-remarks order-info">备注: <text >{{item.remarks}}</text></view> -->
     <!-- <button bindtap="onAdd" hover-class="button-down" class="add-button" data-order-index="{{index}}">添加为我的学员</button> -->
   </view>
+
+  <view class="no-tip" hidden="{{orderAry.length != 0}}">
+    暂无预约
+  </view>
 </view>
 

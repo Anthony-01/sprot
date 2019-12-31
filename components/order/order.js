@@ -95,7 +95,7 @@ Component({
         recordID: order.recordID
       }
 
-      myHttp.request(passApi.url, passApi.method, data).then(data => {
+      myHttp.request(passApi.url + "?recordID=" + order.recordID , passApi.method, null).then(data => {
         util.showToast(data);
         if (data.code == 1) {
           //更改order的状态;
@@ -121,7 +121,7 @@ Component({
         recordID: order.recordID
       }
 
-      myHttp.request(rejectApi.url, rejectApi.method, data).then(data => {
+      myHttp.request(rejectApi.url + "?recordID=" + order.recordID, rejectApi.method, null).then(data => {
         util.showToast(data);
         console.log(data);
         if (data.code == 1) {

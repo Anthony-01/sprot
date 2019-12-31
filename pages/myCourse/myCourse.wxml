@@ -1,42 +1,42 @@
 <import src="../../template/courseItem"></import>
 <wxs module="m2">
-function getBtnConfirmText(item) {
-  if (item.confirmState == 1 || item.confirmState == 3) {
+function getBtnConfirmText(confirmState) {
+  if (confirmState == 1 || confirmState == 3) {
     return "已签到";
   };
   return "确认签到";
 }
 
-function getBtnConfirmColor(item) {
-  if (item.confirmState == 1 || item.confirmState == 3) {
+function getBtnConfirmColor(confirmState, cancelState) {
+  if (confirmState == 1 || confirmState == 3) {
     return 'green-color';
   }
-  if (item.cancelState == 1 || item.cancelState == 2) {
+  if (cancelState == 1 || cancelState == 2) {
     return 'gray-color';
   }
 }
 
-function getBtnGiveUpText(item) {
-  if (item.cancelState == 1 || item.cancelState == 2) {
+function getBtnGiveUpText(cancelState) {
+  if (cancelState == 1 || cancelState == 2) {
     return "已申请退课";
   }
   return "申请退课";
 }
 
-function getBtnGiveUpColor(item) {
-  if (item.confirmState == 1 || item.confirmState == 3) {
+function getBtnGiveUpColor(confirmState, cancelState) {
+  if (confirmState == 1 || confirmState == 3) {
     return 'gray-color';
   }
-  if (item.cancelState == 1 || item.cancelState == 2) {
+  if (cancelState == 1 || cancelState == 2) {
     return 'red-color';
   }
 }
 
-function getCoachStateColor(item) {
-  if (item.confirmState == 2 || item.confirmState == 3) {
+function getCoachStateColor(confirmState, cancelState) {
+  if (confirmState == 2 || confirmState == 3) {
     return 'green-color';
   }
-  if (item.cancelState == 2) {
+  if (cancelState == 2) {
     return 'red-color';
   }
 }
@@ -65,13 +65,13 @@ module.exports.getCoachStateColor = getCoachStateColor;
     <view wx:for="{{courseItem}}" wx:key="*this" class="scroll-item">
       <view class="courseItem my-border-shadow">
         <view class="courseItem-title">第{{item.num}}节</view>
-        <view class="courseItem-status ">教练确认状态：<text class="{{m2.getCoachStateColor(item)}}">{{item.status}}</text></view>
+        <view class="courseItem-status ">教练确认状态：<text class="{{m2.getCoachStateColor(item.confirmState, item.cancelState)}}">{{item.status}}</text></view>
         <view class="courseItem-time">教练确认时间：{{item.time}}</view>
         <view class="courseItem-myTime">我的确认时间：{{item.myTime}}</view>
 
         <view class="courseItem-ui">
-          <view class="courseItem-ui-sign {{m2.getBtnConfirmColor(item)}}" bind:tap="_onConfirm" data-index="{{index}}">{{m2.getBtnConfirmText(item)}}</view>  
-          <view class="courseItem-ui-giveUp {{m2.getBtnGiveUpColor(item)}}" bind:tap="onGiveUp" data-index="{{index}}">{{m2.getBtnGiveUpText(item)}}</view>
+          <view class="courseItem-ui-sign {{m2.getBtnConfirmColor(item.confirmState, item.cancelState)}}" bind:tap="_onConfirm" data-index="{{index}}">{{m2.getBtnConfirmText(item.confirmState)}}</view>  
+          <view class="courseItem-ui-giveUp {{m2.getBtnGiveUpColor(item.confirmState, item.cancelState)}}" bind:tap="_onGiveUp" data-index="{{index}}">{{m2.getBtnGiveUpText(item.cancelState)}}</view>
         </view>
       </view>
     </view>

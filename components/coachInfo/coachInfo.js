@@ -3,6 +3,8 @@ let app = getApp();
 
 import myHttp from '../../utils/http.js';
 import util from '../../utils/util.js';
+
+const mobileRegExp = /^1[345678]\d{9}$/;
 Component({
   /**
    * 组件的属性列表
@@ -155,6 +157,14 @@ Component({
       let self = this;
       let tel = e.detail.value;
 
+      if (!mobileRegExp.test(tel)) {
+        util.showTip("请输入正确的电话格式!");
+        this.setData({
+          ["userInfo.tel"]: ""
+        })
+        return;
+      }
+
       let modifyTel = app.globalData.http.mobileApi;
 
       myHttp.request(modifyTel.url + '?mobile=' + tel, modifyTel.method, null).then(data => {
@@ -173,6 +183,7 @@ Component({
     },
     _introSubmit(e) {
       let self = this;
+      if (e.detail.value.length == 0) return;
       let intro = e.detail.value.length ? e.detail.value : null;
 
       let modifyIntro = app.globalData.http.modifyIntroApi;
@@ -190,6 +201,7 @@ Component({
     },
     _teachStyleSubmit(e) {
       let self = this;
+      if (e.detail.value.length == 0) return;
       let teachingStyle = e.detail.value.length ? e.detail.value : '\s';
 
       let modifyTeachingStyle = app.globalData.http.modifyTeachApi;

@@ -2,7 +2,8 @@
 
 //mock
 const API = require('./utils/api.js');
-const cHost = 'http://sport.webfox.com/';
+// const cHost = 'http://sport.webfox.com/';
+const cHost = 'https://sport.foxuc.net/';
 
 //User
 const loginUrl = 'api/Login/MinProgram';

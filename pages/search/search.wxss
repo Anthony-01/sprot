@@ -20,6 +20,13 @@
   top: 12rpx;
 }
 
+.search-wrapper .search-btn {
+  position: absolute;
+  right: 30rpx;
+  top: 0;
+  z-index: 999;
+}
+
 .coach-wrapper {
   /* margin-top: 10px; */
   padding: 0 24rpx;

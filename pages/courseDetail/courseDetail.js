@@ -162,6 +162,7 @@ Page({
           ['courseItem[' + index + '].myTime']: util.transfromTime(new Date().getTime()),
           ['courseItem[' + index + '].coachConfirmlTime']: new Date().getTime()
         })
+        console.log("修改后的confirmState：", status);
       }
     })
   },

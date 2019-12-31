@@ -1,8 +1,13 @@
 <!--components/studentInfo.wxml-->
 <view class="userInfo" hidden="{{hidden}}">
-  <image src="{{userInfo.avater}}" class="userInfo-avater"></image>
-  <view class="userInfo-nickname">{{userInfo.nickname}}</view>
-  <view class="userInfo-identity">身份：{{userInfo.identity}}</view>
+  <view class="left">
+    <image src="{{userInfo.avater}}" class="userInfo-avater"></image>
+  </view>
+  <view class="right">
+    <view class="userInfo-nickname">{{userInfo.nickname}}</view>
+    <view class="userInfo-identity">身份：{{userInfo.identity}}</view>
+
+  </view>
 </view>
 
 <view class="baseMsg-student" hidden="{{hidden}}">

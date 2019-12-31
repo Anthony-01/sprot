@@ -165,7 +165,8 @@ Component({
           app.globalData.userInfo.applyCoachState = 0;
           this.setData({
             status: 0,
-            statusClass: "waiting"
+            statusClass: "waiting",
+            stateTxt: "申请中"
           })
         }
       }).catch(err => {
