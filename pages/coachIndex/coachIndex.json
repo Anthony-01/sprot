@@ -11,10 +11,10 @@
     "order": "../../components/order/order",
     "coach-info-component": "../../components/coachInfo/coachInfo"
   },
-  "navigationBarBackgroundColor": "#ffffff",
+  "navigationBarBackgroundColor": "#e4e4e4",
   "navigationBarTextStyle": "black",
   "navigationBarTitleText": "首页",
-  "backgroundColor": "#eeeeee",
+  "backgroundColor": "#f8f8f8",
   "backgroundTextStyle": "light",
   "navigationStyle": "default",
   "disableScroll": true

@@ -63,12 +63,11 @@ App({
         this.globalData.systemInfo = res;
         let modelmes = res.model;
 
-        if (modelmes.search('iPhone X') != -1) {
+        if (modelmes.search('iPhone X') != -1 || modelmes.search('iPhone 11') != -1) {
 
           _self.globalData.isIphoneX = true
 
         }
-        console.log(res);
         console.log("is IphoneX:", _self.globalData.isIphoneX)
       }
     })

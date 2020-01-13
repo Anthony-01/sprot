@@ -48,7 +48,10 @@ Page({
   },
 
   _onIconSearch(e) {
-    console.log("iconSearch");
+    wx.hideKeyboard();
+    this.setData({
+      isFocus: false
+    })
   },
 
   _onCoachPage(e) {

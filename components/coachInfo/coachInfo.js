@@ -102,8 +102,10 @@ Component({
 
       let modifyGender = app.globalData.http.genderApi;
       myHttp.request(modifyGender.url + '?Gender=' + gender, modifyGender.method, null).then(data => {
-        console.log("返回修改性别的信息：", data);
-        //if code == 1 操作成功
+        // console.log("返回修改性别的信息：", data);
+        // //if code == 1 操作成功
+        // console.error("修改后的性别", gender);
+        // console.log("修改后的性别", gender);
         util.showToast(data);
         if (data.code == 1) {
           that.setData({

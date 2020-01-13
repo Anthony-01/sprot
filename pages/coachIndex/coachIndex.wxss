@@ -100,7 +100,9 @@
   bottom: 0;
   left: 0;
   right: 0;
-  z-index: 10
+  z-index: 10;
+  background: #f8f8f8;
+  border-top: 1px #dddddd solid;
 }
 
 .show-page {
@@ -114,6 +116,7 @@
   align-items: center;
   overflow-y: auto;
   overflow-x: hidden;
+  background: #f8f8f8;
 }
 .iphonex_bottom_page {
   bottom: 60px;
@@ -121,4 +124,7 @@
 
 .iphonex_bottom {
   bottom: 10px !important;
+}
+.tab-bar-i-class {
+  background: #f8f8f8;
 }

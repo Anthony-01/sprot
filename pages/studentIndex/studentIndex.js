@@ -26,10 +26,13 @@ Page({
     switch (detail.key) {
       case "homepage": {
         title = "首页";
+        this.requestUserInfo();
+        //是否在申请个人信息以后再重新申请教练信息
         break;
       }
       case "order": {
         title = "我的预约";
+        this.setOrder();
         break;
       }
       case "mine": {
@@ -51,7 +54,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    // console.error("indexLoad");
     let isIphoneX = app.globalData.isIphoneX;
 
     this.setData({
@@ -60,11 +62,26 @@ Page({
 
     })
 
-    console.log("student", this.data.isIphoneX);
+    // getOpenerEventChannel
 
-    // const eventChannel = this.getOpenerEventChannel();
-    // eventChannel.on(customEvent.SET_COACH, this.setCoach);
+    // let channel = this.getOpererEventChannel();
+
+
+    const eventChannel = this.getOpenerEventChannel();
     
+    eventChannel.on && eventChannel.on(customEvent.SET_CURRENT, this.setCurrent);
+    
+
+  },
+
+  setCurrent(data) {
+    let current = data.data.current;
+    if (this.data.current == current) {
+      return;
+    }
+    this.handleChange({detail: {
+      key: current
+    }})
 
   },
 
@@ -77,15 +94,17 @@ Page({
 
     if (app.globalData.userInfo != null) {
       this.setComponentUser();
+      this.setCoach();
       return;
     };
     let httpConfig = app.globalData.http;
     let self = this;
     myHttp.request(httpConfig.infoApi.url, httpConfig.infoApi.method).then(data => {
-      console.error("个人信息:", data);
+      // console.error("个人信息:", data);
       if (data.code == 1) {
         app.globalData.userInfo = data.payload;
         self.setComponentUser();
+        self.setCoach();
       }
     }).catch(err => {
       console.error(err);
@@ -105,13 +124,15 @@ Page({
 
   setCoach() {
     let data = app.globalData.myCoaches;
-    console.log("设置我的教练", data);
+    // console.log("设置我的教练", data);
     let slef = this;
     let myCoaches = app.globalData.http.myCoachesApi;
     let studentIndexPage = this.selectComponent("#studentIndex");
 
     myHttp.request(myCoaches.url, myCoaches.method, null).then(data => {
       if (data.code == 1) {
+        console.error("教练数据:");
+        console.log(data);
         studentIndexPage.setCoachList(data.payload);
         app.globalData.myCoaches = data.payload;
       }
@@ -148,7 +169,7 @@ Page({
         break;
       }
       case "mine": {
-        title = "我的信息"
+        title = "我的信息";
         break;
       }
     }
@@ -157,9 +178,9 @@ Page({
     })
 
     //刷新教练以及个人信息
-    this.setCoach();
     this.setOrder();
     this.requestUserInfo();
+    // this.setCoach();
   },
 
   setOrder() {

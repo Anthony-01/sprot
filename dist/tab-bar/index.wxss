@@ -7,7 +7,7 @@
   justify-content: space-around;
   align-items: center;
   -webkit-box-align: center;
-  background: #fff;
+  background: #f8f8f8;
 }
 
 .i-tab-bar::after {
@@ -37,10 +37,15 @@
   bottom: 0;
   left: 0;
   right: 0;
+  
 }
 
 .i-tab-bar-layer {
   display: block;
   float: left;
   height: 100%;
+  
+}
+.i-hidden {
+  position: absolute;
 }

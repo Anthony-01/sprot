@@ -147,7 +147,7 @@ Page({
           data[name] = res[name];
         }
         data.code = code;
-        // console.log("已授权用户：", data);
+        console.log("已授权用户：", data);
         resolve(data);
       }
     })

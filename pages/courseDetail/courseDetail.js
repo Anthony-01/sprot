@@ -175,7 +175,7 @@ Page({
     let self = this;
     let index = e.currentTarget.dataset.index;
     let course = this.data.courseItem[index];
-    if (course.confirmState == 3 || course.cancelState == 2) {
+    if (course.confirmState == 3 || course.cancelState == 2 || course.cancelState == 0) {
       //如果course的状态是已经签到，那么返回
       //cancelState 或者2的情况?
       //confirmState course.cancelState == 1

@@ -1,7 +1,7 @@
 /* components/coachInfo/coachInfo.wxss */
 Page {
   width:100%;
-  height: 100%;
+  /* height: 100%; */
 }
 
 .userInfo {
@@ -129,7 +129,7 @@ Page {
   /* margin-bottom: 20rpx; */
 }
 .remarks:last-child {
-  margin-bottom: 30rpx;
+  margin-bottom: 40rpx;
 }
 .baseMsg-table-teach .right {
   margin-left: 68rpx;
@@ -157,14 +157,21 @@ Page {
 
 .baseMsg-table-teach .right textarea {
   width: 100%;
-  height: 120rpx;
+  /* height: 120rpx; */
   /* font-size: 34rpx; */
   /* line-height: 96rpx; */
   /* padding-top: 24rpx; */
   /* font-size: 34rpx; */
   line-height: 42rpx;
+  padding-bottom: 20rpx;
   /* margin-top: 28rpx;
   padding: 0; */
+}
+.style_textarea {
+  height: 120rpx;
+}
+.intro_textarea {
+  height: 200rpx;
 }
 .placeholder-style {
   font-size: 40rpx;

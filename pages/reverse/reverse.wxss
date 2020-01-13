@@ -32,7 +32,7 @@ Page {
 }
 
 .form-name .left .title{
-  
+  width: 64rpx;
 }
 .form-name .left .remarks{
   line-height: 48rpx;

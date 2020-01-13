@@ -15,12 +15,12 @@
   <view class="baseMsg-table my-border-shadow" style="height:200rpx">
     <view class="baseMsg-table-sex">
       <view class="baseMsg-sex-txt">性别</view>
-      <view class="baseMsg-sex-radio " data-index="{{1}}" bindtap="_sexTab">
-        <view class="baseMsg-sex-radio-button {{gender==1 ? 'selected-button':''}}"><view class="button-in"></view></view>
+      <view class="baseMsg-sex-radio " data-index="{{0}}" bindtap="_sexTab">
+        <view class="baseMsg-sex-radio-button {{gender==0 ? 'selected-button':''}}"><view class="button-in"></view></view>
         <span class="my-icon-male my-icon"></span>
       </view>
-      <view class="baseMsg-sex-radio " data-index="{{2}}" bindtap="_sexTab">
-        <view class="baseMsg-sex-radio-button {{gender==2 ? 'selected-button':''}}"><view class="button-in"></view></view>
+      <view class="baseMsg-sex-radio " data-index="{{1}}" bindtap="_sexTab">
+        <view class="baseMsg-sex-radio-button {{gender==1 ? 'selected-button':''}}"><view class="button-in"></view></view>
         <span class="my-icon-female my-icon"></span>
       </view>
     </view>

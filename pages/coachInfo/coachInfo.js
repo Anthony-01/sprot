@@ -22,8 +22,10 @@ Page ({
 
   setCoachInfo(data) {
     console.log(data.user);
+    let test = "";
     this.setData({
-      coachInfo: data.user
+      coachInfo: data.user,
+      property: test.length > 0 ? test : data.user.teachingStyle
     })
   },
   

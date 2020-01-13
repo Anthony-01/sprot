@@ -38,13 +38,16 @@ Page ({
     let eventChannel = this.getOpenerEventChannel();
     eventChannel.on(customEvent.SET_COURSE, this.setCourse);
 
+    
+    
+  },
+  onShow() {
     let userInfo = app.globalData.userInfo;
     if (userInfo.mobile) {
       this.setData({
         tel: userInfo.mobile
       })
     }
-    
   },
 
   setCourse(data) {
@@ -116,7 +119,12 @@ Page ({
   editTel(e) {
     console.log("click");
     wx.navigateTo({
-      url: editPath
+      url: editPath,
+      success(res) {
+        res.eventChannel.emit(customEvent.SET_CURRENT, {data: {
+          current: "mine"
+        }})
+      }
     })
   },
 

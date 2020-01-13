@@ -31,6 +31,9 @@ function getBtnGiveUpColor(confirmState, cancelState) {
   if (cancelState == 2) {
     return 'red-color';
   }
+  if (cancelState == 0) {
+    return 'gray-color';
+  }
 }
 
 module.exports.getTextStatusColor = getTextStatusColor;

@@ -8,7 +8,8 @@
   <coach-info-component hidden="{{current != 'mine'}}" class="{{current == 'mine'?'show-page': ''}} {{isIphoneX ? 'iphonex_bottom_page':''}}" id="coach-info"></coach-info-component>
 
   <view class="tab-bar-wrapper {{isIphoneX ? 'iphonex_bottom':''}}">
-    <i-tab-bar current="{{ current }}" color="#29a1f7" bindchange="handleChange">
+  <!-- color="#29a1f7" -->
+    <i-tab-bar current="{{ current }}" color="#29a1f7" bindchange="handleChange" i-class="tab-bar-i-class">
       <i-tab-bar-item key="homepage" icon="homepage" current-icon="homepage_fill" title="首页"></i-tab-bar-item>
       <i-tab-bar-item key="studentpage" icon="addressbook" current-icon="addressbook_fill" title="学员"></i-tab-bar-item>
       <i-tab-bar-item key="orderpage" icon="collection" current-icon="collection_fill" title="预约"></i-tab-bar-item>

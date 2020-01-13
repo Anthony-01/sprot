@@ -53,6 +53,7 @@
 .my-border-shadow {
   /* box-shadow: 0 0 10rpx 1rpx  rgba(0.49, 0.49, 0.49, 0.2); */
   /* 0 0 10rpx 1rpx  rgba(0.49, 0.49, 0.49, 0.2) */
-  box-shadow: 0 0 4rpx 1rpx  rgba(0.49, 0.49, 0.49, 0.2);
+  /* box-shadow: 0 0 4rpx 1rpx  rgba(0.49, 0.49, 0.49, 0.2); */
   border: 0;
+  background: #fff;
 }

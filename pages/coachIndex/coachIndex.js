@@ -99,6 +99,43 @@ Page({
    */
   onShow: function () {
     wx.hideHomeButton();
+    let title;
+    let self = this;
+    
+    
+    switch (this.data.current) {
+      case "homepage": {
+        title = "首页";
+        this.getUserInfo();
+        break;
+      }
+      case "studentpage": {
+        title = "我的学员";
+        let myStudentPage = self.selectComponent("#coach-students");
+        myStudentPage.requestMyStudents();
+        break;
+      }
+      case "orderpage": {
+        title = "课程预约";
+        let orderPage = self.selectComponent("#coach-order");
+        orderPage.requestMyOrderes();
+        break;
+      }
+      case "mine": {
+        title = "我的信息";
+        break;
+      }
+    }
+
+    wx.setNavigationBarTitle({
+      title: title
+    })
+
+    //刷新个人信息
+    
+
+    //刷新学员信息
+
   },
 
   /**

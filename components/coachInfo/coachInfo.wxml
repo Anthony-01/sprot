@@ -15,12 +15,12 @@
   <view class="baseMsg-table my-border-shadow" >
     <view class="baseMsg-table-sex table-item">
       <view class="baseMsg-sex-txt">性别</view>
-      <view class="baseMsg-sex-radio " data-index="{{1}}" bindtap="_sexTab">
-        <view class="baseMsg-sex-radio-button {{gender==1 ? 'selected-button':''}}"><view class="button-in"></view></view>
+      <view class="baseMsg-sex-radio " data-index="{{0}}" bindtap="_sexTab">
+        <view class="baseMsg-sex-radio-button {{gender==0 ? 'selected-button':''}}"><view class="button-in"></view></view>
         <span class="my-icon-male my-icon"></span>
       </view>
-      <view class="baseMsg-sex-radio " data-index="{{2}}" bindtap="_sexTab">
-        <view class="baseMsg-sex-radio-button {{gender==2 ? 'selected-button':''}}"><view class="button-in"></view></view>
+      <view class="baseMsg-sex-radio " data-index="{{1}}" bindtap="_sexTab">
+        <view class="baseMsg-sex-radio-button {{gender==1 ? 'selected-button':''}}"><view class="button-in"></view></view>
         <span class="my-icon-female my-icon"></span>
       </view>
     </view>
@@ -43,7 +43,7 @@
         <view class="remarks">(限20字)</view>
       </view>
       <view class="right {{detail ? 'iostextarea'  : 'androidtextarea'}}" >
-        <textarea placeholder="简短介绍您的教学风格" maxlength="20" adjust-position="{{true}}" adjust-position="{{true}}" placeholder-style="placeholder-style" bind:blur="_teachStyleSubmit" value="{{userInfo.teachingStyle}}"></textarea>
+        <textarea placeholder="简短介绍您的教学风格" maxlength="20"  adjust-position="{{true}}" placeholder-style="placeholder-style" bind:blur="_teachStyleSubmit" value="{{userInfo.teachingStyle}}" class="style_textarea"></textarea>
       </view>
     </view>
     <view class="baseMsg-table-teach  table-item" style="border: none;">
@@ -52,7 +52,7 @@
         <view class="remarks">(限100字)</view>
       </view>
       <view class="right {{detail ? 'iostextarea'  : 'androidtextarea'}}">
-        <textarea placeholder="请填写您的个人简历" maxlength="100" auto-height="{{true}}" adjust-position="{{true}}" placeholder-style="placeholder-style" bind:blur="_introSubmit" value="{{userInfo.intro}}"></textarea>
+        <textarea placeholder="请填写您的个人简历" maxlength="100"  adjust-position="{{true}}" placeholder-style="placeholder-style" bind:blur="_introSubmit" value="{{userInfo.intro}}"  class="intro_textarea"></textarea>
       </view>
     </view>
   </view>

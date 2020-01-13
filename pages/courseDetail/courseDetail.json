@@ -2,5 +2,6 @@
   "navigationBarTitleText": "课程详情",
   "usingComponents": {
     "select": "../../components/select/select"
-  }
+  },
+  "navigationBarBackgroundColor": "#e4e4e4"
 }

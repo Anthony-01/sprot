@@ -88,8 +88,11 @@ Component({
       if (this.data.gender == gender) return;
 
       let modifyGender = app.globalData.http.genderApi;
+
       myHttp.request(modifyGender.url + '?Gender=' + gender, modifyGender.method, null).then(data => {
-        console.log("返回修改性别的信息：", data);
+        // console.log("返回修改性别的信息：", data);
+        // console.error("修改后的性别", gender);
+        // console.log("修改后的性别", gender);
         //if code == 1 操作成功
         util.showToast(data);
         if (data.code == 1) {
