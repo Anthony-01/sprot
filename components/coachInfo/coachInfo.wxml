@@ -6,10 +6,92 @@
   <view class="right">
     <view class="userInfo-nickname">{{userInfo.nickname}}</view>
     <view class="userInfo-identity">身份：{{userInfo.identity}}</view>
+    <view class="userInfo-id-wrapper">
+      <view class="userInfo-id">id：{{userInfo.code}}</view>
+      <view class="icon-wrapper">
+        <view class="icon-change icon-item" bindtap="_change">
+          <image src="../../image/icon_change.png" style="width: 25rpx;height: 25rpx;"></image>
+          更换
+        </view>
+        <view class="icon-copy icon-item" bindtap="copy">
+          <image src="../../image/icon_copy.png" style="width: 30rpx;height: 30rpx;"></image>
+          复制
+        </view>
+      </view>
+    </view>
+    
   </view>
 </view>
+<view class="base-info" hidden="{{hidden}}">
+  <view class="baseMsg-title">基本信息</view>
+  <view class="base-info-table">
+    <view class="base-info-table-sex info-table-item">
+        <view class="base-info-txt">性别</view>
+        <view class="baseMsg-sex-radio " data-index="{{0}}" bindtap="_sexTab">
+          <view class="baseMsg-sex-radio-button {{gender==0 ? 'selected-button':''}}"><view class="button-in"></view></view>
+          <span class="my-icon-male my-icon"></span>
+        </view>
+        <view class="baseMsg-sex-radio " data-index="{{1}}" bindtap="_sexTab">
+          <view class="baseMsg-sex-radio-button {{gender==1 ? 'selected-button':''}}"><view class="button-in"></view></view>
+          <span class="my-icon-female my-icon"></span>
+        </view>
+    </view>
+    <view class="base-info-table-phone info-table-item">
+      <view class="base-info-txt">联系电话</view>
+      <input class="base-info-table-phone-input" type="number" placeholder="输入联系电话" bind:blur="_telSubmit" value="{{userInfo.tel}}"></input>
+    </view>
 
-<view class="baseMsg-student" hidden="{{hidden}}">
+    <view class="base-info-table-exprience  info-table-item">
+      <view class="base-info-txt">从业经历</view>
+      <view class="section">
+        <picker bindchange="bindPickerChange" value="{{userInfo.workingYear}}" range="{{array}}">
+          <view class="picker">
+            <view class="placeholder" wx:if="{{userInfo.workingYear == undefined}}">请选择从业年限</view>
+            <view wx:else>{{array[userInfo.workingYear]}}</view>
+          </view>
+        </picker>
+      </view>
+    </view>
+
+    <view class="base-info-table-location info-table-item">
+      <view class="base-info-txt">所在省市</view>
+      <view class="section">
+        <picker mode="region" bindchange="bindRegionChange" value="{{region}}" custom-item="{{customItem}}">
+          <view class="picker">
+            <view class="placeholder" hidden="{{region.length != 0}}">请选择省市</view>
+            {{region[0]}}，{{region[1]}}
+          </view>
+        </picker>
+      </view>
+      <view class="icon-location" bind:tap="_getLocation">
+        <view class="image-wrapper">
+          <image class="icon-image" src="../../image/icon_location.png"></image>
+        </view>
+        <view class="icon-txt">获取</view>
+      </view>
+    </view>
+
+    <view class="info-table-item base-info-table-style">
+      <view class="base-info-txt">教学风格</view>
+      <view class="right {{detail ? 'iostextarea'  : 'androidtextarea'}}" >
+        <!-- <textarea placeholder="限20字，风格将展示于你的教练简介。" maxlength="20"   auto-height placeholder-style="placeholder-style" bind:blur="_teachStyleSubmit" value="{{userInfo.teachingStyle}}" class="style_textarea"></textarea> -->
+        <i-input value="{{ userInfo.teachingStyle }}" type="textarea"   placeholder="限20字，风格将展示于教练简介。" maxlength="20" bind:blur="_teachStyleSubmit" i-class="style_textarea"/>
+      </view>
+    </view>
+
+    <view class="info-table-item base-info-table-style">
+      <view class="base-info-txt">个人简介</view>
+      <view class="right {{detail ? 'iostextarea'  : 'androidtextarea'}}" >
+        <!-- <textarea placeholder="限20字，风格将展示于你的教练简介。" maxlength="20"   auto-height placeholder-style="placeholder-style" bind:blur="_teachStyleSubmit" value="{{userInfo.teachingStyle}}" class="style_textarea"></textarea> -->
+        <i-input value="{{ userInfo.intro }}" type="textarea"   placeholder="限50字，风格将展示于个人简介。" maxlength="50" bind:blur="_introSubmit" i-class="style_textarea" />
+      </view>
+    </view>
+  </view>
+  
+</view>
+
+
+<!-- <view class="baseMsg-student" hidden="{{true}}">
   <view class="baseMsg-title">基本信息</view>
 
   <view class="baseMsg-table my-border-shadow" >
@@ -52,20 +134,13 @@
         <view class="remarks">(限100字)</view>
       </view>
       <view class="right {{detail ? 'iostextarea'  : 'androidtextarea'}}">
-        <textarea placeholder="请填写您的个人简历" maxlength="100"  adjust-position="{{true}}" placeholder-style="placeholder-style" bind:blur="_introSubmit" value="{{userInfo.intro}}"  class="intro_textarea"></textarea>
+        <textarea placeholder="请填写您的个人简历" maxlength="100"  adjust-position="{{true}}" placeholder-style="placeholder-style" bind:blur="_introSubmit" value="{{userInfo.intro}}"  class="intro_textarea" autofocus></textarea>
       </view>
     </view>
   </view>
 
-  <view class="myCode">
-      <view class="myCode-title">我的专属码</view>
-      <view class="myCode-view my-border-shadow">
-        <view class="myCode-view-num">{{userInfo.code}}</view>
-        <view class="myCode-view-ui-change" bindtap="_change">换一组</view>
-        <view class="myCode-view-ui-copy" bindtap="copy">复制</view>
-      </view>
-  </view>
+
 
   
-</view>
+</view> -->
 

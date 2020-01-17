@@ -188,7 +188,7 @@ Page({
     let self = this;
     let orderPage = this.selectComponent("#studentOrder");
 
-    let orderApi = app.globalData.http.subRecordApi;
+    let orderApi = app.globalData.http.subRecordApi;//刷新预约
     myHttp.request(orderApi.url, orderApi.method, null).then(data => {
       //获得以后
       if (data.code == 1) {

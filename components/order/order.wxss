@@ -61,7 +61,7 @@
   align-items: center;
   overflow:auto;  */
   width: 100%;
-  /* padding-bottom: 20rpx; */
+  padding-bottom: 20rpx;
 }
 /* .tab {
   display: flex;
@@ -126,19 +126,22 @@
   width: 100%;
   display: flex;
   text-align: center;
-  border-top: solid 1rpx #e4e4e4;
+  border-top: solid 4rpx #f8f8f8;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
   border-bottom-left-radius: 12rpx;
   border-bottom-right-radius: 12rpx;
-  padding: 10rpx 0;
+  
 }
 .pass{
   flex-grow: 1;
-  color: #199eda
+  color: #199eda;
+  padding: 20rpx 0;
+  border-right: solid 4rpx #f8f8f8;
 }
 .reject {
   flex-grow: 1;
+  padding: 20rpx 0;
   color: #999999;
 }
 

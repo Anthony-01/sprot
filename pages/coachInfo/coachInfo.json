@@ -1,3 +1,5 @@
 {
-  "navigationBarTitleText": "教练详情"
+  "navigationBarTitleText": "教练详情",
+  "navigationBarBackgroundColor": "#e4e4e4",
+  "backgroundColor": "#f8f8f8"
 }

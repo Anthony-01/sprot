@@ -45,7 +45,7 @@ Component({
   methods: {
     coachDetail(e) {
       //进入教练详情页并且导入信息
-      let index = e.target.dataset.index;
+      let index = e.currentTarget.dataset.index;
       let user = this.data.coachList[index];
 
       if (user) {

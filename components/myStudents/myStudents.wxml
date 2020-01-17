@@ -7,7 +7,7 @@
     <view class="right">
       <view class="nickname">{{item.nickname}}</view> 
       <view class="info-item" >报名项目 : {{item.courseCount}}个</view>
-      <view class="info-item" >课程进度 : {{item.completeHours}} / {{item.sumHours}}</view>
+      <view class="info-item" >课程进度 : {{item.completeHours}}/{{item.sumHours}}</view>
     </view>
   </view>
 

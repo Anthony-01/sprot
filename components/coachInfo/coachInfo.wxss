@@ -12,14 +12,17 @@ Page {
   display: flex;
   width: 100%;
   justify-content: flex-start;
+  padding: 20rpx 0; 
+  background: #fff;
+  border-bottom: solid #f2f2f2 2rpx;
 }
 
 .userInfo-avater {
   /* position: absolute; */
   width: 140rpx;
   height: 140rpx;
-  margin-left: 72rpx;
-  margin-right: 72rpx;
+  margin-left: 50rpx;
+  margin-right: 50rpx;
   border-radius: 50%;
   
   
@@ -47,6 +50,31 @@ Page {
   color:#7d7d7d;
   font-size: 26rpx;
 }
+.userInfo-id-wrapper {
+  display: flex;
+  font-size: 26rpx;
+  color: #169bd5;
+
+}
+.userInfo-id {
+  margin-top: 5rpx;
+  color:#7d7d7d;
+  font-size: 26rpx;
+  margin-right: 30rpx;
+}
+.userInfo-id-wrapper .icon-item {
+  display: flex;
+  align-items: center;
+}
+
+.userInfo-id-wrapper .icon-wrapper {
+  display: flex;
+  align-items: flex-end;
+}
+.userInfo-id-wrapper .icon-wrapper .icon-copy {
+  margin-left: 10rpx;
+}
+
 
 .baseMsg-coach {
   display: block;
@@ -58,7 +86,10 @@ Page {
   left: 60rpx; */
   width: 704rpx;
   margin: 0 auto;
+  margin-top: 24rpx;
   padding-left: 50rpx;
+  color: #949494;
+  background: #f8f8f8;
 }
 
 .baseMsg-table {
@@ -74,11 +105,48 @@ Page {
   align-items: center;
   margin: 24rpx auto;
 }
+
+/* release 1.1.0 */
+.base-info {
+  color: #333333;
+}
+
+/* relase 1.1.0 */
+.base-info-table {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 40rpx;
+  margin-top: 24rpx;
+  border-top: solid #f2f2f2 2rpx;
+  background: #fff;
+  /* padding-bottom: 20rpx; */
+  font-size: 28rpx;
+}
+
+
+
 .baseMsg-table .table-item {
   width: 654rpx;
   font-size: 34rpx;
   line-height: 96rpx;
   border-bottom: 1rpx solid rgba(0.49, 0.49, 0.49, 0.1);
+}
+
+.base-info-table .info-table-item {
+  width: 100%;
+  border-bottom: solid #f2f2f2 2rpx;
+  /* height: 96rpx; */
+  line-height: 96rpx;
+  display: flex;
+  align-items: center;
+}
+
+.base-info-table-sex { 
+  /* release 1.1.0 */
+  
+  
+  
 }
 
 .baseMsg-table-sex {
@@ -98,12 +166,55 @@ Page {
   display: flex;
 
 }
-.baseMsg-table-exprience .section {
-  margin-left: 68rpx;
+.base-info-table-exprience .section {
+  /* margin-left: 68rpx; */
   flex-grow: 1;
 }
+
+.image-wrapper {
+  width:60rpx;
+  height: 60rpx;
+}
+.icon-location .icon-image {
+  position: relative;
+  top: 0;
+  width:60rpx;
+  height: 60rpx;
+}
+.icon-location .icon-txt {
+  font-size: 20rpx;
+  height: 36rpx;
+  line-height: 36rpx;
+  /* height: 20rpx; */
+}
+
 .baseMsg-table-exprience .placeholder {
   color: #808080;
+}
+
+.placeholder {
+  color: #808080;
+}
+
+.base-info-table-location .section {
+  flex-grow: 1;
+}
+
+.base-info-table-location .icon-location{
+  width: 80rpx;
+  height: 96rpx;
+  
+  color: #949494;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.base-info-table-style .right {
+  /* flex-grow: 1; */
+  width:70%;
 }
 
 .baseMsg-table-teach{
@@ -151,24 +262,25 @@ Page {
 
 }
 .androidtextarea textarea {
-  padding: 31rpx 0 0 0;
+  /* padding: 31rpx 0 0 0; */
   /* padding: 0; */
 }
 
 .baseMsg-table-teach .right textarea {
   width: 100%;
-  /* height: 120rpx; */
-  /* font-size: 34rpx; */
-  /* line-height: 96rpx; */
-  /* padding-top: 24rpx; */
-  /* font-size: 34rpx; */
   line-height: 42rpx;
   padding-bottom: 20rpx;
-  /* margin-top: 28rpx;
-  padding: 0; */
 }
 .style_textarea {
-  height: 120rpx;
+  /* height: 120rpx; */
+  /* line-height: 96rpx; */
+  /* line-height: 42rpx; */
+  width: 100%;
+  min-height:60rpx;
+	/* 设置 min-height 是为了设置 textarea 的高度 */
+	/* 因为行内样式优先级比较高，所以曲线救国 */
+	/* font-size:28rpx; */
+	/* line-height:30rpx; */
 }
 .intro_textarea {
   height: 200rpx;
@@ -212,6 +324,11 @@ Page {
 .baseMsg-sex-txt {
   width: 30%;
 }
+.base-info-sex-txt {
+  width: 30%;
+  margin-left: 10rpx;
+}
+
 .baseMsg-sex-radio {
   display: flex;
   width: 30%;
@@ -226,6 +343,17 @@ Page {
   margin: 0 auto;
   line-height: 96rpx;
   border-bottom: 1rpx solid rgba(0.49, 0.49, 0.49, 0.1);
+}
+
+.base-info-table-phone-input {
+  /* height: 100%; */
+  flex-grow: 1;
+}
+
+.base-info-txt {
+  margin-left: 10rpx;
+  width: 30%;
+  flex-basis: 200rpx;
 }
 
 .baseMsg-table-phone-input {
@@ -277,6 +405,7 @@ Page {
   width: 704rpx;
   margin: 0 auto;
   padding-left: 50rpx;
+  color: #949494;
 }
 
 .myCode-view {
@@ -355,3 +484,11 @@ Page {
 .reverse-button-hover {
   background-color: rgba(25, 158, 216, 0.8);
 }
+
+
+.sex-input {
+  margin-top: 25rpx;
+  border-top: solid #f2f2f2 2rpx;
+
+}
+

@@ -1,17 +1,23 @@
 <view class="coachInfo my-border-shadow">
   <view class="coachInfo-part1">
-    <image class="coachInfo-avater" src="{{coachInfo.avatarUrl}}"></image>
-    <text class="coachInfo-nickname">{{coachInfo.nickname}}</text>
-    <text class="coachInfo-experience">任教经历：{{workingYearsArray[coachInfo.workingYears]}}</text>
-    <text class="coachInfo-phone">联系电话：{{coachInfo.mobile}}</text>
-  </view>
-  <view class="coachInfo-part2">
-    <view class="coachInfo-property">{{property}}</view>
+    <view class="left">
+      <image class="coachInfo-avater" src="{{coachInfo.avatarUrl}}"></image>
+    </view>
+    <view class="right">
+      <text class="coachInfo-nickname">{{coachInfo.nickname}}</text>
+      <text class="coachInfo-experience">任教经历：{{workingYearsArray[coachInfo.workingYears]}}</text>
+      <text class="coachInfo-phone">联系电话：{{coachInfo.mobile}}</text>
+    </view>
+    
   </view>
 </view>
 
+<view class="coachInfo-part2 my-border-shadow">
+  <view class="txt">教学风格:</view>
+  <view class="coachInfo-property">{{property}}</view>
+</view>
 <view class="profile my-border-shadow">
-  <view class="profile-title">个人简介</view>
+  <view class="profile-title">教练简介:</view>
   <view class="profile-info">
     <view class="profile-info-text">
     {{coachInfo.intro && coachInfo.intro.length > 0  ? coachInfo.intro : "暂无简介"}}
@@ -20,5 +26,3 @@
 </view>
 <button class="reverse-button" hover-class="reverse-button-hover" bindtap="_onOrder" >课程预约</button>
 <button class="reverse-button" hover-class="reverse-button-hover" bindtap="_onMyCourse" >我的课程</button>
-<!-- <view class="reserve">课程预约</view>
-<view class="myCourse">我的课程</view> -->

@@ -1,3 +1,4 @@
+//学员管理课程详细页面
 const app = getApp();
 
 const studentServer = '/pages/reverse/reverse'

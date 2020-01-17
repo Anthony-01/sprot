@@ -5,7 +5,7 @@ function getTextStatusColor(confirmState, cancelState) {
   if (confirmState == 1 ||confirmState == 3) {
       return 'green-color';
     }
-    if (cancelState == 1) {
+    if (cancelState == 1 || cancelState == 2) {
       return 'red-color';
     }
 }
@@ -36,10 +36,24 @@ function getBtnGiveUpColor(confirmState, cancelState) {
   }
 }
 
+function getOnlyBtnText(confirmState, cancelState) {
+  
+  if (((confirmState == 0 || confirmState == 1) && cancelState == 0) || cancelState == 3) {
+    return "确认上课";
+  }
+  if (cancelState == 2 && confirmState == 0) {
+    return "已退课";
+  }
+  if ((confirmState == 2 || confirmState == 3) && cancelState == 0) {
+    return "已确认上课"
+  }
+}
+
 module.exports.getTextStatusColor = getTextStatusColor;
 module.exports.getConfirmColor = getConfirmColor;
 module.exports.getBtnGiveUpText = getBtnGiveUpText;
 module.exports.getBtnGiveUpColor = getBtnGiveUpColor;
+module.exports.getOnlyBtnText = getOnlyBtnText;
 </wxs>
 <view class="my-course-wrapper">
   <view class="userinfo">
@@ -65,9 +79,14 @@ module.exports.getBtnGiveUpColor = getBtnGiveUpColor;
         <view class="courseItem-myTime">我的确认时间：{{item.myTime}}</view>
 
         <view class="courseItem-ui">
-          <view class="courseItem-ui-sign {{m1.getConfirmColor(item.confirmState, item.cancelState)}}" bind:tap="_onConfirm" data-index="{{index}}">{{item.confirmState == 3 || item.confirmState == 2 ? '已确认上课': '确认上课'}}</view>  
-          <view class="courseItem-ui-giveUp {{m1.getBtnGiveUpColor(item.confirmState, item.cancelState)}}" bind:tap="_onGiveUp" data-index="{{index}}">{{m1.getBtnGiveUpText(item.cancelState)}}</view>
+          <!-- <view class="courseItem-ui-sign {{m1.getConfirmColor(item.confirmState, item.cancelState)}}" bind:tap="_onConfirm" data-index="{{index}}">{{item.confirmState == 3 || item.confirmState == 2 ? '已确认上课': '确认上课'}}</view>  
+          <view class="courseItem-ui-giveUp {{m1.getBtnGiveUpColor(item.confirmState, item.cancelState)}}" bind:tap="_onGiveUp" data-index="{{index}}">{{m1.getBtnGiveUpText(item.cancelState)}}</view> -->
+          <view hidden="{{item.cancelState == 1}}" class="courseItem-ui-sign {{m1.getConfirmColor(item.confirmState, item.cancelState)}}" bind:tap="_onConfirm" data-index="{{index}}">{{m1.getOnlyBtnText(item.confirmState, item.cancelState)}}</view>
+          <!-- {{"" + item.confirmState + item.cancelState}} -->
+          <view hidden="{{item.cancelState != 1}}" class="courseItem-ui-agree-cancel" data-index="{{index}}" bind:tap="_onAgreeCancel">同意退课</view>
+          <view hidden="{{item.cancelState != 1}}" class="courseItem-ui-reject-cancel" data-index="{{index}}" bind:tap="_onRejectCancel">拒绝退课</view>
         </view>
+        
       </view>
     </view>
 

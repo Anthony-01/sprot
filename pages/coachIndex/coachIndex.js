@@ -12,7 +12,7 @@ Page({
   data: {
     headerTxt: `欢迎回来！\n您可以在此管理您的课程，并添加预约的新学员，也可添加您的教练`,
     imageSrc: "../../image/gao.png",
-    current: "homepage",
+    current: "mine",
     isIphoneX: false
   },
   handleChange({ detail }) {
@@ -36,8 +36,17 @@ Page({
       }
     }
     
+    let self = this;
     wx.setNavigationBarTitle({
-      title: title
+      title: title,
+      success() {
+        // if (detail.key == "mine") {
+        //   let infoPage = self.selectComponent("#coach-info");
+        //   // infoPage.setInfo();
+        //   infoPage.adjust();
+        // }
+        
+      }
     })
 
     this.setData({
@@ -64,6 +73,15 @@ Page({
     })
 
     this.getUserInfo();
+    let self = this;
+    setTimeout(() => {
+      self.handleChange({
+        detail: {
+          key: "homepage"
+        }
+      })
+    }, 1000)
+    
   },
 
   getUserInfo() {
@@ -77,6 +95,7 @@ Page({
         indexPage.setInfo();
         let infoPage = self.selectComponent("#coach-info");
         infoPage.setInfo();
+        // infoPage.adjust();
         let myStudentPage = self.selectComponent("#coach-students");
         myStudentPage.requestMyStudents();
         let orderPage = self.selectComponent("#coach-order");
@@ -123,6 +142,7 @@ Page({
       }
       case "mine": {
         title = "我的信息";
+        this.getUserInfo();
         break;
       }
     }

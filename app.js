@@ -10,8 +10,10 @@ const loginUrl = 'api/Login/MinProgram';
 const infoUrl = 'api/User/Info';
 const searchCoachesUrl = 'api/User/SeachCoaches';
 const myCoachesUrl = 'api/User/MyCoaches';
+const nearbyCoachesUrl = "api/User/NearbyCoaches";
 const modifyGenderUrl = 'api/User/ModifyGender';
 const modifyMobileUrl = 'api/User/ModifyMobile';
+const modifyArea = 'api/User/ModifyArea';
 const modifyUniqueCodeUrl = 'api/User/ModifyUniqueCode';
 const applyBecomeCoachUrl = 'api/User/ApplyBecomeCoach';
 const subscribeCourseUrl = 'api/User/SubscribeCourse';
@@ -117,12 +119,20 @@ App({
         url: myCoachesUrl,
         method: 'GET'
       },
+      nearbyCoachesApi: {
+        url: nearbyCoachesUrl,
+        method: 'GET'
+      },
       genderApi: {
         url: modifyGenderUrl,
         method: 'POST'
       },
       mobileApi: {
         url: modifyMobileUrl,
+        method: 'POST'
+      },
+      areaApi: {
+        url: modifyArea,
         method: 'POST'
       },
       uniqueCodeApi: {

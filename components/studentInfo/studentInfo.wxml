@@ -1,4 +1,15 @@
 <!--components/studentInfo.wxml-->
+<wxs module="info">
+function getApplyBtnClass(status) {
+  if (status == 0) {
+    return 'gray-color';
+  }
+  return '';
+}
+
+
+module.exports.getApplyBtnClass = getApplyBtnClass;
+</wxs>
 <view class="userInfo" hidden="{{hidden}}">
   <view class="left">
     <image src="{{userInfo.avater}}" class="userInfo-avater"></image>
@@ -7,10 +18,94 @@
     <view class="userInfo-nickname">{{userInfo.nickname}}</view>
     <view class="userInfo-identity">身份：{{userInfo.identity}}</view>
 
+    <view class="userInfo-id-wrapper">
+      <view class="userInfo-id">id：{{userInfo.code}}</view>
+      <view class="icon-wrapper">
+        <view class="icon-change icon-item" bindtap="_change">
+          <image src="../../image/icon_change.png" style="width: 25rpx;height: 25rpx;"></image>
+          更换
+        </view>
+        <view class="icon-copy icon-item" bindtap="copy">
+          <image src="../../image/icon_copy.png" style="width: 30rpx;height: 30rpx;"></image>
+          复制
+        </view>
+      </view>
+    </view>
   </view>
 </view>
 
-<view class="baseMsg-student" hidden="{{hidden}}">
+
+<view class="base-info" hidden="{{hidden}}">
+  <view class="baseMsg-title">基本信息</view>
+  <view class="base-info-table">
+    <view class="base-info-table-sex info-table-item">
+        <view class="base-info-txt">性别</view>
+        <view class="baseMsg-sex-radio " data-index="{{0}}" bindtap="_sexTab">
+          <view class="baseMsg-sex-radio-button {{gender==0 ? 'selected-button':''}}"><view class="button-in"></view></view>
+          <span class="my-icon-male my-icon"></span>
+        </view>
+        <view class="baseMsg-sex-radio " data-index="{{1}}" bindtap="_sexTab">
+          <view class="baseMsg-sex-radio-button {{gender==1 ? 'selected-button':''}}"><view class="button-in"></view></view>
+          <span class="my-icon-female my-icon"></span>
+        </view>
+    </view>
+    <view class="base-info-table-phone info-table-item">
+      <view class="base-info-txt">联系电话</view>
+      <input class="base-info-table-phone-input" type="number" placeholder="输入联系电话" bind:blur="_telSubmit" value="{{userInfo.tel}}"></input>
+    </view>
+
+    <!-- <view class="base-info-table-exprience  info-table-item">
+      <view class="base-info-txt">从业经历</view>
+      <view class="section">
+        <picker bindchange="bindPickerChange" value="{{userInfo.workingYear}}" range="{{array}}">
+          <view class="picker">
+            <view class="placeholder" wx:if="{{userInfo.workingYear == undefined}}">请选择从业年限</view>
+            <view wx:else>{{array[userInfo.workingYear]}}</view>
+          </view>
+        </picker>
+      </view>
+    </view> -->
+    <view class="base-info-table-location info-table-item">
+      <view class="base-info-txt">所在省市</view>
+      <view class="section">
+        <picker mode="region" bindchange="bindRegionChange" value="{{region}}" custom-item="{{customItem}}">
+          <view class="picker">
+            <view class="placeholder" wx:if="{{region.length == 0}}">请选择省市</view>
+            {{region[0]}}，{{region[1]}}
+          </view>
+        </picker>
+      </view>
+      <view class="icon-location" bind:tap="_getLocation">
+        <view class="image-wrapper">
+          <image class="icon-image" src="../../image/icon_location.png"></image>
+        </view>
+        <view class="icon-txt">获取</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="baseMsg-title">申请成为教练</view>
+  <view class="apply-wrapper">
+    <view class="left">
+      <image src="../../image/apply_coach_logo.png" style="width: 140rpx;height: 140rpx;"></image>
+    </view>
+    <view class="right">
+      <!-- 申请请求 -->
+      <view class="right-item apply-btn">
+        <view class="apply-txt">教练申请:</view>
+        <view class="apply-button {{info.getApplyBtnClass(applyCoachState)}}" bind:tap="_applyBecomeCoach" >点我申请</view>
+      </view>
+      <!-- 申请状态 -->
+      <view class="right-item">
+        <view class="apply-txt">申请状态:</view>
+        <view class="reverse-status {{statusClass}}">{{stateTxt}}</view>
+      </view>
+    </view>
+  </view>
+</view>
+
+
+<view class="baseMsg-student" hidden="{{true}}">
   <view class="baseMsg-title">基本信息</view>
   <view class="baseMsg-table my-border-shadow" style="height:200rpx">
     <view class="baseMsg-table-sex">

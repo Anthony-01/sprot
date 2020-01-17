@@ -20,9 +20,9 @@
   transform-origin: 0 0;
   pointer-events: none;
   box-sizing: border-box;
-  border: 0 solid #e9eaec;
-  border-bottom-width: 1px;
-  left: 15px;
+  /* border: 0 solid #e9eaec; */
+  /* border-bottom-width: 1px; */
+  /* left: 15px; */
   right: 0;
 }
 
@@ -71,14 +71,14 @@
   position: absolute;
   top: 50%;
   right: 2px;
-  border-width: 2px 2px 0 0;
+  /* border-width: 2px 2px 0 0;
   border-color: #dddee1;
-  border-style: solid;
+  border-style: solid; */
   transform: translateY(-50%) matrix(0.71, 0.71, -.71, 0.71, 0, 0);
 }
 
 .i-input {
-  padding: 7px 15px;
+  padding: 7px 0;
   color: #495060;
 }
 
@@ -89,8 +89,8 @@
 
 .i-input-wrapped::after {
   left: 0;
-  border-width: 1px;
-  border-radius: 4px;
+  /* border-width: 1px;
+  border-radius: 4px; */
 }
 
 .i-input-error {

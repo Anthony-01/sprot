@@ -1,3 +1,4 @@
+//教练管理课程详细页面
 const app = getApp();
 
 import myHttp from '../../utils/http.js';
@@ -163,6 +164,63 @@ Page({
           ['courseItem[' + index + '].coachConfirmlTime']: new Date().getTime()
         })
         console.log("修改后的confirmState：", status);
+      }
+    })
+  },
+
+  _onAgreeCancel(e) {
+    let self = this;
+    let index = e.currentTarget.dataset.index;
+    let course = this.data.courseItem[index];
+    if (course.confirmState == 3 || course.cancelState == 2 || course.cancelState == 0) {
+      //如果course的状态是已经签到，那么返回
+      //cancelState 或者2的情况?
+      //confirmState course.cancelState == 1
+      return
+    }
+    if (course == undefined || course.courseID == undefined || course.hourID == undefined) {
+      return;
+    }
+    let api = app.globalData.http.hoursCancelPassApi;
+    myHttp.request(api.url + "?courseID=" + course.courseID + "&hourID=" + course.hourID, api.method, null).then(data => {
+      util.showToast(data);
+      console.log(data);
+      if (data.code == 1) {
+
+        self.setData({
+          ['courseItem[' + index + '].cancelState']: 2,
+          ['courseItem[' + index + '].myTime']: util.transfromTime(new Date().getTime()),
+          ['courseItem[' + index + '].auditCancelTime']: new Date().getTime(),
+        })
+      }
+    })
+  },
+
+  /**
+   * 拒绝退课
+  */
+  _onRejectCancel(e) {
+    let self = this;
+    let index = e.currentTarget.dataset.index;
+    let course = this.data.courseItem[index];
+    if (course.confirmState == 3 || course.cancelState == 2 || course.cancelState == 0) { //已签到的情况、同意cancel的情况、没有发出申请的情况
+      //如果course的状态是已经签到，那么返回
+      //cancelState 或者2的情况?
+      //confirmState course.cancelState == 1
+      return
+    }
+    let api = app.globalData.http.hoursCancelRejectApi;
+    //?courseID=1&hourID=1
+    myHttp.request(api.url + "?courseID=" + course.courseID + "&hourID=" + course.hourID, api.method, null).then(data => {
+      util.showToast(data);
+      console.log(data);
+      if (data.code == 1) {
+        //拒绝退课之后的处理 回到未完成课程状态
+        self.setData({
+          ['courseItem[' + index + '].cancelState']: 3,
+          ['courseItem[' + index + '].myTime']: "",
+          ['courseItem[' + index + '].auditCancelTime']: null,
+        })
       }
     })
   },

@@ -3,5 +3,6 @@
   "usingComponents": {
     "select": "../../components/select/select"
   },
-  "navigationBarBackgroundColor": "#e4e4e4"
+  "navigationBarBackgroundColor": "#e4e4e4",
+  "backgroundColor": "#f8f8f8"
 }

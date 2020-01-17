@@ -5,6 +5,9 @@ import myHttp from '../../utils/http.js';
 import util from '../../utils/util.js';
 
 const mobileRegExp = /^1[345678]\d{9}$/;
+
+var QQMapWX = require('../../libs/qqmap-wx-jssdk.min.js');
+var qqmapsdk;
 Component({
   /**
    * 组件的属性列表
@@ -34,7 +37,10 @@ Component({
     
     gender: 1,
     array: ['1年', '2年', '3年', '3年以上'],
-    detail: false
+    detail: false,
+    region: [],
+    customItem: '全部',
+    adjust: false
   },
   lifetimes: {
     attached() {
@@ -61,6 +67,10 @@ Component({
       }
       console.log(phone);
       console.log("check:", this.data.detail)
+
+      qqmapsdk = new QQMapWX({
+        key: 'OOTBZ-2NGK4-S3SUF-DHK3S-ZEDD6-QIB6B'
+      });
     }
   },
 
@@ -142,17 +152,51 @@ Component({
     setInfo() {
       let user = app.globalData.userInfo;
 
+      console.error("设置教练信息!");
+
       this.setData({
         ["userInfo.avatar"]: user.avatarUrl,
         ["userInfo.nickname"]: user.nickname,
         ["userInfo.identity"]: user.userType == 1 ? "教练" : "学员",
         ["userInfo.code"]: user.uniqueCode,
         ["userInfo.tel"]: user.mobile,
+        region: [user.province, user.city],
         gender: user.gender,
         ["userInfo.workingYear"]: user.workingYears,
         ["userInfo.teachingStyle"]: user.teachingStyle,
         ["userInfo.intro"]: user.intro
       })
+
+      // this._adjust();
+    },
+    adjust() {
+      // let self = this;
+      // let modifyTeachingStyle = app.globalData.http.modifyTeachApi;
+      // let teachingStyle = app.globalData.userInfo.teachingStyle;
+      // console.error("****************************", teachingStyle);
+      // myHttp.request(modifyTeachingStyle.url + "?teachingStyle=" + teachingStyle, modifyTeachingStyle.method, null).then(data => {
+      //   util.showToast(data);
+      //   console.error(data);
+      //   if (data.code != 1) {
+      //     self.setData({
+      //       ["userInfo.teachingStyle"]: null
+      //     })
+      //   } else {
+      //     app.globalData.userInfo.teachingStyle = teachingStyle
+      //     self.setData({
+      //       ["userInfo.teachingStyle"]: teachingStyle
+      //     })
+      //   }
+      // })
+      // let self = this;
+      // this.setData({
+      //   adjust: true
+      // })
+      // setTimeout(() => {
+      //   self.setData({
+      //     adjust: false
+      //   })
+      // }, 60)
     },
 
     _telSubmit(e) {
@@ -185,8 +229,8 @@ Component({
     },
     _introSubmit(e) {
       let self = this;
-      if (e.detail.value.length == 0) return;
-      let intro = e.detail.value.length ? e.detail.value : null;
+      if (e.detail.detail.value.length == 0) return;
+      let intro = e.detail.detail.value.length ? e.detail.detail.value : null;
 
       let modifyIntro = app.globalData.http.modifyIntroApi;
       myHttp.request(modifyIntro.url + "?intro=" + intro, modifyIntro.method, null).then(data => {
@@ -198,13 +242,18 @@ Component({
           })
         } else {
           app.globalData.userInfo.intro = intro;
+          self.setData({
+            ["userInfo.intro"]: intro
+          })
         }
       })
     },
     _teachStyleSubmit(e) {
+      console.error("教学风格");
+      console.log(e);
       let self = this;
-      if (e.detail.value.length == 0) return;
-      let teachingStyle = e.detail.value.length ? e.detail.value : '\s';
+      if (e.detail.detail.value.length == 0) return;
+      let teachingStyle = e.detail.detail.value.length ? e.detail.detail.value : '\s';
 
       let modifyTeachingStyle = app.globalData.http.modifyTeachApi;
       myHttp.request(modifyTeachingStyle.url + "?teachingStyle=" + teachingStyle, modifyTeachingStyle.method, null).then(data => {
@@ -216,6 +265,89 @@ Component({
           })
         } else {
           app.globalData.userInfo.teachingStyle = teachingStyle
+          self.setData({
+            ["userInfo.teachingStyle"]: teachingStyle
+          })
+        }
+      })
+    },
+    bindRegionChange: function (e) {
+      console.log('picker发送选择改变，携带值为', e.detail.value)
+      this._submitLocation(e.detail.value);
+
+    },
+    _submitLocation(value) {
+      //发送http请求
+      if (this.data.region[0] == value[0] && this.data.region[1] == value[1]) {
+        util.showTip("操作成功");
+        return;
+      }
+
+      let self = this;
+      let area = app.globalData.http.areaApi;
+      let data = {
+        country: "china",
+        province: value[0],
+        city: value[1]
+      }
+
+      myHttp.request(area.url, area.method, data).then(data => {
+        util.showToast(data);
+        if (data.code == 1) {
+
+          self.setData({
+            region: value
+          });
+          app.globalData.userInfo.area = value;
+        }
+      })
+
+
+    },
+
+    _getLocation() {
+      let self = this;
+      wx.getSetting({
+        success(res) {
+          if (!res.authSetting['scope.userLocation']) {
+            wx.authorize({
+              scope: 'scope.userLocation',
+              success() {
+                self.getAndSetLocation();
+              },
+              fail() {
+
+              }
+            })
+          } else {
+            self.getAndSetLocation();
+          }
+        }
+      })
+
+    },
+
+    getAndSetLocation() {
+      let self = this;
+      wx.getLocation({
+        type: 'gcj02', //返回可以用于wx.openLocation的经纬度
+        success(res) {
+          const latitude = res.latitude
+          const longitude = res.longitude
+          qqmapsdk.reverseGeocoder({
+            location: {
+              latitude: latitude,
+              longitude: longitude
+            },
+            success(res) {
+              console.log(res);
+              let value = [res.result.address_component.province, res.result.address_component.city];
+              self._submitLocation(value);
+            },
+            fail(res) {
+              util.showTip("获取地址失败，请手动选择!");
+            }
+          })
         }
       })
     }

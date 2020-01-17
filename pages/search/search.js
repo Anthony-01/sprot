@@ -6,6 +6,8 @@ import customEvent from '../../utils/customEvent.js';
 
 const coachDetailPage = '/pages/coachInfo/coachInfo';
 
+const pageSize = 3;
+
 Page({
 
   /**
@@ -15,7 +17,10 @@ Page({
     coachList: [
       
     ],
-    workingYearArray: ['1年', '2年', '3年', '3年以上']
+    workingYearArray: ['1年', '2年', '3年', '3年以上'],
+    pageIndex: 1,
+    nearByCoaches: [],
+    hiddenNearby: false
   },
 
   /**
@@ -25,9 +30,26 @@ Page({
     //let 
   },
 
+  _onSearchFocus(e) {
+    console.log(e);
+    // console.error("隐藏");
+    this.setData({
+      hiddenNearby: true
+    })
+  },
+
   _onSearchCoach(e) {
     let self = this;
-    if (e.detail.value.length == 0) return;
+    // console.error("显示");
+    this.setData({
+      hiddenNearby: false
+    })
+    if (e.detail.value.length == 0) {
+      self.setData({
+        coachList: []
+      })
+      return;
+    };
     let uniqueCode = e.detail.value.length ? e.detail.value : null;
     let search = app.globalData.http.searchApi;
 
@@ -56,8 +78,8 @@ Page({
 
   _onCoachPage(e) {
     //教练页面
-    console.log(e.target.dataset.index);
-    let index = e.target.dataset.index;
+    console.log(e.currentTarget.dataset.index);
+    let index = e.currentTarget.dataset.index;
     let user = this.data.coachList[index];
     
 
@@ -71,6 +93,29 @@ Page({
     }
   },
 
+  
+
+  _onNearByCoach(e) {
+    //教练页面
+    console.log(e.currentTarget.dataset.index);
+    let index = e.currentTarget.dataset.index;
+    let user = this.data.nearByCoaches[index];
+
+
+    if (user) {
+      wx.navigateTo({
+        url: coachDetailPage,
+        success(res) {
+          res.eventChannel.emit(customEvent.SET_COACH, { user: user });
+        }
+      })
+    }
+  },
+
+  _onRefresh() {
+    this._requestNearByCoaches(this.data.pageIndex + 1);
+  },
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -82,7 +127,27 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    //请求附近的教练
+    this._requestNearByCoaches(this.data.pageIndex);
+  },
 
+  _requestNearByCoaches(index) {
+    let self = this;
+    let nearbyApi = app.globalData.http.nearbyCoachesApi;
+    myHttp.request(nearbyApi.url + "?Page=" + index + "&PageSize=" + pageSize, nearbyApi.method, null).then(data => {
+      console.log(data);
+      if (data.code == 1) {
+        util.showTip("刷新成功!")
+        if (data.payload.pageData.length == 0) {
+          self._requestNearByCoaches(1);
+          return;
+        }
+        self.setData({
+          nearByCoaches: data.payload.pageData,
+          pageIndex: index
+        })
+      }
+    })
   },
 
   /**
