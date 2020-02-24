@@ -49,7 +49,7 @@ Component({
       let user = this.data.coachList[index];
       wx.navigateTo({
         url: coachDetalPath,
-        success() {
+        success(res) {
           console.log("路由导航成功");
           res.eventChannel.emit(customEvent.SET_COACH, { user: user });
         },
@@ -67,10 +67,13 @@ Component({
       })
     },
     setCoachList(data) {
-      console.log("component设置我的教练:", data);
+      console.log("CoachComponent设置我的教练:", data);
+      console.log("*****************")
+      console.log(data[0].avatarUrl);
       this.setData({
         coachList: data
       })
+      console.log("*****************")
     },
     onAddCoach() {
       wx.navigateTo({
