@@ -6,6 +6,9 @@ const studentServer = '/pages/reverse/reverse'
 import myHttp from '../../utils/http.js';
 import util from '../../utils/util.js';
 
+
+import customEvent from '../../utils/customEvent.js';
+
 Page({
   data: {
     userInfo: {
@@ -13,6 +16,7 @@ Page({
       nickname: "",
       type: "0",
       phone: "",
+      userID: 0
     },
     courseItem:[
       // {
@@ -80,9 +84,37 @@ Page({
   },
   //课程预约链接
   _onLink() {
-    wx.navigateTo({
-      url: studentServer
-    })
+    
+    // wx.navigateTo({
+    //   url: studentServer,
+    //   success(res) {
+    //     res.eventChannel.emit(customEvent.SET_COURSE, { courses: data.payload, id: self.data.coachInfo.userID });
+    //   }
+    // })
+
+    let self = this;
+    let getProject = app.globalData.http.allProjectApi;
+    console.log("预约信息:", self.data.userInfo);
+
+    myHttp.request(getProject.url, getProject.method, null).then(data => {
+      if (data.code == 1) {
+
+
+        wx.navigateTo({
+          url: studentServer,
+          success(res) {
+            console.log("预定课程需要的参数：")
+            console.error("发射的教练信息:", data.payload, self.data.userInfo.userID)
+            res.eventChannel.emit(customEvent.SET_COURSE, { courses: data.payload, id: self.data.userInfo.userID });
+          },
+          fail(err) {
+
+          }
+        })
+      } else {
+        util.showToast(data);
+      }
+    });
   },
   onLoad(option) {
     let self = this;
@@ -97,6 +129,7 @@ Page({
     this.setData({
       ["userInfo.nickname"]: data.user.nickname,
       ["userInfo.avator"]: data.user.avatarUrl,
+      ["userInfo.userID"]: data.user.userID,
 
     })
   },

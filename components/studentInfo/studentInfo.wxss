@@ -265,8 +265,8 @@ Page {
 .icon-location .icon-image {
   position: relative;
   top: 0;
-  width:60rpx;
-  height: 60rpx;
+  width:55rpx;
+  height: 55rpx;
 }
 .icon-location .icon-txt {
   font-size: 20rpx;
@@ -320,15 +320,19 @@ Page {
   display: flex;
   justify-content: space-between;
   line-height: 70rpx;
-  font-size: 28rpx;
+  /* font-size: 28rpx; */
   margin-right: 60rpx;
 }
 .apply-wrapper .right .apply-btn {
-  border-bottom: solid #f2f2f2 2rpx;
+  /* border-bottom: solid #f2f2f2 2rpx; */
   /* padding-right: 60rpx; */
 }
 .apply-button {
-  color: #0099ff;
+  background: #0099ff;
+  color: #fff;
+  border-radius: 5rpx;
+  margin: 5rpx 0;
+  padding: 0 10rpx;
   /* margin-right: 60rpx; */
 }
 
@@ -405,7 +409,9 @@ Page {
   text-align: right;
   top: -40rpx; */
   /* margin-right: 60rpx; */
-  color: #0099ff;
+  /* color: #0099ff; */
+  padding-right: 10rpx;
+  color: gray;
 }
 
 .applying{

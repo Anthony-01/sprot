@@ -19,7 +19,7 @@ module.exports.getApplyBtnClass = getApplyBtnClass;
     <view class="userInfo-identity">身份：{{userInfo.identity}}</view>
 
     <view class="userInfo-id-wrapper">
-      <view class="userInfo-id">id：{{userInfo.code}}</view>
+      <view class="userInfo-id">ID：{{userInfo.code}}</view>
       <view class="icon-wrapper">
         <view class="icon-change icon-item" bindtap="_change">
           <image src="../../image/icon_change.png" style="width: 25rpx;height: 25rpx;"></image>
@@ -71,7 +71,8 @@ module.exports.getApplyBtnClass = getApplyBtnClass;
         <picker mode="region" bindchange="bindRegionChange" value="{{region}}" custom-item="{{customItem}}">
           <view class="picker">
             <view class="placeholder" wx:if="{{region.length == 0}}">请选择省市</view>
-            {{region[0]}}，{{region[1]}}
+            <view class="placeholder" wx:else>{{region[0]}}，{{region[1]}}</view>
+            
           </view>
         </picker>
       </view>
@@ -93,19 +94,21 @@ module.exports.getApplyBtnClass = getApplyBtnClass;
       <!-- 申请请求 -->
       <view class="right-item apply-btn">
         <view class="apply-txt">教练申请:</view>
-        <view class="apply-button {{info.getApplyBtnClass(applyCoachState)}}" bind:tap="_applyBecomeCoach" >点我申请</view>
+        <!-- {{info.getApplyBtnClass(applyCoachState)}} 颜色变化 -->
+        <view class="apply-button " bind:tap="_applyBecomeCoach" >点我申请</view>
       </view>
       <!-- 申请状态 -->
       <view class="right-item">
         <view class="apply-txt">申请状态:</view>
-        <view class="reverse-status {{statusClass}}">{{stateTxt}}</view>
+        <view class="reverse-status">{{stateTxt}}</view>
+        <!-- {{statusClass}} 颜色状态 -->
       </view>
     </view>
   </view>
 </view>
 
 
-<view class="baseMsg-student" hidden="{{true}}">
+<view class="baseMsg-student" wx:if="{{false}}">
   <view class="baseMsg-title">基本信息</view>
   <view class="baseMsg-table my-border-shadow" style="height:200rpx">
     <view class="baseMsg-table-sex">
@@ -135,7 +138,8 @@ module.exports.getApplyBtnClass = getApplyBtnClass;
 
   <view class="info">
     <view class="text-reverse-title">申请成为教练</view>
-    <view class="reverse-status {{statusClass}}">{{stateTxt}}</view>
+    <view class="reverse-status ">{{stateTxt}}</view>
+    <!-- {{statusClass}} 颜色状态 -->
   </view>
 
 <button class="reverse-button" hover-class="reverse-button-hover" bind:tap="_applyBecomeCoach">点击申请</button>

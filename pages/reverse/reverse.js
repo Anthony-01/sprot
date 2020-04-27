@@ -25,7 +25,8 @@ Page ({
     array: ['网球一对一项目（10节）', '篮球20人大班（15节）'],
     tel: '',
     remarks: '',
-    coachID: 0
+    coachID: 0,
+    detail: false
   },
 
   observers: {
@@ -37,7 +38,29 @@ Page ({
   onLoad(options) {
     let eventChannel = this.getOpenerEventChannel();
     eventChannel.on(customEvent.SET_COURSE, this.setCourse);
+    
 
+    var phone = wx.getSystemInfoSync();  //调用方法获取机型
+
+    var that = this;
+
+    if (phone.platform == 'ios') {
+
+      that.setData({
+
+        detail: true
+
+      });
+
+    } else if (phone.platform == 'android') {
+
+      that.setData({
+
+        detail: false
+
+      });
+
+    }
     
     
   },

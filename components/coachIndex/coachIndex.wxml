@@ -4,8 +4,7 @@
     <view class="header">
       <view class="left">
         <image src="{{userInfo.avatar}}"></image>
-      </view>
-      
+      </view>                                                                              
       <view class="right">
         <view class="name">{{userInfo.nickname}}</view>
         <view class="txt">

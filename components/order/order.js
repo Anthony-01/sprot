@@ -49,6 +49,12 @@ Component({
     current: "student-tab"
   },
 
+  attached() {
+
+    //在wx:if情况下更新
+    this.requestMyOrderes();
+  },
+
   /**
    * 组件的方法列表
    */
@@ -147,7 +153,7 @@ Component({
             item.showTime = util.transfromTime(item.collectTime)
           })
           self.setData({
-            studentOrderAry: data.payload
+            studentOrderAry: data.payload.reverse()
           })
         }
       }).catch(err => {
@@ -160,7 +166,7 @@ Component({
         console.log(data);
         if (data.code == 1) {
           self.setData({
-            myOrderAry: data.payload
+            myOrderAry: data.payload.reverse()
           })
         }
       }).catch(err => {

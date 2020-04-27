@@ -44,7 +44,7 @@ Component({
         item.showTime = util.transfromOrderTime(item.collectTime)
       });
       this.setData({
-        orderAry: orders
+        orderAry: orders.reverse()
       })
     },
     transfromTime(time) {

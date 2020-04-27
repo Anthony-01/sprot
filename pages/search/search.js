@@ -81,6 +81,7 @@ Page({
     console.log(e.currentTarget.dataset.index);
     let index = e.currentTarget.dataset.index;
     let user = this.data.coachList[index];
+    console.error(e.currentTarget.dataset.index, user);
     
 
     if (user) {
@@ -139,8 +140,10 @@ Page({
       if (data.code == 1) {
         util.showTip("刷新成功!")
         if (data.payload.pageData.length == 0) {
-          self._requestNearByCoaches(1);
-          return;
+          if (index != 1) {
+            self._requestNearByCoaches(1);
+            return;
+          } 
         }
         self.setData({
           nearByCoaches: data.payload.pageData,

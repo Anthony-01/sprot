@@ -37,12 +37,32 @@ Component({
 
   attached() {
     console.log("设置教练:", app.globalData.myCoaches);
+
+    //在wx:if情况下更新
+    this.setInfo();
+    this.requestCoaches();
+    // this.setCoachList(app.globalData.myCoaches);
   },
 
   /**
    * 组件的方法列表
    */
   methods: {
+    requestCoaches() {
+      let self = this;
+      let myCoaches = app.globalData.http.myCoachesApi;
+
+      myHttp.request(myCoaches.url, myCoaches.method, null).then(data => {
+        if (data.code == 1) {
+          console.error("教练页面我的教练数据:");
+          console.log(data);
+          app.globalData.myCoaches = data.payload;
+          self.setCoachList(app.globalData.myCoaches);
+        }
+      }).catch(err => {
+        console.error("请求教练失败:", err);
+      })
+    },
     coachDetail(e) {
       //进入教练详情页并且导入信息
       let index = e.currentTarget.dataset.index;
@@ -67,13 +87,11 @@ Component({
       })
     },
     setCoachList(data) {
-      console.log("CoachComponent设置我的教练:", data);
-      console.log("*****************")
-      console.log(data[0].avatarUrl);
+      // console.log("CoachComponent设置我的教练:", data);
       this.setData({
         coachList: data
       })
-      console.log("*****************")
+      
     },
     onAddCoach() {
       wx.navigateTo({

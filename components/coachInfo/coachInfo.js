@@ -44,6 +44,7 @@ Component({
   },
   lifetimes: {
     attached() {
+      this.setInfo();
       var phone = wx.getSystemInfoSync();  //调用方法获取机型
 
       var that = this;
@@ -150,10 +151,33 @@ Component({
       
     },
     setInfo() {
+      if (app.globalData.userInfo != null) {
+        this.setUIInfo();
+      } else {
+        let user = app.globalData.http.infoApi;
+        let self = this;
+        myHttp.request(user.url, user.method, null).then(data => {
+          // console.log("请求个人信息")
+          console.log("请求个人信息", data);
+          if (data.code == 1) {
+            app.globalData.userInfo = data.payload;
+            self.setUIInfo();
+          } else {
+            util.showToast(data);
+          }
+        })
+      }
+      
+
+      // this._adjust();
+    },
+
+    setUIInfo() {
       let user = app.globalData.userInfo;
-
-      console.error("设置教练信息!");
-
+      if (user == null) {
+        console.error("设置个人信息失败,无法获取个人信息");
+        return;
+      }
       this.setData({
         ["userInfo.avatar"]: user.avatarUrl,
         ["userInfo.nickname"]: user.nickname,
@@ -166,9 +190,8 @@ Component({
         ["userInfo.teachingStyle"]: user.teachingStyle,
         ["userInfo.intro"]: user.intro
       })
-
-      // this._adjust();
     },
+
     adjust() {
       // let self = this;
       // let modifyTeachingStyle = app.globalData.http.modifyTeachApi;

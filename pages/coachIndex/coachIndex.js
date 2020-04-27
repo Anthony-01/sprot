@@ -74,6 +74,7 @@ Page({
 
     })
 
+    //在切换页面时候已经请求过信息
     this.getUserInfo();
     let self = this;
     setTimeout(() => {
@@ -119,13 +120,13 @@ Page({
 
   setComponentUser() {
     let indexPage = this.selectComponent("#coach-index");
-    indexPage.setInfo();
+    indexPage && indexPage.setInfo();
     let infoPage = this.selectComponent("#coach-info");
-    infoPage.setInfo();
+    infoPage && infoPage.setInfo();
     let myStudentPage = this.selectComponent("#coach-students");
-    myStudentPage.requestMyStudents();
+    myStudentPage && myStudentPage.requestMyStudents();
     let orderPage = this.selectComponent("#coach-order");
-    orderPage.requestMyOrderes();
+    orderPage && orderPage.requestMyOrderes();
   },
 
   setCoach() {
@@ -139,7 +140,7 @@ Page({
       if (data.code == 1) {
         console.error("教练页面我的教练数据:");
         console.log(data);
-        coachIndexPage.setCoachList(data.payload);
+        coachIndexPage && coachIndexPage.setCoachList(data.payload);
         app.globalData.myCoaches = data.payload;
       }
     }).catch(err => {

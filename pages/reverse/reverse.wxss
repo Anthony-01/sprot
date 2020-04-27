@@ -32,7 +32,7 @@ Page {
 }
 
 .form-name .left .title{
-  width: 64rpx;
+  width: 70rpx;
 }
 .form-name .left .remarks{
   line-height: 48rpx;
@@ -62,9 +62,18 @@ Page {
   /* padding-top: 24rpx; */
   /* font-size: 34rpx; */
   line-height: 34rpx;
-  padding-top: 26rpx;
+  /* padding-top: 26rpx; */
   
 }
+
+.iostextarea {
+  padding-top: 0rpx;
+}
+
+.androidtextarea {
+  padding-top: 26rpx;
+}
+
 /* .form-name .right .icon {
   position: absolute;
   right: 60rpx;

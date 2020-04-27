@@ -53,7 +53,7 @@
         <!-- <view class="remarks">(限30字)</view> -->
       </view>
       <view class="right">
-        <textarea placeholder="预约备注(限30字)" maxlength="30"  adjust-position="{{true}}" bind:blur="_onSubmitRemarks"></textarea>
+        <textarea placeholder="预约备注(限30字)" maxlength="30"  adjust-position="{{true}}" bind:blur="_onSubmitRemarks" class="{{detail ? 'iostextarea'  : 'androidtextarea'}}"></textarea>
       </view>
     </view>
   </view>

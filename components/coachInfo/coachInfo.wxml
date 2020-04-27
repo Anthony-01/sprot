@@ -7,7 +7,7 @@
     <view class="userInfo-nickname">{{userInfo.nickname}}</view>
     <view class="userInfo-identity">身份：{{userInfo.identity}}</view>
     <view class="userInfo-id-wrapper">
-      <view class="userInfo-id">id：{{userInfo.code}}</view>
+      <view class="userInfo-id">ID：{{userInfo.code}}</view>
       <view class="icon-wrapper">
         <view class="icon-change icon-item" bindtap="_change">
           <image src="../../image/icon_change.png" style="width: 25rpx;height: 25rpx;"></image>
@@ -58,8 +58,8 @@
       <view class="section">
         <picker mode="region" bindchange="bindRegionChange" value="{{region}}" custom-item="{{customItem}}">
           <view class="picker">
-            <view class="placeholder" hidden="{{region.length != 0}}">请选择省市</view>
-            {{region[0]}}，{{region[1]}}
+            <view class="placeholder" wx:if="{{region.length == 0}}">请选择省市</view>
+            <view class="placeholder" wx:else>{{region[0]}}，{{region[1]}}</view>
           </view>
         </picker>
       </view>

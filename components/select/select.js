@@ -38,6 +38,7 @@ Component({
   methods: {
     　　　//option的显示与否
     selectToggle: function () {
+      if (this.properties.propArray.length == 0) return;
       var nowShow = this.data.selectShow;//获取当前option显示的状态
       //创建动画
       var animation = wx.createAnimation({

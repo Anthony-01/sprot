@@ -178,8 +178,8 @@ Page {
 .icon-location .icon-image {
   position: relative;
   top: 0;
-  width:60rpx;
-  height: 60rpx;
+  width:55rpx;
+  height: 55rpx;
 }
 .icon-location .icon-txt {
   font-size: 20rpx;

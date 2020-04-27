@@ -84,6 +84,8 @@ Component({
   lifetimes: {
     attached() {
       console.log(this.data.studentsAry.length)
+      this.requestMyStudents();
+      // console.log(this.data.studentsAry.length)
     }
   },
   options: {
